@@ -5,7 +5,8 @@
 */
 #include <iostream>
 #include <cstdlib>
-#include<ctime>
+#include <ctime>
+#include <iomanip>
 using namespace std;
 
 int RandomNumber(int From, int To)
@@ -19,12 +20,27 @@ int RandomNumber(int From, int To)
 void FillMatrexWithRandomNumbers(int arr[3][3], short Rows, short Cols)
 {
 
-
-
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            arr[i][j] = RandomNumber(1, 100);
+        }
+    }
 }
 
-void PritnMatrix(int arr[3][3], short Rows, short Cols){
+void PritnMatrix(int arr[3][3], short Rows, short Cols)
+{
 
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            cout << setw(3) << arr[i][j] << "    ";
+        }
+
+        cout << "\n";
+    }
 }
 int main()
 {
@@ -33,12 +49,10 @@ int main()
     int arr[3][3];
 
     FillMatrexWithRandomNumbers(arr, 3, 3);
-    
-    cout<<"\nThe Following is a 3x3 Random Matrix: \n";
+
+    cout << "\nThe Following is a 3x3 Random Matrix: \n";
 
     PritnMatrix(arr, 3, 3);
-
-    system("pause>0");
 
     return 0;
 }
