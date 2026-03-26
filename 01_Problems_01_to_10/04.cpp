@@ -132,8 +132,7 @@ int SimpleCalculator(int Number1, int Number2, enOperationType OpType)
     default:
         return Number1 + Number2;
     }
-}
-
+}       
 // دالة لتوليد سؤال واحد بناءً على المستوى ونوع العملية
 stQuestions GenerateQuestion(enQuizzLevel QuizzLevel, enOperationType OpType)
 {
