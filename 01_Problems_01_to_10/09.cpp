@@ -8,62 +8,63 @@ Print Middle Row And Cols Of Matrix
 #include <ctime>
 using namespace std;
 
-void FillMatrexWithOrderNumbers(int arr[3][3], short Rows, short Cols)
+int RandomNumber(int From, int To)
 {
 
-    short Counter = 0;
+    int randNumb = rand() % (To - From + 1) + From;
+
+    return randNumb;
+}
+
+void FillMatrexWithRandomNumbers(int Matrix1[3][3], short Rows, short Cols)
+{
 
     for (short i = 0; i < Rows; i++)
     {
         for (short j = 0; j < Cols; j++)
         {
-            Counter++;
-            arr[i][j] = Counter;
+            Matrix1[i][j] = RandomNumber(1, 100);
         }
     }
 }
 
-void PritnMatrix(int arr[3][3], short Rows, short Cols)
+void PritnMatrix(int Matrix1[3][3], short Rows, short Cols)
 {
 
     for (short i = 0; i < Rows; i++)
     {
         for (short j = 0; j < Cols; j++)
         {
-            cout << arr[i][j] << "    ";
+            printf("%0*d     ", 2, Matrix1[i][j]);
         }
 
         cout << "\n";
     }
 }
 
-void PritnMiddleRow(int arr[3][3], short Rows, short Cols)
+void PritnMiddleRow(int Matrix1[3][3], short Rows, short Cols)
 {
 
-    for (short i = 0; i < Rows; i++)
-    {
-        for (short j = 0; j < Cols; j++)
-        {
-            cout << arr[j][i] << "    ";
-        }
+    short MiddleRow = Rows / 2;
 
-        cout << "\n";
+    for (short i = 0; i < Cols; i++)
+    {
+
+        printf("%0*d     ", 2, Matrix1[MiddleRow][i]);
     }
 
     cout << "\n";
 }
 
-void PrintMiddleCols(int arr[3][3], short Rows, short Cols)
+void PrintMiddleCols(int Matrix1[3][3], short Rows, short Cols)
 {
+
+    short MiddleCol = Cols / 2;
 
     for (short i = 0; i < Rows; i++)
     {
-        for (short j = 0; j < Cols; j++)
-        {
-            cout << arr[j][i] << "    ";
-        }
 
-        cout << "\n";
+        printf("%0*d     ", 2, Matrix1[i][MiddleCol]);
     }
 
     cout << "\n";
@@ -73,19 +74,18 @@ int main()
 {
     srand((unsigned)time(NULL));
 
-    int arr[3][3];
-    int arrSum[3];
+    int Matrix1[3][3];
 
-    FillMatrexWithOrderNumbers(arr, 3, 3);
+    FillMatrexWithRandomNumbers(Matrix1, 3, 3);
 
-    cout << "\n\nMatrix 1: \n\n";
-    PritnMatrix(arr, 3, 3);
+    cout << "Matrix 1: \n\n";
+    PritnMatrix(Matrix1, 3, 3);
 
     cout << "\n\nMiddle Row Of The Matrixs: \n\n";
-    PritnMiddleRow(arr, 3, 3);
+    PritnMiddleRow(Matrix1, 3, 3);
 
     cout << "\n\nMiddle Cols Of The Matrixs: \n\n";
-    PrintMiddleCols(arr, 3, 3);
+    PrintMiddleCols(Matrix1, 3, 3);
 
     return 0;
 }
