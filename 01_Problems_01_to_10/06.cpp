@@ -30,7 +30,7 @@ void PritnMatrix(int arr[3][3], short Rows, short Cols)
     {
         for (short j = 0; j < Cols; j++)
         {
-            cout << setw(3) << arr[i][j] << "    ";
+            cout << arr[i][j] << "    ";
         }
 
         cout << "\n";
