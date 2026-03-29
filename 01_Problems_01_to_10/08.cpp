@@ -65,7 +65,7 @@ int main()
     int arr[3][3];
     int arrSum[3];
 
-    FillMatrexWithOrderNumbers(arr, 3, 3);
+    FillMatrexWithRandomNumbers(arr, 3, 3);
 
     cout << "\n\nThe Following is a 3 x 3 Ordered Matrix: \n\n";
     PritnMatrix(arr, 3, 3);
