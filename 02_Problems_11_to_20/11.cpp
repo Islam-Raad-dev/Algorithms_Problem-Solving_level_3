@@ -71,36 +71,34 @@ int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols)
         }
     }
 
-    cout << "\n";
-
     return Sum;
 }
 bool AreEqualMatrix(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Cols)
 {
-    
+    return (SumOfMatrix(Matrix1, Rows, Cols) == SumOfMatrix(Matrix2, Rows, Cols));
 }
 
 int main()
 {
     srand((unsigned)time(NULL));
 
-    int Matrix1[3][3], Matrix2[3][3], MatrixResult[3][3];
+    int Matrix1[3][3], Matrix2[3][3];
 
     FillMatrexWithRandomNumbers(Matrix1, 3, 3);
-    cout << "\n\nMatrix 1: \n\n";
+    cout << "\nMatrix 1: \n";
     PritnMatrix(Matrix1, 3, 3);
 
     FillMatrexWithRandomNumbers(Matrix2, 3, 3);
-    cout << "\n\nMatrix 2: \n\n";
+    cout << "\nMatrix 2: \n";
     PritnMatrix(Matrix2, 3, 3);
 
     if (AreEqualMatrix(Matrix1, Matrix2, 3, 3))
     {
-        cout << "\nYes, Both Are Equal. ";
+        cout << "\nYes, Both Are Equal.\n " << endl;
     }
     else
     {
-        cout << "\nNo, Matrix Are Not Equal. ";
+        cout << "\nNo, Matrix Are Not Equal.\n " << endl;
     }
     return 0;
 }
