@@ -37,7 +37,23 @@ void PritnMatrix(int arr[3][3], short Rows, short Cols)
     }
 }
 
-void PritnTransMatrix(int arr[3][3], short Rows, short Cols)
+void PritnMiddleRow(int arr[3][3], short Rows, short Cols)
+{
+
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            cout << arr[j][i] << "    ";
+        }
+
+        cout << "\n";
+    }
+
+    cout << "\n";
+}
+
+void PrintMiddleCols(int arr[3][3], short Rows, short Cols)
 {
 
     for (short i = 0; i < Rows; i++)
@@ -62,11 +78,14 @@ int main()
 
     FillMatrexWithOrderNumbers(arr, 3, 3);
 
-    cout << "\n\nThe Following is a 3 x 3 Ordered Matrix: \n\n";
+    cout << "\n\nMatrix 1: \n\n";
     PritnMatrix(arr, 3, 3);
 
-    cout << "\n\nThe Following is The Transposed Matrix: \n\n";
-    PritnTransMatrix(arr, 3, 3);
+    cout << "\n\nMiddle Row Of The Matrixs: \n\n";
+    PritnMiddleRow();
+
+    cout << "\n\nMiddle Cols Of The Matrixs: \n\n";
+    PrintMiddleCols();
 
     return 0;
 }
