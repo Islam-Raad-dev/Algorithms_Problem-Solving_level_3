@@ -1,6 +1,6 @@
 /*
 
-3 x 3 Oedered Matrix
+Random 2 Matrix
 
 */
 #include <iostream>
@@ -67,11 +67,14 @@ int main()
 
     FillMatrexWithRandomNumbers(arr, 3, 3);
 
-    cout << "\n\nThe Following is a 3 x 3 Ordered Matrix: \n\n";
+    cout << "\n\nMatrix 1: \n\n";
     PritnMatrix(arr, 3, 3);
 
-    cout << "\n\nThe Following is The Transposed Matrix: \n\n";
-    PritnTransMatrix(arr, 3, 3);
+    cout << "\n\nMatrix 2: \n\n";
+    PritnMatrix(arr, 3, 3);
+
+    cout << "\n\nResults: \n\n";
+    PritnMatrix(arr, 3, 3);
 
     return 0;
 }
