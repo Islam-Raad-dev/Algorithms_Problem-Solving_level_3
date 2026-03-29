@@ -1,6 +1,6 @@
 /*
 
-Check Matrix Eguality
+Check Typical Matrices
 
 */
 #include <iostream>
