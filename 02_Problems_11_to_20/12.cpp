@@ -42,21 +42,7 @@ void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
     }
 }
 
-void PritnTransMatrix(int Matrix[3][3], short Rows, short Cols)
-{
 
-    for (short i = 0; i < Rows; i++)
-    {
-        for (short j = 0; j < Cols; j++)
-        {
-            cout << Matrix[j][i] << "    ";
-        }
-
-        cout << "\n";
-    }
-
-    cout << "\n";
-}
 
 int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols)
 {
@@ -73,9 +59,16 @@ int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols)
 
     return Sum;
 }
-bool AreEqualMatrix(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Cols)
+bool AreEqualTypical(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Cols)
 {
-    return (SumOfMatrix(Matrix1, Rows, Cols) == SumOfMatrix(Matrix2, Rows, Cols));
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            if (Matrix1[i][j] != Matrix2[i][j]);
+        }
+    }
+    return true;
 }
 
 int main()
@@ -92,7 +85,7 @@ int main()
     cout << "\nMatrix 2: \n";
     PritnMatrix(Matrix2, 3, 3);
 
-    if (AreEqualMatrix(Matrix1, Matrix2, 3, 3))
+    if (AreEqualTypical(Matrix1, Matrix2, 3, 3))
     {
         cout << "\nYes, Both Are Equal.\n " << endl;
     }
