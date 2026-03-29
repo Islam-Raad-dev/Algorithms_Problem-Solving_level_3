@@ -1,6 +1,6 @@
 /*
 
-Print Sum Of Random Matrix
+Check Matrix Eguality
 
 */
 #include <iostream>
