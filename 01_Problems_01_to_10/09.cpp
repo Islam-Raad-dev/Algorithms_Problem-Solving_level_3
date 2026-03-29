@@ -1,6 +1,6 @@
 /*
 
-3 x 3 Oedered Matrix
+Print Middle Row And Cols Of Matrix
 
 */
 #include <iostream>
