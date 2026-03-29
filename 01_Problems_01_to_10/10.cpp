@@ -42,8 +42,22 @@ void PritnMatrix(int Matrix1[3][3], short Rows, short Cols)
     }
 }
 
-void SumOfMatrix(int Matrix1[3][3], short Rows, short Cols){
+int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols)
+{
 
+    int Sum = 0;
+
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            Sum += Matrix1[i][j];
+        }
+    }
+
+    cout << "\n";
+    
+    return Sum;
 }
 
 int main()
@@ -57,8 +71,7 @@ int main()
     cout << "Matrix 1: \n\n";
     PritnMatrix(Matrix1, 3, 3);
 
-    cout << "\nSum OF The Matrixs is: \n\n";
-    SumOfMatrix(Matrix1, 3, 3);
+    cout << "\nSum OF The Matrixs is: " << SumOfMatrix(Matrix1, 3, 3) << endl;
 
     return 0;
 }
