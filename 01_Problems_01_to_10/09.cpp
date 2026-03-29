@@ -82,10 +82,10 @@ int main()
     PritnMatrix(arr, 3, 3);
 
     cout << "\n\nMiddle Row Of The Matrixs: \n\n";
-    PritnMiddleRow();
+    PritnMiddleRow(arr, 3, 3);
 
     cout << "\n\nMiddle Cols Of The Matrixs: \n\n";
-    PrintMiddleCols();
+    PrintMiddleCols(arr, 3, 3);
 
     return 0;
 }
