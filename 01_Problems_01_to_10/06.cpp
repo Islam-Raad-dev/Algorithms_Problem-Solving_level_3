@@ -1,6 +1,6 @@
 /*
 
-Sum Of Each Rom in 3 x 3 Random Matrix
+3 x 3 Oedered Matrix
 
 */
 #include <iostream>
@@ -17,7 +17,7 @@ int RandomNumber(int From, int To)
     return randNumb;
 }
 
-void FillMatrexWithRandomNumbers(int arr[3][3], short Rows, short Cols)
+void FillMatrexWithOrderNumbers(int arr[3][3], short Rows, short Cols)
 {
 
     for (short i = 0; i < Rows; i++)
@@ -43,38 +43,6 @@ void PritnMatrix(int arr[3][3], short Rows, short Cols)
     }
 }
 
-int SumColms(int arr[3][3], short RowNumbers, short Cols)
-{
-
-    int Sum = 0;
-
-    for (short j = 0; j < Cols; j++)
-    {
-
-        Sum += arr[RowNumbers][j];
-    }
-
-    return Sum;
-}
-
-void PrintEachRowSum(int arr[3][3], short Rows, short Cols)
-{
-
-    for (short i = 0; i < Rows; i++)
-    {
-
-        cout << "Rows [" << i + 1 << "] Sum = " << SumRows(arr, i, Cols) << endl;
-    }
-}
-
-void SumMatrixColmsInArra(int arr[3][3], int arrSum[3], short Rows, short Cols)
-{
-
-    for (short i = 0; i < Rows; i++)
-    {
-        arrSum[i] = SumRows(arr, i, Cols);
-    }
-}
 int main()
 {
     srand((unsigned)time(NULL));
@@ -82,14 +50,11 @@ int main()
     int arr[3][3];
     int arrSum[3];
 
-    FillMatrexWithRandomNumbers(arr, 3, 3);
+    FillMatrexWithOrderNumbers(arr, 3, 3);
+
     cout << "\n\nThe Following is a 3 x 3 Random Matrix: \n\n";
+
     PritnMatrix(arr, 3, 3);
-
-    SumMatrixColmsInArray(arr, arrSum, 3, 3);
-
-    cout << "\nThe Following Are The Sum Of Each Colms In A Matrix: \n\n";
-    PrintEachRowSum(arr, 3, 3);
 
     cout << "\n\n";
 
