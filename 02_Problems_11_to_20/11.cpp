@@ -16,30 +16,46 @@ int RandomNumber(int From, int To)
     return randNumb;
 }
 
-void FillMatrexWithRandomNumbers(int Matrix1[3][3], short Rows, short Cols)
+void FillMatrexWithRandomNumbers(int arr[3][3], short Rows, short Cols)
 {
 
     for (short i = 0; i < Rows; i++)
     {
         for (short j = 0; j < Cols; j++)
         {
-            Matrix1[i][j] = RandomNumber(1, 100);
+            arr[i][j] = RandomNumber(1, 100);
         }
     }
 }
 
-void PritnMatrix(int Matrix1[3][3], short Rows, short Cols)
+void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
 {
 
     for (short i = 0; i < Rows; i++)
     {
         for (short j = 0; j < Cols; j++)
         {
-            printf("%0*d     ", 2, Matrix1[i][j]);
+            cout << Matrix[i][j] << "    ";
         }
 
         cout << "\n";
     }
+}
+
+void PritnTransMatrix(int Matrix[3][3], short Rows, short Cols)
+{
+
+    for (short i = 0; i < Rows; i++)
+    {
+        for (short j = 0; j < Cols; j++)
+        {
+            cout << Matrix[j][i] << "    ";
+        }
+
+        cout << "\n";
+    }
+
+    cout << "\n";
 }
 
 int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols)
@@ -56,21 +72,35 @@ int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols)
     }
 
     cout << "\n";
-    
+
     return Sum;
+}
+bool AreEqualMatrix(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Cols)
+{
+    
 }
 
 int main()
 {
     srand((unsigned)time(NULL));
 
-    int Matrix1[3][3];
-    
+    int Matrix1[3][3], Matrix2[3][3], MatrixResult[3][3];
+
     FillMatrexWithRandomNumbers(Matrix1, 3, 3);
-    
-    cout << "Matrix 1: \n\n";
+    cout << "\n\nMatrix 1: \n\n";
     PritnMatrix(Matrix1, 3, 3);
 
-    cout << "\nSum OF The Matrixs is: " << SumOfMatrix(Matrix1, 3, 3) << endl;
+    FillMatrexWithRandomNumbers(Matrix2, 3, 3);
+    cout << "\n\nMatrix 2: \n\n";
+    PritnMatrix(Matrix2, 3, 3);
+
+    if (AreEqualMatrix(Matrix1, Matrix2, 3, 3))
+    {
+        cout << "\nYes, Both Are Equal. ";
+    }
+    else
+    {
+        cout << "\nNo, Matrix Are Not Equal. ";
+    }
     return 0;
 }
