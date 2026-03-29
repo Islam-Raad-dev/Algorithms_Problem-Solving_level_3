@@ -63,7 +63,7 @@ void PrintEachRowSum(int arr[3][3], short Rows, short Cols)
     for (short i = 0; i < Rows; i++)
     {
 
-        cout << "Rows [" << i + 1 << "] Sum = " << SumRows(arr, i, Cols) << endl;
+        cout << "Rows [" << i + 1 << "] Sum = " << SumColms(arr, i, Cols) << endl;
     }
 }
 
@@ -72,7 +72,7 @@ void SumMatrixColmsInArra(int arr[3][3], int arrSum[3], short Rows, short Cols)
 
     for (short i = 0; i < Rows; i++)
     {
-        arrSum[i] = SumRows(arr, i, Cols);
+        arrSum[i] = SumColms(arr, i, Cols);
     }
 }
 int main()
@@ -86,7 +86,7 @@ int main()
     cout << "\n\nThe Following is a 3 x 3 Random Matrix: \n\n";
     PritnMatrix(arr, 3, 3);
 
-    SumMatrixColmsInArray(arr, arrSum, 3, 3);
+    SumMatrixColmsInArra(arr, arrSum, 3, 3);
 
     cout << "\nThe Following Are The Sum Of Each Colms In A Matrix: \n\n";
     PrintEachRowSum(arr, 3, 3);
