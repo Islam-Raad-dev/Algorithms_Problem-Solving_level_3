@@ -28,28 +28,28 @@ void FillMatrexWithRandomNumbers(int arr[3][3], short Rows, short Cols)
     }
 }
 
-void PritnMatrix(int arr[3][3], short Rows, short Cols)
+void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
 {
 
     for (short i = 0; i < Rows; i++)
     {
         for (short j = 0; j < Cols; j++)
         {
-            cout << arr[i][j] << "    ";
+            cout <<Matrix[i][j] << "    ";
         }
 
         cout << "\n";
     }
 }
 
-void PritnTransMatrix(int arr[3][3], short Rows, short Cols)
+void PritnTransMatrix(int Matrix[3][3], short Rows, short Cols)
 {
 
     for (short i = 0; i < Rows; i++)
     {
         for (short j = 0; j < Cols; j++)
         {
-            cout << arr[j][i] << "    ";
+            cout << Matrix[j][i] << "    ";
         }
 
         cout << "\n";
@@ -58,23 +58,39 @@ void PritnTransMatrix(int arr[3][3], short Rows, short Cols)
     cout << "\n";
 }
 
+void MultiplayMatrix(int Matrix1[3][3], int Matrix2[3][3], int MatrixResult[3][3], short Rows, short Cols){
+
+}
+
 int main()
 {
     srand((unsigned)time(NULL));
 
-    int arr[3][3];
-    int arrSum[3];
+    int Matrix1[3][3], Matrix2[3][3], MatrixResult[3][3];
 
-    FillMatrexWithRandomNumbers(arr, 3, 3);
+
+    FillMatrexWithRandomNumbers(Matrix1, 3, 3);
 
     cout << "\n\nMatrix 1: \n\n";
-    PritnMatrix(arr, 3, 3);
+
+    PritnMatrix(Matrix1, 3, 3);
+
+
+
+    FillMatrexWithRandomNumbers(Matrix2, 3, 3);
 
     cout << "\n\nMatrix 2: \n\n";
-    PritnMatrix(arr, 3, 3);
+    
+    PritnMatrix(Matrix2, 3, 3);
+
+
+
+    MultiplayMatrix(Matrix1, Matrix2, MatrixResult, 3, 3);
 
     cout << "\n\nResults: \n\n";
-    PritnMatrix(arr, 3, 3);
+
+    PritnMatrix(MatrixResult, 3, 3);
+    
 
     return 0;
 }
