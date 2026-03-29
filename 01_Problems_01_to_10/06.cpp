@@ -50,7 +50,5 @@ int main()
 
     PritnMatrix(arr, 3, 3);
 
-    cout << "\n\n";
-
     return 0;
 }
