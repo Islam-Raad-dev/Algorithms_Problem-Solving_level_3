@@ -8,17 +8,22 @@
 #include <ctime>
 using namespace std;
 
-void FillMatrexWithOrderNumbers(int arr[3][3], short Rows, short Cols)
+int RandomNumber(int From, int To)
 {
 
-    short Counter = 0;
+    int randNumb = rand() % (To - From + 1) + From;
+
+    return randNumb;
+}
+
+void FillMatrexWithRandomNumbers(int arr[3][3], short Rows, short Cols)
+{
 
     for (short i = 0; i < Rows; i++)
     {
         for (short j = 0; j < Cols; j++)
         {
-            Counter++;
-            arr[i][j] = Counter;
+            arr[i][j] = RandomNumber(1, 100);
         }
     }
 }
