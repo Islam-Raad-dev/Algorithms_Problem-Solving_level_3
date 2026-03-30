@@ -88,11 +88,11 @@ int main()
 
     if (AreEqualTypical(Matrix1, Matrix2, 3, 3))
     {
-        cout << "\nYes, Both Are Equal.\n " << endl;
+        cout << "\nYes, The Matrix is Identity.\n " << endl;
     }
     else
     {
-        cout << "\nNo, Matrix Are Not Equal.\n " << endl;
+        cout << "\nNo, The Matrix is Not Identity.\n " << endl;
     }
     return 0;
 }
