@@ -1,7 +1,7 @@
 /*
 #include <iostream>
 Check Typical Matrices
-srand((unsigned)time(NULL))
+ 
 */
 #include <iostream>
 #include <cstdlib>
