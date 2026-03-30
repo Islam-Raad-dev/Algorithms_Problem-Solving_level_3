@@ -1,7 +1,7 @@
 /*
 #include <cstdlib>
 Check Typical Matrices
-
+#include <ctime>
 */
 #include <iostream>
 #include <cstdlib>
