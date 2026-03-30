@@ -1,32 +1,12 @@
 /*
-srand((unsigned)time(NULL));
-Check Typical Matrices
-srand((unsigned)time(NULL));
+
+Check Scalar Matrix
+
 */
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
+#include <iomanip>
 using namespace std;
-
-int RandomNumber(int From, int To)
-{
-
-    int randNumb = rand() % (To - From + 1) + From;
-
-    return randNumb;
-}
-//#include <iostream>
-void FillMatrexWithRandomNumbers(int arr[3][3], short Rows, short Cols)
-{
-
-    for (short i = 0; i < Rows; i++)
-    {
-        for (short j = 0; j < Cols; j++)
-        {
-            arr[i][j] = RandomNumber(1, 100);
-        }
-    }
-}
 
 void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
 {
@@ -42,56 +22,40 @@ void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
     }
 }
 
-
-
-int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols)
-{
-
-    int Sum = 0;
-
-    for (short i = 0; i < Rows; i++)
-    {
-        for (short j = 0; j < Cols; j++)
-        {
-            Sum += Matrix1[i][j];
-        }
-    }
-
-    return Sum;
-}
-bool AreEqualTypical(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Cols)
+bool AreScalar(int Matrix1[3][3], short Rows, short Cols)
 {
     for (short i = 0; i < Rows; i++)
     {
         for (short j = 0; j < Cols; j++)
         {
-            if (Matrix1[i][j] != Matrix2[i][j]);
+            if (i == j && Matrix1[i][j] != 1)
+            {
+                return false;
+            }
+
+            else if (i != j && Matrix1[i][j] != 0)
+            {
+                return true;
+            }
         }
     }
-    return true;
 }
-//#include <ctime>
+
 int main()
 {
     srand((unsigned)time(NULL));
 
-    int Matrix1[3][3], Matrix2[3][3];
+    int Matrix[3][3] = {{9, 0, 0}, {0, 0, 9}};
 
-    FillMatrexWithRandomNumbers(Matrix1, 3, 3);
-    cout << "\nMatrix 1: \n";
-    PritnMatrix(Matrix1, 3, 3);
+    PritnMatrix(Matrix, 3, 3);
 
-    FillMatrexWithRandomNumbers(Matrix2, 3, 3);
-    cout << "\nMatrix 2: \n";
-    PritnMatrix(Matrix2, 3, 3);
-
-    if (AreEqualTypical(Matrix1, Matrix2, 3, 3))
+    if (AreScalar(Matrix, 3, 3))
     {
-        cout << "\nYes, Both Are Equal.\n " << endl;
+        cout << "\nYes, The Matrix is Scalar.\n " << endl;
     }
     else
     {
-        cout << "\nNo, Matrix Are Not Equal.\n " << endl;
+        cout << "\nNo, The Matrix is Not Scalar.\n " << endl;
     }
     return 0;
 }
