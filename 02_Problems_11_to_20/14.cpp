@@ -1,5 +1,5 @@
 /*
-
+srand((unsigned)time(NULL));
 Check Typical Matrices
 srand((unsigned)time(NULL));
 */
