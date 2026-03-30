@@ -42,7 +42,7 @@ void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
     }
 }
 
-
+//SumOfMatrix
 
 int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols)
 {
