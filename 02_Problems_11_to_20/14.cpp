@@ -24,11 +24,14 @@ void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
 
 bool AreScalar(int Matrix1[3][3], short Rows, short Cols)
 {
+
+    int FirstDiagElement = Matrix1[0][0];
+
     for (short i = 0; i < Rows; i++)
     {
         for (short j = 0; j < Cols; j++)
         {
-            if (i == j && Matrix1[i][j] != 1)
+            if (i == j && Matrix1[i][j] != FirstDiagElement)
             {
                 return false;
             }
@@ -45,7 +48,7 @@ int main()
 {
     srand((unsigned)time(NULL));
 
-    int Matrix[3][3] = {{9, 0, 0}, {0, 0, 9}};
+    int Matrix[3][3] = {{9, 0, 0}, {0, 9, 0}, {0, 0, 9}};
 
     PritnMatrix(Matrix, 3, 3);
 
