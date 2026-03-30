@@ -15,7 +15,7 @@ int RandomNumber(int From, int To)
 
     return randNumb;
 }
-
+//#include <iostream>
 void FillMatrexWithRandomNumbers(int arr[3][3], short Rows, short Cols)
 {
 
