@@ -1,6 +1,6 @@
 /*
 Check Typical Matricessd
-Check Typical Matrices
+Check Typical Matricesd
 Check Typical Matricessd
 */
 #include <iostream>
