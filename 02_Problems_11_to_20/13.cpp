@@ -1,5 +1,5 @@
 /*
-
+using namespace std;
 Check Typical Matrices
 #include <iostream>
 */
