@@ -70,7 +70,7 @@ bool AreEqualTypical(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Col
     }
     return true;
 }
-
+//#include <iostream>
 int main()
 {
     srand((unsigned)time(NULL));
