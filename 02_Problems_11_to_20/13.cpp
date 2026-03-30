@@ -59,7 +59,7 @@ int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols)
 
     return Sum;
 }
-bool AreEqualTypical(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Cols)
+bool AreEqualIdentity(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Cols)
 {
     for (short i = 0; i < Rows; i++)
     {
@@ -86,7 +86,7 @@ int main()
     cout << "\nMatrix 2: \n";
     PritnMatrix(Matrix2, 3, 3);
 
-    if (AreEqualTypical(Matrix1, Matrix2, 3, 3))
+    if (AreEqualIdentity(Matrix1, Matrix2, 3, 3))
     {
         cout << "\nYes, The Matrix is Identity.\n " << endl;
     }
