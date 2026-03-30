@@ -5,28 +5,8 @@ Check Identity Matrix
 */
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
+#include <iomanip>
 using namespace std;
-
-int RandomNumber(int From, int To)
-{
-
-    int randNumb = rand() % (To - From + 1) + From;
-
-    return randNumb;
-}
-
-void FillMatrexWithRandomNumbers(int arr[3][3], short Rows, short Cols)
-{
-
-    for (short i = 0; i < Rows; i++)
-    {
-        for (short j = 0; j < Cols; j++)
-        {
-            arr[i][j] = RandomNumber(1, 100);
-        }
-    }
-}
 
 void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
 {
@@ -42,46 +22,34 @@ void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
     }
 }
 
-
-
-int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols)
-{
-
-    int Sum = 0;
-
-    for (short i = 0; i < Rows; i++)
-    {
-        for (short j = 0; j < Cols; j++)
-        {
-            Sum += Matrix1[i][j];
-        }
-    }
-
-    return Sum;
-}
-bool AreEqualIdentity(int Matrix1[3][3], short Rows, short Cols)
+bool AreIdentity(int Matrix1[3][3], short Rows, short Cols)
 {
     for (short i = 0; i < Rows; i++)
     {
         for (short j = 0; j < Cols; j++)
         {
-            if (Matrix1[i][j] != );
-            return false;
+            if (i == j && Matrix1[i][j] != 1)
+            {
+                return false;
+            }
+
+            else if (i != j && Matrix1[i][j] != 0)
+            {
+                return true;
+            }
         }
     }
-    return true;
 }
 
 int main()
 {
     srand((unsigned)time(NULL));
 
-    int Matrix1[3][3] = {{1, 0, 0}, {0, 0, 1}};
+    int Matrix[3][3] = {{1, 0, 0}, {0, 0, 1}};
 
+    PritnMatrix(Matrix, 3, 3);
 
-    PritnMatrix(Matrix1, 3, 3);
-
-    if (AreEqualIdentity(Matrix1, 3, 3))
+    if (AreIdentity(Matrix, 3, 3))
     {
         cout << "\nYes, The Matrix is Identity.\n " << endl;
     }
