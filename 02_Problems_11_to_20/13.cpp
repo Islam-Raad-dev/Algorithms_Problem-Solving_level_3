@@ -1,7 +1,7 @@
 /*
-using namespace std;
-Check Typical Matrices
-#include <iostream>
+
+Check Identity Matrix
+
 */
 #include <iostream>
 #include <cstdlib>
@@ -42,7 +42,7 @@ void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
     }
 }
 
-//SumOfMatrix
+
 
 int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols)
 {
@@ -71,7 +71,7 @@ bool AreEqualTypical(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Col
     }
     return true;
 }
-//#include < eam>
+
 int main()
 {
     srand((unsigned)time(NULL));
