@@ -59,13 +59,13 @@ int SumOfMatrix(int Matrix1[3][3], short Rows, short Cols)
 
     return Sum;
 }
-bool AreEqualIdentity(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Cols)
+bool AreEqualIdentity(int Matrix1[3][3], short Rows, short Cols)
 {
     for (short i = 0; i < Rows; i++)
     {
         for (short j = 0; j < Cols; j++)
         {
-            if (Matrix1[i][j] != Matrix2[i][j]);
+            if (Matrix1[i][j] != );
             return false;
         }
     }
@@ -76,17 +76,12 @@ int main()
 {
     srand((unsigned)time(NULL));
 
-    int Matrix1[3][3], Matrix2[3][3];
+    int Matrix1[3][3] = {{1, 0, 0}, {0, 0, 1}};
 
-    FillMatrexWithRandomNumbers(Matrix1, 3, 3);
-    cout << "\nMatrix 1: \n";
+
     PritnMatrix(Matrix1, 3, 3);
 
-    FillMatrexWithRandomNumbers(Matrix2, 3, 3);
-    cout << "\nMatrix 2: \n";
-    PritnMatrix(Matrix2, 3, 3);
-
-    if (AreEqualIdentity(Matrix1, Matrix2, 3, 3))
+    if (AreEqualIdentity(Matrix1, 3, 3))
     {
         cout << "\nYes, The Matrix is Identity.\n " << endl;
     }
