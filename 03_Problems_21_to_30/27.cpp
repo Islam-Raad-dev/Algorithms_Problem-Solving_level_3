@@ -7,56 +7,31 @@ Invert Charcter Case
 #include <string>
 using namespace std;
 
-string ReadString()
+char ReadCharcter()
 {
 
-    string S1;
+    char C1;
 
-    cout << "Please Enter The String: ";
-    getline(cin, S1);
+    cout << "Please Enter The Charcter: ";
+    cin >> C1;
 
-    return S1;
+    return C1;
 }
-string UpperCaseAllLetter(string S1)
+
+char InvertCharcterCase(char C1)
 {
-
-    for (short i = 0; i < S1.length(); i++)
-    {
-
-        S1[i] = toupper(S1[i]);
-    }
-
-    return S1;
+    return isupper(C1) ? tolower(C1) : toupper(C1);
 }
 
-string LowerCaseAllLetter(string S1)
-{
-
-    for (short i = 0; i < S1.length(); i++)
-    {
-
-        S1[i] = tolower(S1[i]);
-    }
-
-    return S1;
-
-}
 int main()
 {
+    char Ch1 = ReadCharcter();
 
-    string S1 = ReadString();
+    cout << "\nChar After Inverting Case: \n";
 
-    cout << "\nString After Upper Case: \n";
+    Ch1 = InvertCharcterCase(Ch1);
 
-    S1 = UpperCaseAllLetter(S1);
-
-    cout << S1 << endl;
-
-    cout << "\nString After Lower Case: \n";
-
-    S1 = LowerCaseAllLetter(S1);
-
-    cout << S1 << endl;
+    cout << Ch1 << endl;
 
     return 0;
 }
