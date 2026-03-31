@@ -48,7 +48,7 @@ int main()
 {
     srand((unsigned)time(NULL));
 
-    int Matrix[3][3] = {{10, 0, 0}, {15, 20, 0}, {0, 0, 1}};
+    int Matrix[3][3] = {{12, 0, 0}, {0, 0, 1}, {0, 0, 9}};
 
     PritnMatrix(Matrix, 3, 3);
 
