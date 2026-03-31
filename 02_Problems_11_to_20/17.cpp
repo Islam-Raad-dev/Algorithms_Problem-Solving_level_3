@@ -1,6 +1,6 @@
 /*
 
-Check Sparse Matrix
+Numbber Exists In Matrix
 
 */
 #include <iostream>
