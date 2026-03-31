@@ -1,7 +1,6 @@
 /*
 
-Palindrome Matrix
-Palindrome Matrix
+Fibonacci Series
 
 */
 #include <iostream>
