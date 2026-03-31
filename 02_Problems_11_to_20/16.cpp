@@ -22,7 +22,7 @@ void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
     }
 }
 
-bool AreSparce(int Matrix1[3][3], short Rows, short Cols)
+bool AreSparceMatrix(int Matrix1[3][3], short Rows, short Cols)
 {
 
     int FirstDiagElement = Matrix1[0][0];
@@ -52,7 +52,7 @@ int main()
 
     PritnMatrix(Matrix, 3, 3);
 
-    if (AreSparce(Matrix, 3, 3))
+    if (AreSparceMatrix(Matrix, 3, 3))
     {
         cout << "\nYes, The Matrix is Sparce.\n " << endl;
     }
