@@ -50,7 +50,6 @@ void PrintIntersectedNumbberInMatrix(int Matrix1[3][3], int Matrix2[3][3], short
             Number = Matrix1[i][j];
 
             if (IsNumberInMatrix(Matrix2, Number, Rows, Cols))
-                ;
             {
                 cout << setw(3) << Number << "     ";
             }
