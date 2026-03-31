@@ -6,31 +6,36 @@ Fibonacci Series With Recursion
 #include <iostream>
 using namespace std;
 
-void PrintFibonacciUsingLoop(short Number)
+void PrintFibonacciUsingRecursion(short Number, int Prev2, int Prev1)
 {
 
     int FebNumber = 0;
-    int Prev2 = 0, Prev1 = 1;
 
-    cout << "1   ";
-
-    for (short i = 2; i <= Number; ++i)
+    if (Number > 0)
     {
 
         FebNumber = Prev1 + Prev2;
-
-        cout << FebNumber << "      ";
-
         Prev2 = Prev1;
         Prev1 = FebNumber;
+
+        cout << FebNumber << "     ";
+
+        PrintFibonacciUsingRecursion(Number - 1, Prev1, Prev2);
+
+        cout << endl;
     }
-    cout << "\n";
 }
 
 int main()
 {
 
-    PrintFibonacciUsingLoop(10);
+    short Number;
+
+    cout << "Please Enter The Number: ";
+    cin >> Number;
+    cout << "\n";
+
+    PrintFibonacciUsingRecursion(Number, 0, 1);
 
     return 0;
 }
