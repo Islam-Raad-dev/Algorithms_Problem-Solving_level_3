@@ -22,55 +22,60 @@ void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
     }
 }
 
-bool IsNumberInMatrix(int Matrix1[3][3], int Number, short Rows, short Cols)
+int MinNumberInMatrix(int Matrix1[3][3], short Rows, short Cols)
 {
+
+    short Min = Matrix1[0][0];
 
     for (short i = 0; i < Rows; i++)
     {
         for (short j = 0; j < Cols; j++)
         {
-            if (Matrix1[i][j] == Number)
+
+            if (Matrix1[i][j] < Min)
             {
-                return true;
+                Min = Matrix1[i][j];
             }
         }
     }
 
-    return false;
+    return Min;
 }
 
-void PrintIntersectedNumbberInMatrix(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Cols)
+int MaxNumberInMatrix(int Matrix1[3][3], short Rows, short Cols)
 {
 
-    short Number;
+    short Max = Matrix1[0][0];
+
     for (short i = 0; i < Rows; i++)
     {
         for (short j = 0; j < Cols; j++)
         {
-            Number = Matrix1[i][j];
 
-            if (IsNumberInMatrix(Matrix2, Number, Rows, Cols))
+            if (Matrix1[i][j] > Max)
             {
-                cout << setw(3) << Number << "     ";
+                Max = Matrix1[i][j];
             }
         }
     }
+
+    return Max;
 }
+
 int main()
 {
     srand((unsigned)time(NULL));
 
     int Matrix1[3][3] = {{77, 5, 12}, {22, 20, 1}, {1, 0, 0}};
-    int Matrix2[3][3] = {{5, 80, 90}, {22, 77, 1}, {10, 8, 33}};
 
     cout << "\nMatrix 1:\n";
     PritnMatrix(Matrix1, 3, 3);
 
-    cout << "\nMatrix 2:\n";
-    PritnMatrix(Matrix2, 3, 3);
+    cout << "\nMin Numbber Are: "
+         << MinNumberInMatrix(Matrix1, 3, 3) << endl;
 
-    cout << "\nIntersected Numbber Are: \n";
-    PrintIntersectedNumbberInMatrix(Matrix1, Matrix2, 3, 3);
+    cout << "\nMax Numbber Are: "
+         << MaxNumberInMatrix(Matrix1, 3, 3) << endl;
 
     return 0;
 }
