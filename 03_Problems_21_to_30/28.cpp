@@ -38,7 +38,7 @@ int main()
 {
     string S1 = ReadCharcter();
 
-    cout << "\nChar After Inverting All Letter: \n";
+    cout << "\nString Letter After Inverting All Letter: \n";
 
     S1 = InvertAllLetterCase(S1);
 
