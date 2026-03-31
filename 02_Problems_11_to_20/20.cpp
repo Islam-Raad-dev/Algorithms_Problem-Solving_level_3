@@ -15,51 +15,28 @@ void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
     {
         for (short j = 0; j < Cols; j++)
         {
-            cout << Matrix[i][j] << "    ";
+            cout << setw(3) << Matrix[i][j] << "    ";
         }
 
         cout << "\n";
     }
 }
 
-int MinNumberInMatrix(int Matrix1[3][3], short Rows, short Cols)
+int IsPalindromeMatrix(int Matrix1[3][3], short Rows, short Cols)
 {
-
-    short Min = Matrix1[0][0];
 
     for (short i = 0; i < Rows; i++)
     {
         for (short j = 0; j < Cols; j++)
         {
-
-            if (Matrix1[i][j] < Min)
+            if (Matrix1[i][j] != Matrix1[j][Cols - 1 - j])
             {
-                Min = Matrix1[i][j];
+                return false;
             }
         }
     }
 
-    return Min;
-}
-
-int MaxNumberInMatrix(int Matrix1[3][3], short Rows, short Cols)
-{
-
-    short Max = Matrix1[0][0];
-
-    for (short i = 0; i < Rows; i++)
-    {
-        for (short j = 0; j < Cols; j++)
-        {
-
-            if (Matrix1[i][j] > Max)
-            {
-                Max = Matrix1[i][j];
-            }
-        }
-    }
-
-    return Max;
+    return true;
 }
 
 int main()
@@ -68,14 +45,17 @@ int main()
 
     int Matrix1[3][3] = {{77, 5, 12}, {22, 20, 1}, {1, 0, 0}};
 
-    cout << "\nMatrix 1:\n";
+    cout << "\nMatrix :\n";
     PritnMatrix(Matrix1, 3, 3);
 
-    cout << "\nMin Numbber Are: "
-         << MinNumberInMatrix(Matrix1, 3, 3) << endl;
-
-    cout << "\nMax Numbber Are: "
-         << MaxNumberInMatrix(Matrix1, 3, 3) << endl;
+    if (IsPalindromeMatrix(Matrix1, 3, 3))
+    {
+        cout << "\nYes, The Matirx is Palindrom. \n";
+    }
+    else
+    {
+        cout << "\nNo, The Matirx is Not Palindrom. \n";
+    }
 
     return 0;
 }
