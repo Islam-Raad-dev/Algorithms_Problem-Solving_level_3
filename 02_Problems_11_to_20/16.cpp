@@ -22,26 +22,30 @@ void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
     }
 }
 
-bool AreSparceMatrix(int Matrix1[3][3], short Rows, short Cols)
+short CountNumberInMatrix(int Matrix1[3][3], int Number, short Rows, short Cols)
 {
+    short NumberCount = 0;
 
-    int FirstDiagElement = Matrix1[0][0];
-
-    for (short i = 0; i < Rows; i++)
+    for (short i = 0; i < Cols; i++)
     {
-        for (short j = 0; j < Cols; j++)
+        for (short j = 0; j < Rows; j++)
         {
-            if (i == j && Matrix1[i][j] != FirstDiagElement)
+            if (Matrix1[i][j] == Number)
             {
-                return false;
-            }
-
-            else if (i != j && Matrix1[i][j] != 0)
-            {
-                return true;
+                NumberCount++;
             }
         }
     }
+
+    return NumberCount;
+}
+
+bool AreSparceMatrix(int Matrix1[3][3], short Rows, short Cols)
+{
+
+    short MatrixSize = Rows * Cols;
+
+    return (CountNumberInMatrix(Matrix1, 0, 3, 3) >= (MatrixSize / 2));
 }
 
 int main()
