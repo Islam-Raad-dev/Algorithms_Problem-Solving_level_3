@@ -1,6 +1,7 @@
 /*
 
 Palindrome Matrix
+Palindrome Matrix
 
 */
 #include <iostream>
@@ -50,7 +51,7 @@ int main()
 
     if (IsPalindromeMatrix(Matrix1, 3, 3))
     {
-        cout << "\nYes, The Matirx is Palindrom. \n";
+        cout << "\nYes, The Matirx is not Palindrom. \n";
     }
     else
     {
