@@ -22,7 +22,7 @@ void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
     }
 }
 
-bool AreScalar(int Matrix1[3][3], short Rows, short Cols)
+bool AreSparce(int Matrix1[3][3], short Rows, short Cols)
 {
 
     int FirstDiagElement = Matrix1[0][0];
@@ -48,17 +48,17 @@ int main()
 {
     srand((unsigned)time(NULL));
 
-    int Matrix[3][3] = {{9, 0, 0}, {0, 9, 0}, {0, 0, 9}};
+    int Matrix[3][3] = {{10, 0, 0}, {15, 20, 0}, {0, 0, 1}};
 
     PritnMatrix(Matrix, 3, 3);
 
-    if (AreScalar(Matrix, 3, 3))
+    if (AreSparce(Matrix, 3, 3))
     {
-        cout << "\nYes, The Matrix is Scalar.\n " << endl;
+        cout << "\nYes, The Matrix is Sparce.\n " << endl;
     }
     else
     {
-        cout << "\nNo, The Matrix is Not Scalar.\n " << endl;
+        cout << "\nNo, The Matrix is Not Sparce.\n " << endl;
     }
     return 0;
 }
