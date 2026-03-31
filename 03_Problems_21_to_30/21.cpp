@@ -4,58 +4,33 @@ Fibonacci Series
 
 */
 #include <iostream>
-#include <cstdlib>
-#include <iomanip>
 using namespace std;
 
-void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
+void PrintFibonacciUsingLoop(short Number)
 {
 
-    for (short i = 0; i < Rows; i++)
+    int FebNumber = 0;
+    int Prev2 = 0, Prev1 = 1;
+
+    cout << "1   ";
+
+    for (short i = 2; i <= Number; ++i)
     {
-        for (short j = 0; j < Cols; j++)
-        {
-            cout << setw(3) << Matrix[i][j] << "    ";
-        }
 
-        cout << "\n";
+        FebNumber = Prev1 + Prev2;
+
+        cout << FebNumber << "      ";
+
+        Prev2 = Prev1;
+        Prev1 = FebNumber;
     }
-}
-
-int IsPalindromeMatrix(int Matrix1[3][3], short Rows, short Cols)
-{
-
-    for (short i = 0; i < Rows; i++)
-    {
-        for (short j = 0; j < Cols; j++)
-        {
-            if (Matrix1[i][j] != Matrix1[j][Cols - 1 - j])
-            {
-                return false;
-            }
-        }
-    }
-
-    return true;
+    cout << "\n";
 }
 
 int main()
 {
-    srand((unsigned)time(NULL));
 
-    int Matrix1[3][3] = {{77, 5, 12}, {22, 20, 1}, {1, 0, 0}};
+    PrintFibonacciUsingLoop(10);
 
-    cout << "\nMatrix :\n";
-    PritnMatrix(Matrix1, 3, 3);
-
-    if (IsPalindromeMatrix(Matrix1, 3, 3))
-    {
-        cout << "\nYes, The Matirx is not Palindrom. \n";
-    }
-    else
-    {
-        cout << "\nNo, The Matirx is Not Palindrom. \n";
-    }
-
-
+    return 0;
 }
