@@ -22,37 +22,28 @@ void PritnMatrix(int Matrix[3][3], short Rows, short Cols)
     }
 }
 
-short CountNumberInMatrix(int Matrix1[3][3], int Number, short Rows, short Cols)
+bool IsNumberInMatrix(int Matrix1[3][3], int Number, short Rows, short Cols)
 {
-    short NumberCount = 0;
 
-    for (short i = 0; i < Cols; i++)
+    for (short i = 0; i < Rows; i++)
     {
-        for (short j = 0; j < Rows; j++)
+        for (short j = 0; j < Cols; j++)
         {
             if (Matrix1[i][j] == Number)
             {
-                NumberCount++;
+                return true;
             }
         }
     }
 
-    return NumberCount;
-}
-
-bool AreSparceMatrix(int Matrix1[3][3], short Rows, short Cols)
-{
-
-    short MatrixSize = Rows * Cols;
-
-    return (CountNumberInMatrix(Matrix1, 0, 3, 3) >= (MatrixSize / 2));
+    return false;
 }
 
 int main()
 {
     srand((unsigned)time(NULL));
 
-    int Matrix[3][3] = {{12, 0, 0}, {0, 0, 1}, {0, 0, 9}};
+    int Matrix[3][3] = {{77, 5, 12}, {22, 20, 1}, {1, 0, 0}};
 
     PritnMatrix(Matrix, 3, 3);
 
@@ -60,6 +51,13 @@ int main()
     cout << "\nEnter The Number To Count in Matrix: ";
     cin >> Number;
 
-    cout << "\nNumber [" << Number << "] Count In Matrix is [" << CountNumberInMatrix(Matrix, Number, 3, 3) << "]." << endl;
+    if (IsNumberInMatrix(Matrix, Number, 3, 3))
+    {
+        cout << "\nYes, There Is.\n";
+    }
+    else
+    {
+        cout << "\nNo, There Is Not.\n";
+    }
     return 0;
 }
