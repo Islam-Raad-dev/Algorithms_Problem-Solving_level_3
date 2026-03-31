@@ -57,5 +57,5 @@ int main()
         cout << "\nNo, The Matirx is Not Palindrom. \n";
     }
 
-    return 0;
+
 }
