@@ -1,6 +1,6 @@
 /*
 
-Min / Max Numbber In Matrix
+Palindrome Matrix
 
 */
 #include <iostream>
