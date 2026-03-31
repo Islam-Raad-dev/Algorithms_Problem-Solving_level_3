@@ -56,13 +56,10 @@ int main()
 
     PritnMatrix(Matrix, 3, 3);
 
-    if (AreSparceMatrix(Matrix, 3, 3))
-    {
-        cout << "\nYes, The Matrix is Sparce.\n " << endl;
-    }
-    else
-    {
-        cout << "\nNo, The Matrix is Not Sparce.\n " << endl;
-    }
+    int Number;
+    cout << "\nEnter The Number To Count in Matrix: ";
+    cin >> Number;
+
+    cout << "\nNumber [" << Number << "] Count In Matrix is [" << CountNumberInMatrix(Matrix, Number, 3, 3) << "]." << endl;
     return 0;
 }
