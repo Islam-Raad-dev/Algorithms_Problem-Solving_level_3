@@ -1,6 +1,6 @@
 /*
 
-Count Small / Capital Letters
+Count Small / Capital Letters 
 
 */
 #include <iostream>
