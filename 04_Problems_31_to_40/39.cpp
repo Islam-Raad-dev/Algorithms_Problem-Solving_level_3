@@ -1,10 +1,11 @@
 /*
 
-TrimLeft / TrimRight / Trim
+Join String
 
 */
 #include <iostream>
 #include <string>
+#include<vector>
 using namespace std;
 
 string ReadString()
@@ -17,47 +18,37 @@ string ReadString()
 
     return S1;
 }
-string TrimLeft(string S1)
+vector<string> JoinString(string S1, string delim)
 {
+    vector<string> vString;
 
-    for (short i = 0; i < S1.length(); i++)
+    short pos = 0;
+    string sword;
+
+    while ((pos = S1.find(delim)) != std::string::npos)
     {
-        if (S1[i] != ' ')
+        sword = S1.substr(0, pos);
+
+        if (sword != "")
         {
-            return S1.substr(i, S1.length() - i);
+            vString.push_back(sword);
         }
+
+        S1.erase(0, pos + delim.length());
     }
 
-    return "";
-}
-
-string TrimRight(string S1)
-{
-
-    for (short i = S1.length(); i >= 0; i++)
+    if (S1 != "")
     {
-        if (S1[i] != ' ')
-        {
-            return S1.substr(0, i + 1);
-        }
+        vString.push_back(S1);
     }
 
-    return "";
-}
-
-string Trim(string S1)
-{
-    return (TrimLeft(TrimRight(S1)));
+    return vString;
 }
 
 int main()
 {
 
-    string S1 = ReadString();
-
-    cout << "\nTrim Left  = " << TrimLeft(S1) << endl;
-    cout << "\nTrim Right = " << TrimRight(S1) << endl;
-    cout << "\n   Trim    = " << Trim(S1) << endl;
+    vector <string> vString;
 
     return 0;
 }
