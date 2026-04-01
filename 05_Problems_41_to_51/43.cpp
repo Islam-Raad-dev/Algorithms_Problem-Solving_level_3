@@ -1,6 +1,6 @@
 /*
 
-Replace Word
+Replace Word(Custom)
 
 */
 #include <iostream>
