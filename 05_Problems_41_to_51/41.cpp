@@ -63,6 +63,8 @@ string ReverseWordInString(string S1)
         S2 += *iter + " ";
     }
 
+    S2 = S2.substr(0, S2.length() - 1);
+
     return S2;
 }
 int main()
