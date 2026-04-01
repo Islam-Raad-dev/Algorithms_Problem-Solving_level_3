@@ -10,8 +10,14 @@ using namespace std;
 
 string JoinString(vector<string> vString, string delim)
 {
+    string S1;
 
-    
+    for (string &s : vString)
+    {
+        S1 = S1 + s + delim;
+    }
+
+    return S1.substr(0, S1.length() - delim.length());
 }
 
 int main()
@@ -20,7 +26,7 @@ int main()
     vector<string> vString = {"Mohammed", "Faid", "Ali", "Islam"};
 
     cout << "\n Vector After Join :\n";
-    cout << JoinString(vString, " ");
+    cout << JoinString(vString, "|*|") << endl;
 
     return 0;
 }
