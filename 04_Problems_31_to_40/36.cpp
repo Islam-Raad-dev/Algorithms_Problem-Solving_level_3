@@ -45,7 +45,6 @@ short CountEachWordinString(string S1)
     {
         cout << S1 << endl;
     }
-
 }
 
 int main()
@@ -53,7 +52,8 @@ int main()
 
     string S1 = ReadString();
 
-    cout<<"\n";
+    cout << "\nThe Number Of Each Word in Your String Is: ";
+    cout << CountEachWordinString(S1) << endl;
 
     return 0;
 }
