@@ -1,6 +1,6 @@
 /*
 
-Print All Vowel In String:
+Print Each Word in String
 
 */
 #include <iostream>
