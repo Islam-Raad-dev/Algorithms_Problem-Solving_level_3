@@ -34,25 +34,20 @@ string TrimLeft(string S1)
 string TrimRight(string S1)
 {
 
-    for (short i = 0; i < S1.length(); i++)
+    for (short i = S1.length(); i >= 0; i++)
     {
         if (S1[i] != ' ')
         {
-            return S1.substr(i, S1.length() - i);
+            return S1.substr(0, i + 1);
         }
     }
+
+    return "";
 }
 
 string Trim(string S1)
 {
-
-    for (short i = 0; i < S1.length(); i++)
-    {
-        if (S1[i] != ' ')
-        {
-            return S1.substr(i, S1.length() - i);
-        }
-    }
+    return (TrimLeft(TrimRight(S1)));
 }
 
 int main()
@@ -60,10 +55,9 @@ int main()
 
     string S1 = ReadString();
 
-    cout << "\nString     = " << S1 << endl;
-    cout << "\n\nTrim Left  = " << TrimLeft(S1) << endl;
+    cout << "\nTrim Left  = " << TrimLeft(S1) << endl;
     cout << "\nTrim Right = " << TrimRight(S1) << endl;
-    cout << "\nTrim       = " << Trim(S1) << endl;
+    cout << "\n   Trim    = " << Trim(S1) << endl;
 
     return 0;
 }
