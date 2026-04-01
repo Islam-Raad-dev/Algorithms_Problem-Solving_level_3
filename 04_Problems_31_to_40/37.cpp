@@ -8,10 +8,6 @@ Split String
 #include <vector>
 using namespace std;
 
-vector<string> SplitString(string S1, string delim)
-{
-}
-
 string ReadString()
 {
 
@@ -23,11 +19,8 @@ string ReadString()
     return S1;
 }
 
-short CountEachWordinString(string S1)
+vector<string> SplitString(string S1, string delim)
 {
-
-    string delim = " ";
-    short Counter = 0;
     short pos = 0;
     string sword;
 
@@ -37,7 +30,7 @@ short CountEachWordinString(string S1)
 
         if (sword != "")
         {
-            Counter++;
+            cout << sword << endl;
         }
 
         S1.erase(0, pos + delim.length());
@@ -45,10 +38,8 @@ short CountEachWordinString(string S1)
 
     if (S1 != "")
     {
-        Counter++;
+        cout << S1 << endl;
     }
-
-    return Counter;
 }
 
 int main()
