@@ -13,7 +13,7 @@ string ReadCharcter()
     string S1;
 
     cout << "Please Enter The String: ";
-    getline (cin ,S1);
+    getline(cin, S1);
 
     return S1;
 }
@@ -38,11 +38,8 @@ int main()
 {
     string S1 = ReadCharcter();
 
-    cout << "\nString Letter After Inverting All Letter: \n";
+    cout << "\nString Length: " << S1.length() << endl;
 
-    S1 = InvertAllLetterCase(S1);
-
-    cout << S1 << endl;
-
+    cout<<"Capital Letters: "<<<<endl;
     return 0;
 }
