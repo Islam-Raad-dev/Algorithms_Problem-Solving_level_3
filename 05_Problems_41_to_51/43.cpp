@@ -8,7 +8,7 @@ Replace Word(Custom)
 
 using namespace std;
 
-string ReplaceWordInString(string S1, string ReplaceTo, string StringToReplace)
+string ReplaceWordInString(string S1, string ReplaceTo, string StringToReplace, bool Matchcase = true)
 {
     short pos = S1.find(StringToReplace);
 
@@ -30,7 +30,7 @@ int main()
     cout << ReplaceWordInString(S1, StringToReplace, ReplaceTo) << endl;
 
     cout << "\nString After Replace: \n";
-    cout << ReplaceWordInString(S1, StringToReplace, ReplaceTo) << endl;
+    cout << ReplaceWordInString(S1, StringToReplace, ReplaceTo, false);
 
     return 0;
 }
