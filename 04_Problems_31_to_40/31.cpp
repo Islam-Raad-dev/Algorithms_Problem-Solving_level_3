@@ -18,7 +18,8 @@ string ReadCharcter()
     return S1;
 }
 
-char ReadChar(){
+char ReadChar()
+{
 
     char C1;
 
@@ -28,27 +29,39 @@ char ReadChar(){
     return C1;
 }
 
-short CountLetter(string S1, char C1)
+short CountLetter(string S1, char C1, bool Matchcase = true)
 {
     short Counter = 0;
 
     for (short i = 0; i < S1.length(); i++)
     {
-        if (S1[i] == C1)
-            Counter++;
+        if (Matchcase)
+        {
+            if (S1[i] == C1)
+                Counter++;
+        }
+
+        else
+        {
+            if (tolower(S1[i]) == tolower(C1))
+                Counter++;
+        }
     }
 
     return Counter;
 }
 
+char InvertCharcterCase(char C1)
+{
+    return isupper(C1) ? tolower(C1) : toupper(C1);
+}
+
 int main()
 {
     string S1 = ReadCharcter();
-    char C1= ReadChar();
+    char C1 = ReadChar();
 
-    cout << "Letter [" << C1 << "] Count = " << CountLetter(S1, C1) << endl;
-
-    cout << "Letter [ " << C1 << " ] " << "Or [ " << isupper(C1) << " ]Count = " << CountLetter(S1, C1) << endl;
+    cout << "Letter [ " << C1 << " ] " << "Or [ " << InvertCharcterCase(C1) << " ]Count = " << CountLetter(S1, C1, false) << endl;
 
     return 0;
 }
