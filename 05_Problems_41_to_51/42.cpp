@@ -18,7 +18,7 @@ string ReplaceWordInString(string S1, string ReplaceTo, string StringToReplace)
         pos = S1.find(StringToReplace);
     }
 
-    return S1;
+    return S1; 
 }
 int main()
 {
