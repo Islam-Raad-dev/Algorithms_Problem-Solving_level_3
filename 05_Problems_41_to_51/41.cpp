@@ -18,7 +18,7 @@ string ReadString()
     return S1;
 }
 
-string ReverseWord(string S1)
+string ReverseWordInString(string S1)
 {
     string Word;
 
@@ -33,7 +33,7 @@ int main()
     string S1 = ReadString();
 
     cout << "\nString After Reverse: \n";
-    cout << ReverseWord(S1) << endl;
+    cout << ReverseWordInString(S1) << endl;
 
     return 0;
 }
