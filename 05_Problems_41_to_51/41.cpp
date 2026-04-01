@@ -5,6 +5,7 @@ Reverse Word
 */
 #include <iostream>
 #include <string>
+#include<vector>
 using namespace std;
 
 string ReadString()
@@ -18,9 +19,40 @@ string ReadString()
     return S1;
 }
 
+vector<string> SplitString(string S1, string delim)
+{
+    vector<string> vString;
+
+    short pos = 0;
+    string sword;
+
+    while ((pos = S1.find(delim)) != std::string::npos)
+    {
+        sword = S1.substr(0, pos);
+
+        if (sword != "")
+        {
+            vString.push_back(sword);
+        }
+
+        S1.erase(0, pos + delim.length());
+    }
+
+    if (S1 != "")
+    {
+        vString.push_back(S1);
+    }
+
+    return vString;
+}
+
 string ReverseWordInString(string S1)
 {
-    string Word;
+    vector <string> vString;
+
+    string S2 = "";
+
+    vString = SplitString(S1, " ");
 
     for(short i = 0; i < S1.length(); i++){
         
