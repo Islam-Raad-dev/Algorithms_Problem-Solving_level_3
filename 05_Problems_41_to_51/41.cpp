@@ -8,30 +8,20 @@ Reverse Word
 #include <vector>
 using namespace std;
 
-string JoinString(vector<string> vString, string delim)
+string ReadString()
 {
+
     string S1;
 
-    for (string &s : vString)
-    {
-        S1 = S1 + s + delim;
-    }
+    cout << "Please Enter The String: ";
+    getline(cin, S1);
 
-    return S1.substr(0, S1.length() - delim.length());
+    return S1;
 }
 
-string JoinString(string arrString, short Length, string delim)
-{
-    string S1 = " ";
-
-    for (short i = 0; i < Length; i++)
-    {
-        S1 = S1 + arrString[i] + delim;
-    }
-
-    return S1.substr(0, S1.length() - delim.length());
+string ReverseWord(){
+    
 }
-
 int main()
 {
 
