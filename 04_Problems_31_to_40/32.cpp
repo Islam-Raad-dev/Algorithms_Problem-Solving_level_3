@@ -18,9 +18,9 @@ char ReadChar()
     return C1;
 }
 
-bool IsVowel (char C1)
+bool IsVowel(char C1)
 {
-    return ;
+    return ((C1 == 'a') || (C1 == 'e') || (C1 == 'i') || (C1 == 'o') || (C1 == 'u'));
 }
 int main()
 {
