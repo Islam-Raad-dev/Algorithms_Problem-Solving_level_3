@@ -1,6 +1,6 @@
 /*
 
-Invert All Letter Case
+Count Small / Capital Letters
 
 */
 #include <iostream>
