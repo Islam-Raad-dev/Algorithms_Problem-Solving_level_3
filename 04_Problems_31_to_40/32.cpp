@@ -1,6 +1,6 @@
 /*
 
-Count Letters (Match Case):
+Is Vowel:
 
 */
 #include <iostream>
