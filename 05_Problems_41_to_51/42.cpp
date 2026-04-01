@@ -20,6 +20,7 @@ string ReadString()
 }
 string ReplaceWordInString(string S1, string ReplaceTo, string StringToReplace)
 {
+    
 }
 int main()
 {
