@@ -40,8 +40,10 @@ vector<string> SplitString(string S1, string delim)
 
     if (S1 != "")
     {
-        vString.push_back(sword);
+        vString.push_back(S1);
     }
+
+    return vString;
 }
 
 int main()
