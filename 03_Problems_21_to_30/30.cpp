@@ -24,7 +24,7 @@ short CountLetter(string S1, char C1)
 
     for (short i = 0; i < S1.length(); i++)
     {
-        if (isupper(S1[i]))
+        if (S1[i] == C1)
             Counter++;
     }
 
@@ -39,7 +39,7 @@ int main()
     cout << "Please Enter A Charcter: ";
     cin >> C1;
 
-    cout <<"Letter [" << C1 << "] Count = " << CountLetter(S1, C1) <<endl;
+    cout << "Letter [" << C1 << "] Count = " << CountLetter(S1, C1) << endl;
 
     return 0;
 }
