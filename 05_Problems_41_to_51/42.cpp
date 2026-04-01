@@ -46,7 +46,7 @@ vector<string> SplitString(string S1, string delim)
     return vString;
 }
 
-string ReverseWordInString(string S1)
+string ReplaceWordInString(string S1)
 {
     vector<string> vString;
 
@@ -71,8 +71,8 @@ int main()
 {
     string S1 = ReadString();
 
-    cout << "\nString After Reverse: \n";
-    cout << ReverseWordInString(S1) << endl;
+    cout << "\nString After Replace: \n";
+    cout << ReplaceWordInString(S1) << endl;
 
     return 0;
 }
