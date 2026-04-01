@@ -1,6 +1,6 @@
 /*
 
-Replace Word(Custom)
+Replace Word ( Custom )
 
 */
 #include <iostream>
@@ -51,7 +51,12 @@ string JoinString(vector<string> vString, string delim)
 string LowerAllSplit(string S1)
 {
 
-    return tolower(S1.length());
+    for (short i = 0; i < S1.length(); i++)
+    {
+        S1[i] = tolower(S1[i]);
+    }
+
+    return S1;
 }
 string ReplaceWordUsingSplit(string S1, string ReplaceTo, string StringToReplace, bool Matchcase = true)
 {
