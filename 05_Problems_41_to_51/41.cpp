@@ -21,7 +21,7 @@ string ReadString()
 string ReverseWord(string S1)
 {
     string Word;
-    
+
     for(short i = 0; i < S1.length(); i++){
         
     }
