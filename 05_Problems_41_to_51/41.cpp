@@ -5,7 +5,6 @@ Reverse Word
 */
 #include <iostream>
 #include <string>
-#include <vector>
 using namespace std;
 
 string ReadString()
@@ -20,19 +19,12 @@ string ReadString()
 }
 
 string ReverseWord(){
-    
+
 }
 int main()
 {
-
-    vector<string> vString = {"Mohammed", "Faid", "Ali", "Islam"};
-
-    string arrString[] = {"Mohammed", "Faid", "Ali", "Islam"};
-
-    cout << "\n Vector After Join :\n";
-    cout << JoinString(vString, " ") << endl;
-
-    cout << "\n Array After Join :\n";
+    string S1 = ReadString();
+    
 
     return 0;
 }
