@@ -1,6 +1,6 @@
 /*
 
-Count Letters
+Count Letters (Match Case): 
 
 */
 #include <iostream>
