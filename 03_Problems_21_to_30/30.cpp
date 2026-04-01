@@ -1,6 +1,6 @@
 /*
 
-Count Letters 
+Count Letters
 
 */
 #include <iostream>
@@ -17,7 +17,6 @@ string ReadCharcter()
 
     return S1;
 }
-
 
 short CountLetter(string S1, char C1)
 {
@@ -37,10 +36,10 @@ int main()
     string S1 = ReadCharcter();
     char C1;
 
-    cout<<"Please Enter A Charcter: ";
-    cin>>C1;
+    cout << "Please Enter A Charcter: ";
+    cin >> C1;
 
-
+    cout <<"Letter [" << C1 << "] Count = " << CountLetter(S1, C1) <<endl;
 
     return 0;
 }
