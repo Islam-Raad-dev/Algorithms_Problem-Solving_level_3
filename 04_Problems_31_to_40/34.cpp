@@ -5,6 +5,7 @@ Print All Vowel In String:
 */
 #include <iostream>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 string ReadString()
@@ -25,25 +26,25 @@ bool IsVowel(char C1)
     return ((C1 == 'a') || (C1 == 'e') || (C1 == 'i') || (C1 == 'o') || (C1 == 'u'));
 }
 
-short CountVowel(string S1)
+void PrintAllVowel(string S1)
 {
-
-    short Counter = 0;
 
     for (short i = 0; i < S1.length(); i++)
     {
         if (IsVowel(S1[i]))
-            Counter++;
+        {
+            cout << S1[i] << "    ";
+        }
     }
-
-    return Counter++;
+    cout << "\n";
 }
 
 int main()
 {
     string S1 = ReadString();
 
-    cout << "\nNumber Of Vowel is: " << CountVowel(S1) << endl;
+    cout << "\nAll Vowel in String = ";
+    PrintAllVowel(S1);
 
     return 0;
 }
