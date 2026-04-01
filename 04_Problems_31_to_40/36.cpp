@@ -5,7 +5,6 @@ Count Each Word in String
 */
 #include <iostream>
 #include <string>
-#include <iomanip>
 using namespace std;
 
 string ReadString()
@@ -21,30 +20,15 @@ string ReadString()
 
 short CountEachWordinString(string S1)
 {
+    short Counter = 0;
 
-    string delim = " ";
-
-    cout << "\nYour String Word Are: \n\n";
-
-    short pos = 0;
-    string sword;
-
-    while ((pos = S1.find(delim)) != std::string::npos)
+    for (short i = 0; i < S1.length(); i++)
     {
-        sword = S1.substr(0, pos);
-
-        if (sword != "")
-        {
-            cout << sword << endl;
-        }
-
-        S1.erase(0, pos + delim.length());
+        S1[i];
+        Counter++;
     }
 
-    if (S1 != "")
-    {
-        cout << S1 << endl;
-    }
+    return Counter;
 }
 
 int main()
