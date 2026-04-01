@@ -19,14 +19,38 @@ string ReadString()
 }
 string TrimLeft(string S1)
 {
+
+    for (short i = 0; i < S1.length(); i++)
+    {
+        if (S1[i] != ' ')
+        {
+            return S1.substr(i, S1.length() - i);
+        }
+    }
 }
 
 string TrimRight(string S1)
 {
+
+    for (short i = 0; i < S1.length(); i++)
+    {
+        if (S1[i] != ' ')
+        {
+            return S1.substr(i, S1.length() - i);
+        }
+    }
 }
 
 string Trim(string S1)
 {
+
+    for (short i = 0; i < S1.length(); i++)
+    {
+        if (S1[i] != ' ')
+        {
+            return S1.substr(i, S1.length() - i);
+        }
+    }
 }
 
 int main()
