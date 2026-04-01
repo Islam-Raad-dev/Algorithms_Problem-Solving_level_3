@@ -20,7 +20,7 @@ char ReadChar()
 
 bool IsVowel (char C1)
 {
-    return 
+    return ;
 }
 int main()
 {
