@@ -34,10 +34,10 @@ int main()
 
     string S1 = ReadString();
 
-    cout << "\nString = " << S1 << endl;
-    cout << "\nTrim Left = " << TrimLeft(S1) << endl;
+    cout << "\nString     = " << S1 << endl;
+    cout << "\nTrim Left  = " << TrimLeft(S1) << endl;
     cout << "\nTrim Right = " << TrimRight(S1) << endl;
-    cout << "\nTrim  = " << Trim(S1) << endl;
+    cout << "\nTrim       = " << Trim(S1) << endl;
 
     return 0;
 }
