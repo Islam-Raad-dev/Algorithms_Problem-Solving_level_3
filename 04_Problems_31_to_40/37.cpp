@@ -1,6 +1,6 @@
 /*
 
-Count Each Word in String
+Split String
 
 */
 #include <iostream>
