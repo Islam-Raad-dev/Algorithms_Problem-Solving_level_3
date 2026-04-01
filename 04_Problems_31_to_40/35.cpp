@@ -26,9 +26,10 @@ bool IsVowel(char C1)
     return ((C1 == 'a') || (C1 == 'e') || (C1 == 'i') || (C1 == 'o') || (C1 == 'u'));
 }
 
-void PrintAllVowel(string S1)
+void PrintEachWord(string S1)
 {
 
+    cout << "\nYour String Word Are: ";
     for (short i = 0; i < S1.length(); i++)
     {
         if (IsVowel(S1[i]))
@@ -41,10 +42,8 @@ void PrintAllVowel(string S1)
 
 int main()
 {
-    string S1 = ReadString();
-
-    cout << "\nAll Vowel in String = ";
-    PrintAllVowel(S1);
+    
+    PrintEachWord(ReadString());
 
     return 0;
 }
