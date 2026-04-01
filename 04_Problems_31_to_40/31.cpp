@@ -18,6 +18,16 @@ string ReadCharcter()
     return S1;
 }
 
+char ReadChar(){
+
+    char C1;
+
+    cout << "Please Enter A Charcter: ";
+    cin >> C1;
+
+    return C1;
+}
+
 short CountLetter(string S1, char C1)
 {
     short Counter = 0;
@@ -34,10 +44,7 @@ short CountLetter(string S1, char C1)
 int main()
 {
     string S1 = ReadCharcter();
-    char C1;
-
-    cout << "Please Enter A Charcter: ";
-    cin >> C1;
+    char C1= ReadChar();
 
     cout << "Letter [" << C1 << "] Count = " << CountLetter(S1, C1) << endl;
 
