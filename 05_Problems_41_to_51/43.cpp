@@ -50,6 +50,8 @@ string JoinString(vector<string> vString, string delim)
 
 string LowerAllSplit(string S1)
 {
+
+    return tolower(S1.length());
 }
 string ReplaceWordUsingSplit(string S1, string ReplaceTo, string StringToReplace, bool Matchcase = true)
 {
@@ -75,7 +77,7 @@ string ReplaceWordUsingSplit(string S1, string ReplaceTo, string StringToReplace
         }
     }
 
-    return S1;
+    return JoinString(vString, " ");
 }
 int main()
 {
