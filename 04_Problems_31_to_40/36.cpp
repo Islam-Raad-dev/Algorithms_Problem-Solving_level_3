@@ -20,11 +20,26 @@ string ReadString()
 
 short CountEachWordinString(string S1)
 {
-    short Counter = 0;
 
-    for (short i = 0; i < S1.length(); i++)
+    string delim = " ";
+    short Counter = 0;
+    short pos = 0;
+    string sword;
+
+    while ((pos = S1.find(delim)) != std::string::npos)
     {
-        S1[i];
+        sword = S1.substr(0, pos);
+
+        if (sword != "")
+        {
+            Counter++;
+        }
+
+        S1.erase(0, pos + delim.length());
+    }
+
+    if (S1 != "")
+    {
         Counter++;
     }
 
