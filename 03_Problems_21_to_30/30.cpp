@@ -18,20 +18,8 @@ string ReadCharcter()
     return S1;
 }
 
-short CountSmallLetter(string S1)
-{
-    short Counter = 0;
 
-    for (short i = 0; i < S1.length(); i++)
-    {
-        if (islower(S1[i]))
-            Counter++;
-    }
-
-    return Counter;
-}
-
-short CountCapitalLetter(string S1)
+short CountLetter(string S1, char C1)
 {
     short Counter = 0;
 
@@ -47,12 +35,12 @@ short CountCapitalLetter(string S1)
 int main()
 {
     string S1 = ReadCharcter();
+    char C1;
 
-    cout << "\nString Length: " << S1.length();
+    cout<<"Please Enter A Charcter: ";
+    cin>>C1;
 
-    cout << "\nCapital Letters Count: " << CountCapitalLetter(S1);
 
-    cout << "\nSmall Letters Count: " << CountSmallLetter(S1) << "\n";
 
     return 0;
 }
