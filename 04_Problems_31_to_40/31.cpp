@@ -1,6 +1,6 @@
 /*
 
-Count Letters (Match Case): 
+Count Letters (Match Case):
 
 */
 #include <iostream>
@@ -40,6 +40,8 @@ int main()
     cin >> C1;
 
     cout << "Letter [" << C1 << "] Count = " << CountLetter(S1, C1) << endl;
+
+    cout << "Letter [" << C1 << "] " << "Or [" << isupper(C1) << "]Count = " << CountLetter(S1, C1) << endl;
 
     return 0;
 }
