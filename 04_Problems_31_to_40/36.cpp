@@ -19,7 +19,7 @@ string ReadString()
     return S1;
 }
 
-void PrintEachWord(string S1)
+short CountEachWordinString(string S1)
 {
 
     string delim = " ";
@@ -51,7 +51,9 @@ void PrintEachWord(string S1)
 int main()
 {
 
-    PrintEachWord(ReadString());
+    string S1 = ReadString();
+
+    cout<<"\n";
 
     return 0;
 }
