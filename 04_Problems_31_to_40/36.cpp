@@ -1,6 +1,6 @@
 /*
 
-Print Each Word in String
+Count Each Word in String
 
 */
 #include <iostream>
