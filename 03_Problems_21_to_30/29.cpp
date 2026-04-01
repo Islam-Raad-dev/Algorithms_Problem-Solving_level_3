@@ -18,28 +18,41 @@ string ReadCharcter()
     return S1;
 }
 
-char InvertCharcterCase(char C1)
+short CountSmallLetter(string S1)
 {
-    return isupper(C1) ? tolower(C1) : toupper(C1);
-}
-
-string InvertAllLetterCase(string S1)
-{
+    short Counter = 0;
 
     for (short i = 0; i < S1.length(); i++)
     {
-        S1[i] = InvertCharcterCase(S1[i]);
+        if (islower(S1[i]))
+            Counter++;
     }
 
-    return S1;
+    return Counter;
+}
+
+short CountCapitalLetter(string S1)
+{
+    short Counter = 0;
+
+    for (short i = 0; i < S1.length(); i++)
+    {
+        if (isupper(S1[i]))
+            Counter++;
+    }
+
+    return Counter;
 }
 
 int main()
 {
     string S1 = ReadCharcter();
 
-    cout << "\nString Length: " << S1.length() << endl;
+    cout << "\nString Length: " << S1.length();
 
-    cout<<"Capital Letters: "<<<<endl;
+    cout << "\nCapital Letters Count: " << CountCapitalLetter(S1);
+
+    cout << "\nSmall Letters Count: " << CountSmallLetter(S1) << "\n";
+
     return 0;
 }
