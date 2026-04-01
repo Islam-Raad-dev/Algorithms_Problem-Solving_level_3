@@ -5,7 +5,7 @@ Reverse Word
 */
 #include <iostream>
 #include <string>
-#include<vector>
+#include <vector>
 using namespace std;
 
 string ReadString()
@@ -48,17 +48,22 @@ vector<string> SplitString(string S1, string delim)
 
 string ReverseWordInString(string S1)
 {
-    vector <string> vString;
+    vector<string> vString;
 
     string S2 = "";
 
     vString = SplitString(S1, " ");
 
-    for(short i = 0; i < S1.length(); i++){
-        
+    vector<string>::iterator iter = vString.end();
+
+    while (iter != vString.begin())
+    {
+        --iter;
+
+        S2 += *iter + " ";
     }
 
-    return Word;
+    return S2;
 }
 int main()
 {
