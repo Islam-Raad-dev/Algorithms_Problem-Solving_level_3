@@ -5,7 +5,12 @@ Split String
 */
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
+
+vector<string> SplitString(string S1, string delim)
+{
+}
 
 string ReadString()
 {
@@ -49,10 +54,16 @@ short CountEachWordinString(string S1)
 int main()
 {
 
-    string S1 = ReadString();
+    vector<string> vString;
 
-    cout << "\nThe Number Of Each Word in Your String Is: ";
-    cout << CountEachWordinString(S1) << endl;
+    vString = SplitString(ReadString(), " ");
+
+    cout << "\nTokerns = " << vString.size() << endl;
+
+    for (string &s : vString)
+    {
+        cout << s << endl;
+    }
 
     return 0;
 }
