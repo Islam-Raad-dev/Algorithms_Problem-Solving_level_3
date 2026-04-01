@@ -21,6 +21,8 @@ string ReadString()
 
 vector<string> SplitString(string S1, string delim)
 {
+    vector<string> vString;
+
     short pos = 0;
     string sword;
 
@@ -30,7 +32,7 @@ vector<string> SplitString(string S1, string delim)
 
         if (sword != "")
         {
-            cout << sword << endl;
+            vString.push_back(sword);
         }
 
         S1.erase(0, pos + delim.length());
@@ -38,7 +40,7 @@ vector<string> SplitString(string S1, string delim)
 
     if (S1 != "")
     {
-        cout << S1 << endl;
+        vString.push_back(sword);
     }
 }
 
