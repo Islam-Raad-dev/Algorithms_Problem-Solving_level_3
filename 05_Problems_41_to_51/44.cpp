@@ -84,17 +84,20 @@ string ReplaceWordUsingSplit(string S1, string ReplaceTo, string StringToReplace
 
     return JoinString(vString, " ");
 }
+
+string RemovePunctuation(string S1)
+{
+
+    return S1;
+}
 int main()
 {
     string S1 = "Welcome To Iraq, Iraq Is A Nice Place.";
     string StringToReplace = "Iraq";
     string ReplaceTo = "USA";
 
-    cout << "\nString After Replace With Match Case: \n";
-    cout << ReplaceWordUsingSplit(S1, StringToReplace, ReplaceTo) << endl;
-
-    cout << "\nString After Replace: \n";
-    cout << ReplaceWordUsingSplit(S1, StringToReplace, ReplaceTo, false);
+    cout << "\nPunctuation Remove: \n";
+    cout << RemovePunctuation(S1) << endl;
 
     return 0;
 }
