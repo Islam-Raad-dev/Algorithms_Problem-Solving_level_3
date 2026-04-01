@@ -5,27 +5,25 @@ Replace Word
 */
 #include <iostream>
 #include <string>
-#include <vector>
+
 using namespace std;
 
-string ReadString()
+string ReplaceWordInString(string S1, string ReplaceTo, string StringToReplace)
 {
+    short pos = S1.find(StringToReplace);
 
-    string S1;
-
-    cout << "Please Enter The String: ";
-    getline(cin, S1);
+    while (pos != std::string::npos)
+    {
+        S1 = S1.replace(pos, StringToReplace.length(), ReplaceTo);
+        pos = S1.find(StringToReplace);
+    }
 
     return S1;
 }
-string ReplaceWordInString(string S1, string ReplaceTo, string StringToReplace)
-{
-    
-}
 int main()
 {
-    string S1 = ReadString();
-    string StringToReplace = "IRAQ";
+    string S1 = "Welcome To Iraq, Iraq Is A Nice Place.";
+    string StringToReplace = "Iraq";
     string ReplaceTo = "USA";
 
     cout << "\nString After Replace: \n";
