@@ -19,30 +19,38 @@ string ReadString()
     return S1;
 }
 
-bool IsVowel(char C1)
-{
-    C1 = tolower(C1);
-
-    return ((C1 == 'a') || (C1 == 'e') || (C1 == 'i') || (C1 == 'o') || (C1 == 'u'));
-}
-
 void PrintEachWord(string S1)
 {
 
-    cout << "\nYour String Word Are: ";
-    for (short i = 0; i < S1.length(); i++)
+    string delim = " ";
+
+    cout << "\nYour String Word Are: \n\n";
+
+    short pos = 0;
+    string sword;
+
+    while ((pos = S1.find(delim)) != std::string::npos)
     {
-        if (IsVowel(S1[i]))
+        sword = S1.substr(0, pos);
+
+        if (sword != "")
         {
-            cout << S1[i] << "    ";
+            cout << sword << endl;
         }
+
+        S1.erase(0, pos + delim.length());
     }
-    cout << "\n";
+
+    if (S1 != "")
+    {
+        cout << S1 << endl;
+    }
+
 }
 
 int main()
 {
-    
+
     PrintEachWord(ReadString());
 
     return 0;
