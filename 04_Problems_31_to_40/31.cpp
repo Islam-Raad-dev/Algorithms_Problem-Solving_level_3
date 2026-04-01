@@ -41,7 +41,7 @@ int main()
 
     cout << "Letter [" << C1 << "] Count = " << CountLetter(S1, C1) << endl;
 
-    cout << "Letter [" << C1 << "] " << "Or [" << isupper(C1) << "]Count = " << CountLetter(S1, C1) << endl;
+    cout << "Letter [ " << C1 << " ] " << "Or [ " << isupper(C1) << " ]Count = " << CountLetter(S1, C1) << endl;
 
     return 0;
 }
