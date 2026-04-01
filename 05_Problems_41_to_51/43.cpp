@@ -18,13 +18,16 @@ string ReplaceWordInString(string S1, string ReplaceTo, string StringToReplace)
         pos = S1.find(StringToReplace);
     }
 
-    return S1; 
+    return S1;
 }
 int main()
 {
     string S1 = "Welcome To Iraq, Iraq Is A Nice Place.";
     string StringToReplace = "Iraq";
     string ReplaceTo = "USA";
+
+    cout << "\nString After Replace With Match Case: \n";
+    cout << ReplaceWordInString(S1, StringToReplace, ReplaceTo) << endl;
 
     cout << "\nString After Replace: \n";
     cout << ReplaceWordInString(S1, StringToReplace, ReplaceTo) << endl;
