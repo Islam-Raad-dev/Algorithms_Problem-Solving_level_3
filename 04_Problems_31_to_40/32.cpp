@@ -20,6 +20,8 @@ char ReadChar()
 
 bool IsVowel(char C1)
 {
+    C1 = tolower(C1);
+
     return ((C1 == 'a') || (C1 == 'e') || (C1 == 'i') || (C1 == 'o') || (C1 == 'u'));
 }
 
