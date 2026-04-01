@@ -27,6 +27,8 @@ string TrimLeft(string S1)
             return S1.substr(i, S1.length() - i);
         }
     }
+
+    return "";
 }
 
 string TrimRight(string S1)
