@@ -11,7 +11,7 @@ Delete Client By Account Number
 
 using namespace std;
 
-const string ClientsFileName = "Clients.txt";
+const static string ClientsFileName = "Clients.txt";
 
 struct sClientInfo
 {
@@ -109,7 +109,7 @@ void PrintClientCard(sClientInfo Client)
     cout << "\nAccount Blalance : " << Client.AccountBalance;
     cout << "\n";
 }
-bool FindClientByAccountNumber(string AccountNumber, sClientInfo &Client)
+bool FindClientByAccountNumber(string AccountNumber, vector<sClientInfo> vClients, sClientInfo &Client)
 {
 
     vector<sClientInfo> vClients = LoadDataFromFile(ClientsFileName);
@@ -129,18 +129,19 @@ bool FindClientByAccountNumber(string AccountNumber, sClientInfo &Client)
 bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> vClient)
 {
 
-    char AddMore = 'Y';
+    sClientInfo Client;
+    char Answer  = 'n';
 
-    do
-    {
-        system("clear");
+    if(FindClientByAccountNumber(AccountNumber, vClient, Client)){
 
-        cout << "\nAre You Sure You Want To Delete This Client(Y/N): ";
-        cin >> AddMore;
+        PrintClientCard(Client);
 
-    } while (toupper(AddMore) == 'Y');
+        cout<<"\nAre You Sure That You Want To Delete This Client? (Y/N)";
+        cin>>Answer;
+
+        
+    }
 }
-
 
 int main()
 {
