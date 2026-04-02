@@ -1,6 +1,6 @@
 /*
 
-Add Clint To File
+Add Clients To File
 
 */
 #include <iostream>
