@@ -23,7 +23,7 @@ struct sClientInfo
     bool MarkForDelete = false;
 };
 
-string ReadCleintAccountNumber()
+string ReadClientAccountNumber()
 {
     string AccountNumber;
 
@@ -36,7 +36,7 @@ string ReadCleintAccountNumber()
 vector<string> SplitString(string S1, string delim)
 {
     vector<string> vString;
-    short pos = 0;
+    size_t pos = 0;
     string sword;
 
     while ((pos = S1.find(delim)) != std::string::npos)
@@ -64,14 +64,12 @@ sClientInfo ConvertLineDataToRecord(string Line, string Seperator = "#//#")
 
     vector<string> vClientData = SplitString(Line, Seperator);
 
-    if (vClientData.size() == 5)
-    {
         Client.AccountNumber = vClientData[0];
         Client.PinCode = vClientData[1];
         Client.FullName = vClientData[2];
         Client.PhoneNumber = vClientData[3];
         Client.AccountBalance = stod(vClientData[4]);
-    }
+
     return Client;
 }
 
@@ -124,7 +122,7 @@ void PrintClientCard(sClientInfo Client)
     cout << "\nAccount Blalance : " << Client.AccountBalance;
     cout << "\n";
 }
-bool FindClientByAccountNumber(string AccountNumber, vector<sClientInfo> vClients, sClientInfo &Client)
+bool FindClientByAccountNumber(string AccountNumber, vector<sClientInfo> &vClients, sClientInfo &Client)
 {
 
     for (sClientInfo &C : vClients)
@@ -153,7 +151,7 @@ bool MarkClintForDeleteByAccountNumber(string AccountNumber, vector<sClientInfo>
 
     return false;
 }
-vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo> vClient)
+vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo>& vClient)
 {
     fstream MyFile;
 
