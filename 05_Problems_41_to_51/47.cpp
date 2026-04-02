@@ -24,7 +24,7 @@ sClientInfo ReadNewClient()
 {
     sClientInfo Client;
 
-    cout << "Please Enter Client Data:\n";
+    cout << "Adding New Client:\n";
     cout << "-----------------------\n";
 
     cout << "Enter Account Number: ";
@@ -58,15 +58,15 @@ string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
     return stClientRecord;
 }
 
-string AddClintToFile(sClientInfo Clint){
+void AddNewClient(sClientInfo Clint){
 
     ConvertRecordToLine(Clint);
 
-    
+
 
 }
 
-void StratAdd()
+void AddClients()
 {
 
     char AddMore = 'Y';
@@ -75,15 +75,15 @@ void StratAdd()
     {
         sClientInfo Client;
         Client = ReadNewClient();
-        AddClintToFile(Client);
-        cout << "\nClint Added Seccessfully, \nDo You Want To Add More Client ? (Y/N): ";
+        AddNewClient(Client);
+        cout << "\nClint Added Seccessfully.\nDo You Want To Add More Client ? (Y/N): ";
         cin >> AddMore;
     } while (AddMore == 'Y' || AddMore == 'y');
 }
 
 int main()
 {
-    StratAdd();
+    AddClients();
 
     return 0;
 }
