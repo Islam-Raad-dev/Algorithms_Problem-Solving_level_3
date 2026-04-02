@@ -20,73 +20,54 @@ struct sClientInfo
     double AccountBalance;
 };
 
-vector<string> SplitString(string S1, string delim)
-{
-    vector<string> vString;
-
-    short pos = 0;
-    string sword;
-
-    while ((pos = S1.find(delim)) != std::string::npos)
-    {
-        sword = S1.substr(0, pos);
-
-        if (sword != "")
-        {
-            vString.push_back(sword);
-        }
-
-        S1.erase(0, pos + delim.length());
-    }
-
-    if (S1 != "")
-    {
-        vString.push_back(S1);
-    }
-
-    return vString;
-}
-
-sClientInfo ConvertLineDataToRecord(string Line, string Seperator = "#//#")
+sClientInfo ReadNewClient()
 {
     sClientInfo Client;
 
-    vector<string> vClientData;
+    cout << "Please Enter Client Data:\n";
+    cout << "-----------------------\n";
 
-    vClientData = SplitString(Line, Seperator);
+    cout << "Enter Account Number: ";
+    getline(cin, Client.AccountNumber);
 
-    Client.AccountNumber = vClientData[0];
-    Client.PinCode = vClientData[1];
-    Client.FullName = vClientData[2];
-    Client.PhoneNumber = vClientData[3];
-    Client.AccountBalance = stod(vClientData[4]);
+    cout << "\nEnter Your PINCODE: ";
+    getline(cin, Client.PinCode);
+
+    cout << "\nEnter Your Full Name: ";
+    getline(cin, Client.FullName);
+
+    cout << "\nEnter Your Phone Number: ";
+    getline(cin, Client.PhoneNumber);
+
+    cout << "\nEnter Your Account Balance: ";
+    cin >> Client.AccountBalance;
 
     return Client;
 }
 
-void PrintClientRecord(sClientInfo Client)
+string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
 {
+    string stClientRecord = "";
 
-    cout << "\n\nThe Following is The Clint Recoed:\n";
-    cout << "\nAccount Number   : " << Client.AccountNumber;
-    cout << "\nPINCODE          : " << Client.PinCode;
-    cout << "\nFull Name        : " << Client.FullName;
-    cout << "\nPhone Number     : " << Client.PhoneNumber;
-    cout << "\nAccount Blalance : " << Client.AccountBalance;
-    cout << "\n";
+    stClientRecord += Clint.AccountNumber + Sepreator;
+    stClientRecord += Clint.PinCode + Sepreator;
+    stClientRecord += Clint.FullName + Sepreator;
+    stClientRecord += Clint.PhoneNumber + Sepreator;
+    stClientRecord += to_string(Clint.AccountBalance);
+
+    return stClientRecord;
 }
 
 int main()
 {
 
-    string sLine = "A150#//#1234#//#Islam Raad#//#07783234#//#5270.000000";
+    sClientInfo Client;
+    Client = ReadNewClient();
 
-    cout << "\nLine Record is: \n\n";
-    cout << sLine;
+    cout << "\nClient Record For Saving is: \n\n";
 
-    sClientInfo Client = ConvertLineDataToRecord(sLine);
-
-    PrintClientRecord(Client);
+    cout << ConvertRecordToLine(Client) << "\n"
+         << endl;
 
     return 0;
 }
