@@ -44,7 +44,7 @@ sClientInfo ReadNewClient()
     return Client;
 }
 
-string ConvertLineDataToRecord(sClientInfo Clint, string Sepreator = "#//#")
+string ConvertLineDataToRecord(string Line)
 {
     string stClientRecord = "";
 
@@ -57,18 +57,23 @@ string ConvertLineDataToRecord(sClientInfo Clint, string Sepreator = "#//#")
     return stClientRecord;
 }
 
+void PrintClientRecord(sClientInfo Client){
+
+
+}
+
 int main()
 {
 
-    const string LineRecord = "A150#//#1234#//#Islam Raad#//#07783234#//#5270.000000";
+    string sLine = "A150#//#1234#//#Islam Raad#//#07783234#//#5270.000000";
 
-    sClientInfo Client;
-    Client = ReadNewClient();
+    cout<<"\nLine Record is: \n";
+    cout<< sLine;
 
-    cout << "\nThe Following is The Extracted Clint Record: \n\n";
+    sClientInfo Client = ConvertLineDataToRecord(sLine);
 
-    cout << ConvertLineDataToRecord(Client) << "\n"
-         << endl;
+    PrintClientRecord(Client);
 
+    
     return 0;
 }
