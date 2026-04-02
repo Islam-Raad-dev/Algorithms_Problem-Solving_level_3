@@ -99,6 +99,15 @@ vector<sClientInfo> DeleteClint()
 {
 }
 
+void PrintClientRecordLine(sClientInfo Client)
+{
+    cout << "| " << setw(15) << left << Client.AccountNumber;
+    cout << "| " << setw(10) << left << Client.PinCode;
+    cout << "| " << setw(40) << left << Client.FullName;
+    cout << "| " << setw(12) << left << Client.PhoneNumber;
+    cout << "| " << setw(12) << left << Client.AccountBalance;
+}
+
 void PrintClientCard(sClientInfo Client)
 {
 
@@ -139,6 +148,30 @@ bool MarkClintForDeleteByAccountNumber(string AccountNumber, vector<sClientInfo>
 
     return false;
 }
+vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo> vClient)
+{
+    fstream MyFile;
+
+    MyFile.open(FileName, ios::out);
+
+    string DataLine;
+
+    if (MyFile.is_open())
+    {
+        for (sClientInfo C : vClient)
+        {
+            if (C.MarkForDelete == false)
+            {
+                DataLine = ConvertRecordToLine(C);
+                MyFile << DataLine << endl;
+            }
+        }
+
+        MyFile.close();
+    }
+
+    return vClient;
+}
 bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> vClient)
 {
 
@@ -155,12 +188,20 @@ bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> vClien
 
         if (Answer == 'y' || Answer == 'Y')
         {
-            MarkClintForDeleteByAccountNumber()
+            MarkClintForDeleteByAccountNumber(AccountNumber, vClient);
 
-                vClient = LoadDataFromFile(ClientsFileName);
+            SaveClientDataToFile(ClientsFileName, vClient);
+
+            vClient = LoadDataFromFile(ClientsFileName);
 
             cout << "\n\nCleint Delete Succesfuly.\n";
+
+            return true;
         }
+    }
+    else
+    {
+        cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n";
     }
 }
 
