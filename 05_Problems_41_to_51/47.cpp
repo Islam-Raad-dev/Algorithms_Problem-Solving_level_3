@@ -6,7 +6,7 @@ Add Clients To File
 #include <iostream>
 #include <string>
 #include <vector>
-#include<fstream>
+#include <fstream>
 
 using namespace std;
 
@@ -58,16 +58,24 @@ string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
     return stClientRecord;
 }
 
-int main()
+void StratAdd()
 {
 
     sClientInfo Client;
     Client = ReadNewClient();
+    char AddMore = 'Y';
 
-    cout << "\nClient Record For Saving is: \n\n";
+    do
+    {
 
-    cout << ConvertRecordToLine(Client) << "\n"
-         << endl;
+        cout << "\nClint Added Seccessfully, \nDo You Want To Add More Client ? (Y/N): ";
+        cin >> AddMore;
+    } while (AddMore == 'Y' || AddMore == 'y');
+}
+
+int main()
+{
+    StratAdd();
 
     return 0;
 }
