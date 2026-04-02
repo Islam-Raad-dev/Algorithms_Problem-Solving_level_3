@@ -81,7 +81,6 @@ vector<sClientInfo> LoadDataFromFile(string FileName)
     return vClients;
 }
 
-// دالة مخصصة لطباعة السطر بتنسيق جدولي
 void PrintClientRecordLine(sClientInfo Client)
 {
     cout << "| " << setw(15) << left << Client.AccountNumber;
