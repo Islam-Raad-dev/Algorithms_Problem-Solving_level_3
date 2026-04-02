@@ -19,47 +19,53 @@ struct sClientInfo
     double AccountBalance;
 };
 
-sClientInfo ReadNewClient()
+vector<string> SplitString(string S1, string delim)
+{
+    vector<string> vString;
+
+    short pos = 0;
+    string sword;
+
+    while ((pos = S1.find(delim)) != std::string::npos)
+    {
+        sword = S1.substr(0, pos);
+
+        if (sword != "")
+        {
+            vString.push_back(sword);
+        }
+
+        S1.erase(0, pos + delim.length());
+    }
+
+    if (S1 != "")
+    {
+        vString.push_back(S1);
+    }
+
+    return vString;
+}
+
+sClientInfo ConvertLineDataToRecord(string Line, string Seperator = "#//#")
 {
     sClientInfo Client;
 
-    cout << "Please Enter Client Data:\n";
-    cout << "-----------------------\n";
+    vector<string> vClientData;
 
-    cout << "Enter Account Number: ";
-    getline(cin, Client.AccountNumber);
+    vClientData = SplitString(Line, Seperator);
 
-    cout << "\nEnter Your PINCODE: ";
-    getline(cin, Client.PinCode);
-
-    cout << "\nEnter Your Full Name: ";
-    getline(cin, Client.FullName);
-
-    cout << "\nEnter Your Phone Number: ";
-    getline(cin, Client.PhoneNumber);
-
-    cout << "\nEnter Your Account Balance: ";
-    cin >> Client.AccountBalance;
+    Client.AccountNumber = vClientData[0];
+    Client.PinCode = vClientData[1];
+    Client.FullName = vClientData[2];
+    Client.PhoneNumber = vClientData[3];
+    Client.AccountBalance = stod(vClientData[4]);
 
     return Client;
 }
 
-string ConvertLineDataToRecord(string Line)
+void PrintClientRecord(sClientInfo Client)
 {
-    string stClientRecord = "";
-
-    stClientRecord += Clint.AccountNumber + Sepreator;
-    stClientRecord += Clint.PinCode + Sepreator;
-    stClientRecord += Clint.FullName + Sepreator;
-    stClientRecord += Clint.PhoneNumber + Sepreator;
-    stClientRecord += to_string(Clint.AccountBalance);
-
-    return stClientRecord;
-}
-
-void PrintClientRecord(sClientInfo Client){
-
-
+    
 }
 
 int main()
@@ -67,13 +73,12 @@ int main()
 
     string sLine = "A150#//#1234#//#Islam Raad#//#07783234#//#5270.000000";
 
-    cout<<"\nLine Record is: \n";
-    cout<< sLine;
+    cout << "\nLine Record is: \n";
+    cout << sLine;
 
     sClientInfo Client = ConvertLineDataToRecord(sLine);
 
     PrintClientRecord(Client);
 
-    
     return 0;
 }
