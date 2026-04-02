@@ -214,7 +214,7 @@ int main()
 {
 
     vector<sClientInfo> vClient = LoadDataFromFile(ClientsFileName);
-    string AccountNumber = ReadCleintAccountNumber();
+    string AccountNumber = ReadClientAccountNumber();
 
     DeleteClintByAccountNumber(AccountNumber, vClient);
 
