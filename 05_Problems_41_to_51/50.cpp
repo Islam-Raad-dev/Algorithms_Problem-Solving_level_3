@@ -172,7 +172,7 @@ vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo> vC
 
     return vClient;
 }
-bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> vClient)
+bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo>&vClient)
 {
 
     sClientInfo Client;
@@ -203,6 +203,8 @@ bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> vClien
     {
         cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n";
     }
+
+    return false;
 }
 
 int main()
