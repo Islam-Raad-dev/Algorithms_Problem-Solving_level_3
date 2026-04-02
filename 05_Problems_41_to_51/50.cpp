@@ -75,7 +75,7 @@ vector<sClientInfo> LoadDataFromFile(string FileName)
 
     fstream MyFile;
 
-    MyFile.open(FileName, ios::in);
+    MyFile.open(FileName, ios::in); //Read Mode
 
     if (MyFile.is_open())
     {
@@ -126,7 +126,7 @@ bool FindClientByAccountNumber(string AccountNumber, sClientInfo &Client)
     return false;
 }
 
-void DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> vClient)
+bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> vClient)
 {
 
     char AddMore = 'Y';
@@ -135,13 +135,13 @@ void DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> vClien
     {
         system("clear");
 
-        PrintClientCard(Client);
-
         cout << "\nAre You Sure You Want To Delete This Client(Y/N): ";
         cin >> AddMore;
 
     } while (toupper(AddMore) == 'Y');
 }
+
+
 int main()
 {
 
