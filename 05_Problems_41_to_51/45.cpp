@@ -9,61 +9,64 @@ Convert Record To Line
 
 using namespace std;
 
-struct ClintInfo
+struct sClientInfo
 {
 
-    int AccountNumber;
-    short PinCode;
+    string AccountNumber;
+    string PinCode;
     string FullName;
-    int PhoneNumber;
-    float AccountBalance;
+    string PhoneNumber;
+    double AccountBalance;
 };
 
-ClintInfo ReadClintInfo()
+sClientInfo ReadNewClient()
 {
-    ClintInfo Info;
+    sClientInfo Client;
 
-    cout << "Please Enter Clint Data:\n";
-    cout << "\n-----------------------\n";
+    cout << "Please Enter Client Data:\n";
+    cout << "-----------------------\n";
 
     cout << "Enter Account Number: ";
-    cin >> Info.AccountNumber;
+    getline(cin, Client.AccountNumber);
 
     cout << "\nEnter Your PINCODE: ";
-    cin >> Info.PinCode;
+    getline(cin, Client.PinCode);
 
     cout << "\nEnter Your Full Name: ";
-    getline(cin, Info.FullName);
+    getline(cin, Client.FullName);
 
     cout << "\nEnter Your Phone Number: ";
-    cin >> Info.PhoneNumber;
+    getline(cin, Client.PhoneNumber);
 
     cout << "\nEnter Your Account Balance: ";
-    cin >> Info.AccountBalance;
+    cin >> Client.AccountBalance;
 
-    return Info;
+    return Client;
 }
 
-string ConvertRecordToLine(ClintInfo Clint, string delim)
+string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
 {
-    string S1;
+    string stClientRecord = "";
 
-    for (string &s : vString)
-    {
-        S1 = S1 + s + delim;
-    }
+    stClientRecord += Clint.AccountNumber + Sepreator;
+    stClientRecord += Clint.PinCode + Sepreator;
+    stClientRecord += Clint.FullName + Sepreator;
+    stClientRecord += Clint.PhoneNumber + Sepreator;
+    stClientRecord += to_string(Clint.AccountBalance);
 
-    return S1.substr(0, S1.length() - delim.length());
+    return stClientRecord;
 }
 
 int main()
 {
 
-    ClintInfo Clint;
-    Clint = ReadClintInfo();
+    sClientInfo Client;
+    Client = ReadNewClient();
 
-    cout << "\nClint Record For Saving is: \n";
-    cout << ConvertRecordToLine(Clint, "#//") << endl;
+    cout << "\nClient Record For Saving is: \n\n";
+
+    cout << ConvertRecordToLine(Client) << "\n"
+         << endl;
 
     return 0;
 }
