@@ -19,11 +19,12 @@ struct ClintInfo
     float AccountBalance;
 };
 
-int ReadClintInfo(ClintInfo Info)
+ClintInfo ReadClintInfo()
 {
+    ClintInfo Info;
 
-    cout<<"Please Enter Clint Data:\n";
-    cout<<"\n-----------------------\n";
+    cout << "Please Enter Clint Data:\n";
+    cout << "\n-----------------------\n";
 
     cout << "Enter Account Number: ";
     cin >> Info.AccountNumber;
@@ -43,7 +44,7 @@ int ReadClintInfo(ClintInfo Info)
     return Info;
 }
 
-string JoinString(vector<string> vString, string delim)
+string ConvertRecordToLine(ClintInfo Clint, string delim)
 {
     string S1;
 
@@ -58,11 +59,11 @@ string JoinString(vector<string> vString, string delim)
 int main()
 {
 
-    ClintInfo Info;
-    vector<string> vString;
+    ClintInfo Clint;
+    Clint = ReadClintInfo();
 
     cout << "\nClint Record For Saving is: \n";
-    cout << JoinString(vString, "#//") << endl;
+    cout << ConvertRecordToLine(Clint, "#//") << endl;
 
     return 0;
 }
