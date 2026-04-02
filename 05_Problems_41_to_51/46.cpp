@@ -65,7 +65,14 @@ sClientInfo ConvertLineDataToRecord(string Line, string Seperator = "#//#")
 
 void PrintClientRecord(sClientInfo Client)
 {
-    
+
+    cout << "\n\nThe Following is The Clint Recoed:\n";
+    cout << "\nAccount Number   : " << Client.AccountNumber;
+    cout << "\nPINCODE          : " << Client.PinCode;
+    cout << "\nFull Name        : " << Client.FullName;
+    cout << "\nPhone Number     : " << Client.PhoneNumber;
+    cout << "\nAccount Blalance : " << Client.AccountBalance;
+    cout << "\n";
 }
 
 int main()
@@ -73,7 +80,7 @@ int main()
 
     string sLine = "A150#//#1234#//#Islam Raad#//#07783234#//#5270.000000";
 
-    cout << "\nLine Record is: \n";
+    cout << "\nLine Record is: \n\n";
     cout << sLine;
 
     sClientInfo Client = ConvertLineDataToRecord(sLine);
