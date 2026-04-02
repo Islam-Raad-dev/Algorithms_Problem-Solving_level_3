@@ -1,6 +1,6 @@
 /*
 
-Convert Record Ta Line
+Convert Record To Line
 
 */
 #include <iostream>
