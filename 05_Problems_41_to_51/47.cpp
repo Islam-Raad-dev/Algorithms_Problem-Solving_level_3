@@ -58,16 +58,24 @@ string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
     return stClientRecord;
 }
 
+string AddClintToFile(sClientInfo Clint){
+
+    ConvertRecordToLine(Clint);
+
+    
+
+}
+
 void StratAdd()
 {
 
-    sClientInfo Client;
-    Client = ReadNewClient();
     char AddMore = 'Y';
 
     do
     {
-
+        sClientInfo Client;
+        Client = ReadNewClient();
+        AddClintToFile(Client);
         cout << "\nClint Added Seccessfully, \nDo You Want To Add More Client ? (Y/N): ";
         cin >> AddMore;
     } while (AddMore == 'Y' || AddMore == 'y');
