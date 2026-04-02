@@ -10,6 +10,8 @@ Add Clients To File
 
 using namespace std;
 
+const string ClientsFileName = "Clients.txt";
+
 struct sClientInfo
 {
 
@@ -28,7 +30,7 @@ sClientInfo ReadNewClient()
     cout << "-----------------------\n";
 
     cout << "Enter Account Number: ";
-    getline(cin, Client.AccountNumber);
+    getline(cin >> ws, Client.AccountNumber);
 
     cout << "\nEnter Your PINCODE: ";
     getline(cin, Client.PinCode);
@@ -58,12 +60,28 @@ string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
     return stClientRecord;
 }
 
-void AddNewClient(sClientInfo Clint){
+void AddClientToFile(string FileName, string stDataLine)
+{
+    fstream MyFile;
 
-    ConvertRecordToLine(Clint);
+    MyFile.open(FileName, ios::out | ios::app);
 
+    if (MyFile.is_open())
+    {
 
+        MyFile << stDataLine << endl;
 
+        MyFile.close();
+    }
+}
+
+void AddNewClient()
+{
+    sClientInfo Client;
+
+    Client = ReadNewClient();
+
+    AddClientToFile(ClientsFileName, ConvertRecordToLine(Client));
 }
 
 void AddClients()
@@ -73,12 +91,14 @@ void AddClients()
 
     do
     {
-        sClientInfo Client;
-        Client = ReadNewClient();
-        AddNewClient(Client);
+        system("clear");
+
+        AddNewClient();
+
         cout << "\nClint Added Seccessfully.\nDo You Want To Add More Client ? (Y/N): ";
         cin >> AddMore;
-    } while (AddMore == 'Y' || AddMore == 'y');
+
+    } while (toupper(AddMore) == 'Y');
 }
 
 int main()
