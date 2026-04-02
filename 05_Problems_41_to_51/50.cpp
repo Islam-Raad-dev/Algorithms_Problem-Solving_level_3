@@ -94,8 +94,8 @@ vector<sClientInfo> LoadDataFromFile(string FileName)
     return vClients;
 }
 
-vector<sClientInfo> DeleteClint(){
-
+vector<sClientInfo> DeleteClint()
+{
 }
 
 void PrintClientCard(sClientInfo Client)
@@ -126,7 +126,8 @@ bool FindClientByAccountNumber(string AccountNumber, sClientInfo &Client)
     return false;
 }
 
-void DeleteClints(){
+void DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> vClient)
+{
 
     char AddMore = 'Y';
 
@@ -134,29 +135,20 @@ void DeleteClints(){
     {
         system("clear");
 
-        AddNewClient();
+        PrintClientCard(Client);
 
-        cout << "\nClint Added Seccessfully.\nDo You Want To Add More Client ? (Y/N): ";
+        cout << "\nAre You Sure You Want To Delete This Client(Y/N): ";
         cin >> AddMore;
 
     } while (toupper(AddMore) == 'Y');
 }
 int main()
 {
-    sClientInfo Client;
 
+    vector<sClientInfo> vClient = LoadDataFromFile(ClientsFileName);
     string AccountNumber = ReadCleintAccountNumber();
 
-    if (FindClientByAccountNumber(AccountNumber, Client))
-    {
-
-        PrintClientCard(Client);
-    }
-
-    else
-    {
-        cout << "\nClient With Account Number [" << AccountNumber << "] Is Not Fond.\n";
-    }
+    DeleteClintByAccountNumber(AccountNumber, vClient);
 
     return 0;
 }
