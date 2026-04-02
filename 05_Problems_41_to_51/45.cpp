@@ -22,19 +22,22 @@ struct ClintInfo
 int ReadClintInfo(ClintInfo Info)
 {
 
+    cout<<"Please Enter Clint Data:\n";
+    cout<<"\n-----------------------\n";
+
     cout << "Enter Account Number: ";
     cin >> Info.AccountNumber;
 
-    cout << "Enter Your PINCODE: ";
+    cout << "\nEnter Your PINCODE: ";
     cin >> Info.PinCode;
 
-    cout << "Enter Your Full Name: ";
+    cout << "\nEnter Your Full Name: ";
     getline(cin, Info.FullName);
 
-    cout << "Enter Your Phone Number: ";
+    cout << "\nEnter Your Phone Number: ";
     cin >> Info.PhoneNumber;
 
-    cout << "Enter Your Account Balance: ";
+    cout << "\nEnter Your Account Balance: ";
     cin >> Info.AccountBalance;
 
     return Info;
