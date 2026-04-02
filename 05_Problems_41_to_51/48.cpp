@@ -7,6 +7,7 @@ Show All Clients
 #include <string>
 #include <vector>
 #include <fstream>
+#include<iomanip>
 
 using namespace std;
 
@@ -22,29 +23,31 @@ struct sClientInfo
     double AccountBalance;
 };
 
-sClientInfo ReadNewClient()
+vector<string> SplitString(string S1, string delim)
 {
-    sClientInfo Client;
+    vector<string> vString;
 
-    cout << "Adding New Client:\n";
-    cout << "-----------------------\n";
+    short pos = 0;
+    string sword;
 
-    cout << "Enter Account Number: ";
-    getline(cin >> ws, Client.AccountNumber);
+    while ((pos = S1.find(delim)) != std::string::npos)
+    {
+        sword = S1.substr(0, pos);
 
-    cout << "\nEnter Your PINCODE: ";
-    getline(cin, Client.PinCode);
+        if (sword != "")
+        {
+            vString.push_back(sword);
+        }
 
-    cout << "\nEnter Your Full Name: ";
-    getline(cin, Client.FullName);
+        S1.erase(0, pos + delim.length());
+    }
 
-    cout << "\nEnter Your Phone Number: ";
-    getline(cin, Client.PhoneNumber);
+    if (S1 != "")
+    {
+        vString.push_back(S1);
+    }
 
-    cout << "\nEnter Your Account Balance: ";
-    cin >> Client.AccountBalance;
-
-    return Client;
+    return vString;
 }
 
 string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
@@ -60,50 +63,24 @@ string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
     return stClientRecord;
 }
 
-void AddClientToFile(string FileName, string stDataLine)
-{
-    fstream MyFile;
+vector<string> LoadDataFromFile(string FileName){
 
-    MyFile.open(FileName, ios::out | ios::app);
-
-    if (MyFile.is_open())
-    {
-
-        MyFile << stDataLine << endl;
-
-        MyFile.close();
-    }
 }
 
-void AddNewClient()
-{
-    sClientInfo Client;
+void PrintClientRecord(sClientInfo Client){
 
-    Client = ReadNewClient();
-
-    AddClientToFile(ClientsFileName, ConvertRecordToLine(Client));
 }
 
-void AddClients()
-{
+void PrintAllClirntData(vector<string> vClient){
 
-    char AddMore = 'Y';
-
-    do
-    {
-        system("clear");
-
-        AddNewClient();
-
-        cout << "\nClint Added Seccessfully.\nDo You Want To Add More Client ? (Y/N): ";
-        cin >> AddMore;
-
-    } while (toupper(AddMore) == 'Y');
 }
 
 int main()
 {
-    AddClients();
+    vector<string> vClient;
+    vClient = PrintClientRecord(Cl);
+
+    PrintAllClirntData(vClient);
 
     return 0;
 }
