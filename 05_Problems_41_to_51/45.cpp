@@ -16,7 +16,7 @@ struct ClintInfo
     short PinCode;
     string FullName;
     int PhoneNumber;
-    int AccountBalance;
+    float AccountBalance;
 };
 
 int ReadClintInfo(ClintInfo Info)
