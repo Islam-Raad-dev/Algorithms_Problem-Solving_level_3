@@ -50,21 +50,42 @@ vector<string> SplitString(string S1, string delim)
     return vString;
 }
 
-string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
+sClientInfo ConvertLineDataToRecord(string Line, string Seperator = "#//#")
 {
-    string stClientRecord = "";
+    sClientInfo Client;
 
-    stClientRecord += Clint.AccountNumber + Sepreator;
-    stClientRecord += Clint.PinCode + Sepreator;
-    stClientRecord += Clint.FullName + Sepreator;
-    stClientRecord += Clint.PhoneNumber + Sepreator;
-    stClientRecord += to_string(Clint.AccountBalance);
+    vector<string> vClientData;
 
-    return stClientRecord;
+    vClientData = SplitString(Line, Seperator);
+
+    Client.AccountNumber = vClientData[0];
+    Client.PinCode = vClientData[1];
+    Client.FullName = vClientData[2];
+    Client.PhoneNumber = vClientData[3];
+    Client.AccountBalance = stod(vClientData[4]);
+
+    return Client;
 }
 
 vector<string> LoadDataFromFile(string FileName)
 {
+    vector<string> vClient;
+
+    fstream MyFile;
+
+    MyFile.open(FileName, ios::in);
+
+    if (MyFile.is_open())
+    {
+
+        string Line;
+        sClientInfo Client;
+
+        while (getline(MyFile, Line))
+        {
+            Client = ConvertLineDataToRecord(Line);
+        }
+    }
 }
 
 void PrintClientRecord(sClientInfo Client)
