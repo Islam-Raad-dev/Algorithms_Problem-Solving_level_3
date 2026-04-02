@@ -94,6 +94,10 @@ vector<sClientInfo> LoadDataFromFile(string FileName)
     return vClients;
 }
 
+vector<sClientInfo> DeleteClint(){
+
+}
+
 void PrintClientCard(sClientInfo Client)
 {
 
@@ -122,6 +126,21 @@ bool FindClientByAccountNumber(string AccountNumber, sClientInfo &Client)
     return false;
 }
 
+void DeleteClints(){
+
+    char AddMore = 'Y';
+
+    do
+    {
+        system("clear");
+
+        AddNewClient();
+
+        cout << "\nClint Added Seccessfully.\nDo You Want To Add More Client ? (Y/N): ";
+        cin >> AddMore;
+
+    } while (toupper(AddMore) == 'Y');
+}
 int main()
 {
     sClientInfo Client;
