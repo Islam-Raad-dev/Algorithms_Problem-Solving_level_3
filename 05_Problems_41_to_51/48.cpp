@@ -7,7 +7,7 @@ Show All Clients
 #include <string>
 #include <vector>
 #include <fstream>
-#include<iomanip>
+#include <iomanip>
 
 using namespace std;
 
@@ -63,22 +63,21 @@ string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
     return stClientRecord;
 }
 
-vector<string> LoadDataFromFile(string FileName){
-
+vector<string> LoadDataFromFile(string FileName)
+{
 }
 
-void PrintClientRecord(sClientInfo Client){
-
+void PrintClientRecord(sClientInfo Client)
+{
 }
 
-void PrintAllClirntData(vector<string> vClient){
-
+void PrintAllClirntData(vector<string> vClient)
+{
 }
 
 int main()
 {
-    vector<string> vClient;
-    vClient = PrintClientRecord(Cl);
+    vector<string> vClient = LoadDataFromFile(ClientsFileName);
 
     PrintAllClirntData(vClient);
 
