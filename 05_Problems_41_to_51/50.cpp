@@ -43,10 +43,14 @@ vector<string> SplitString(string S1, string delim)
     {
         sword = S1.substr(0, pos);
         if (sword != "")
-            vString.push_back(sword);
+
+        vString.push_back(sword);
+
         S1.erase(0, pos + delim.length());
     }
+
     if (S1 != "")
+
     {
         vString.push_back(S1);
     }
@@ -57,6 +61,7 @@ vector<string> SplitString(string S1, string delim)
 sClientInfo ConvertLineDataToRecord(string Line, string Seperator = "#//#")
 {
     sClientInfo Client;
+
     vector<string> vClientData = SplitString(Line, Seperator);
 
     if (vClientData.size() == 5)
@@ -95,17 +100,17 @@ vector<sClientInfo> LoadDataFromFile(string FileName)
     return vClients;
 }
 
-vector<sClientInfo> DeleteClint()
+string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
 {
-}
+    string stClientRecord = "";
 
-void PrintClientRecordLine(sClientInfo Client)
-{
-    cout << "| " << setw(15) << left << Client.AccountNumber;
-    cout << "| " << setw(10) << left << Client.PinCode;
-    cout << "| " << setw(40) << left << Client.FullName;
-    cout << "| " << setw(12) << left << Client.PhoneNumber;
-    cout << "| " << setw(12) << left << Client.AccountBalance;
+    stClientRecord += Clint.AccountNumber + Sepreator;
+    stClientRecord += Clint.PinCode + Sepreator;
+    stClientRecord += Clint.FullName + Sepreator;
+    stClientRecord += Clint.PhoneNumber + Sepreator;
+    stClientRecord += to_string(Clint.AccountBalance);
+
+    return stClientRecord;
 }
 
 void PrintClientCard(sClientInfo Client)
@@ -158,7 +163,7 @@ vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo> vC
 
     if (MyFile.is_open())
     {
-        for (sClientInfo C : vClient)
+        for (sClientInfo &C : vClient)
         {
             if (C.MarkForDelete == false)
             {
@@ -172,7 +177,7 @@ vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo> vC
 
     return vClient;
 }
-bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo>&vClient)
+bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClient)
 {
 
     sClientInfo Client;
