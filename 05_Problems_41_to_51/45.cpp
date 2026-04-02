@@ -22,7 +22,7 @@ struct ClintInfo
 int ReadClintInfo(ClintInfo Info)
 {
 
-    cout << "Enter Your Number: ";
+    cout << "Enter Account Number: ";
     cin >> Info.AccountNumber;
 
     cout << "Enter Your PINCODE: ";
