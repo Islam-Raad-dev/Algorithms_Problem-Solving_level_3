@@ -1,6 +1,6 @@
 /*
 
-Find Client By Account Number
+Delete Client By Account Number
 
 */
 #include <iostream>
