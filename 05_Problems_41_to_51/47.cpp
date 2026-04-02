@@ -6,6 +6,7 @@ Add Clients To File
 #include <iostream>
 #include <string>
 #include <vector>
+#include<fstream>
 
 using namespace std;
 
