@@ -69,7 +69,7 @@ sClientInfo ConvertLineDataToRecord(string Line, string Seperator = "#//#")
 
 vector<string> LoadDataFromFile(string FileName)
 {
-    vector<string> vClient;
+    vector<string> vClients;
 
     fstream MyFile;
 
@@ -84,7 +84,11 @@ vector<string> LoadDataFromFile(string FileName)
         while (getline(MyFile, Line))
         {
             Client = ConvertLineDataToRecord(Line);
+
+            vClients.push_back(Client);
         }
+
+        MyFile.close();
     }
 }
 
