@@ -56,8 +56,10 @@ int main()
 {
 
     ClintInfo Info;
+    vector<string> vString;
 
     cout << "\nClint Record For Saving is: \n";
+    cout << JoinString(vString, "#//") << endl;
 
     return 0;
 }
