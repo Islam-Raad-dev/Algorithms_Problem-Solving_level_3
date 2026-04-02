@@ -20,6 +20,7 @@ struct sClientInfo
     string FullName;
     string PhoneNumber;
     double AccountBalance;
+    bool MarkForDelete = false;
 };
 
 string ReadCleintAccountNumber()
@@ -75,7 +76,7 @@ vector<sClientInfo> LoadDataFromFile(string FileName)
 
     fstream MyFile;
 
-    MyFile.open(FileName, ios::in); //Read Mode
+    MyFile.open(FileName, ios::in); // Read Mode
 
     if (MyFile.is_open())
     {
@@ -112,8 +113,6 @@ void PrintClientCard(sClientInfo Client)
 bool FindClientByAccountNumber(string AccountNumber, vector<sClientInfo> vClients, sClientInfo &Client)
 {
 
-    vector<sClientInfo> vClients = LoadDataFromFile(ClientsFileName);
-
     for (sClientInfo &C : vClients)
     {
 
@@ -125,21 +124,43 @@ bool FindClientByAccountNumber(string AccountNumber, vector<sClientInfo> vClient
     }
     return false;
 }
+bool MarkClintForDeleteByAccountNumber(string AccountNumber, vector<sClientInfo> &vClient)
+{
 
+    for (sClientInfo &C : vClient)
+    {
+        if (C.AccountNumber == AccountNumber)
+        {
+            C.MarkForDelete = true;
+
+            return true;
+        }
+    }
+
+    return false;
+}
 bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> vClient)
 {
 
     sClientInfo Client;
-    char Answer  = 'n';
+    char Answer = 'n';
 
-    if(FindClientByAccountNumber(AccountNumber, vClient, Client)){
+    if (FindClientByAccountNumber(AccountNumber, vClient, Client))
+    {
 
         PrintClientCard(Client);
 
-        cout<<"\nAre You Sure That You Want To Delete This Client? (Y/N)";
-        cin>>Answer;
+        cout << "\nAre You Sure That You Want To Delete This Client? (Y/N)";
+        cin >> Answer;
 
-        
+        if (Answer == 'y' || Answer == 'Y')
+        {
+            MarkClintForDeleteByAccountNumber()
+
+                vClient = LoadDataFromFile(ClientsFileName);
+
+            cout << "\n\nCleint Delete Succesfuly.\n";
+        }
     }
 }
 
