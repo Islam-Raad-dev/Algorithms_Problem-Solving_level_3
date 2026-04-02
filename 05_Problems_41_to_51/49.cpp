@@ -22,11 +22,12 @@ struct sClientInfo
     double AccountBalance;
 };
 
-string ReadCleintAccountNumber(){
+string ReadCleintAccountNumber()
+{
     string AccountNumber;
 
-    cout<<"Please Enter Account Number: ";
-    cin>>AccountNumber;
+    cout << "Please Enter Account Number: ";
+    cin >> AccountNumber;
 
     return AccountNumber;
 }
@@ -71,7 +72,9 @@ sClientInfo ConvertLineDataToRecord(string Line, string Seperator = "#//#")
 vector<sClientInfo> LoadDataFromFile(string FileName)
 {
     vector<sClientInfo> vClients;
+
     fstream MyFile;
+
     MyFile.open(FileName, ios::in);
 
     if (MyFile.is_open())
@@ -87,22 +90,36 @@ vector<sClientInfo> LoadDataFromFile(string FileName)
         }
         MyFile.close();
     }
+
     return vClients;
 }
 
-void PrintClientCard()
+void PrintClientCard(sClientInfo Client)
 {
 
-    sClientInfo Client;
-
-    cout << "| " << setw(15) << left << Client.AccountNumber;
-    cout << "| " << setw(10) << left << Client.PinCode;
-    cout << "| " << setw(40) << left << Client.FullName;
-    cout << "| " << setw(12) << left << Client.PhoneNumber;
-    cout << "| " << setw(12) << left << Client.AccountBalance;
+    cout << "\n\nThe Following is The Clint Recoed:\n";
+    cout << "\nAccount Number   : " << Client.AccountNumber;
+    cout << "\nPINCODE          : " << Client.PinCode;
+    cout << "\nFull Name        : " << Client.FullName;
+    cout << "\nPhone Number     : " << Client.PhoneNumber;
+    cout << "\nAccount Blalance : " << Client.AccountBalance;
+    cout << "\n";
 }
-bool FindClientByAccountNumber(string AccountNumber, sClientInfo& Client){
+bool FindClientByAccountNumber(string AccountNumber, sClientInfo &Client)
+{
 
+    vector<sClientInfo> vClients = LoadDataFromFile(ClientsFileName);
+
+    for (sClientInfo &C : vClients)
+    {
+
+        if (C.AccountNumber == AccountNumber)
+        {
+            Client = C;
+            return true;
+        }
+    }
+    return false;
 }
 
 int main()
@@ -111,14 +128,15 @@ int main()
 
     string AccountNumber = ReadCleintAccountNumber();
 
-    if(FindClientByAccountNumber(AccountNumber, Client)){
-        
-        PrintClientCard();
+    if (FindClientByAccountNumber(AccountNumber, Client))
+    {
+
+        PrintClientCard(Client);
     }
 
     else
     {
-        cout<<"\nClient With Account Number ["<<AccountNumber<<"] Is Not Fond.\n";
+        cout << "\nClient With Account Number [" << AccountNumber << "] Is Not Fond.\n";
     }
 
     return 0;
