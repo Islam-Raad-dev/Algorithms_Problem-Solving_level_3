@@ -12,8 +12,10 @@ Bank 1:
 
 using namespace std;
 
-const static string ClientsFileName = "Clients.txt"; 
-
+const static string ClientsFileName = "Clients.txt";
+struct sClientInfo{};
+sClientInfo ReadNewClient();
+string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#");
 struct sClientInfo
 {
 
@@ -22,6 +24,7 @@ struct sClientInfo
     string FullName;
     string PhoneNumber;
     double AccountBalance;
+    bool MarkForDelete = false;
 };
 
 sClientInfo ReadNewClient()
@@ -60,4 +63,10 @@ string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
     stClientRecord += to_string(Clint.AccountBalance);
 
     return stClientRecord;
+}
+
+int main()
+{
+
+    return 0;
 }
