@@ -13,6 +13,8 @@ Bank 1:
 using namespace std;
 
 const static string ClientsFileName = "Clients.txt";
+
+
 struct sClientInfo{};
 string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#");
 struct sClientInfo
