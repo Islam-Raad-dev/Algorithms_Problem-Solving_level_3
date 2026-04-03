@@ -175,9 +175,29 @@ vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo> &v
 
     return vClient;
 }
-vector<sClientInfo> ChanceClintRecord(string AccountNumber)
+
+sClientInfo ChanceClintRecord(string AccountNumber)
 {
+
+    sClientInfo Client;
+
+    Client.AccountNumber = AccountNumber;
+
+    cout << "\nEnter Your PINCODE: ";
+    getline(cin, Client.PinCode);
+
+    cout << "\nEnter Your Full Name: ";
+    getline(cin, Client.FullName);
+
+    cout << "\nEnter Your Phone Number: ";
+    getline(cin, Client.PhoneNumber);
+
+    cout << "\nEnter Your Account Balance: ";
+    cin >> Client.AccountBalance;
+
+    return Client;
 }
+
 bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClient)
 {
 
@@ -195,7 +215,7 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
         if (Answer == 'y' || Answer == 'Y')
         {
 
-            for (sClientInfo C : vClient)
+            for (sClientInfo &C : vClient)
             {
 
                 if (C.AccountNumber == AccountNumber)
@@ -204,6 +224,10 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
                     break;
                 }
             }
+
+            SaveClientDataToFile(AccountNumber, vClient);
+
+            vClient = LoadDataFromFile(ClientsFileName);
 
             cout << "\n\nCleint Updated Succesfuly.\n";
 
