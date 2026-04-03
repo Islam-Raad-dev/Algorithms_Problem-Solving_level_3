@@ -186,7 +186,7 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 
         PrintClientCard(Client);
 
-        cout << "\nAre You Sure That You Want To Delete This Client? (Y/N)";
+        cout << "\nAre You Sure That You Want To Update This Client? (Y/N)";
         cin >> Answer;
 
         if (Answer == 'y' || Answer == 'Y')
@@ -197,7 +197,7 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 
             vClient = LoadDataFromFile(ClientsFileName);
 
-            cout << "\n\nCleint Delete Succesfuly.\n";
+            cout << "\n\nCleint Updated Succesfuly.\n";
 
             return true;
         }
