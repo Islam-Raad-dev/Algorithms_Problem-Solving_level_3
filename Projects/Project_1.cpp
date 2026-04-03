@@ -14,7 +14,6 @@ using namespace std;
 
 const static string ClientsFileName = "Clients.txt";
 struct sClientInfo{};
-sClientInfo ReadNewClient();
 string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#");
 struct sClientInfo
 {
