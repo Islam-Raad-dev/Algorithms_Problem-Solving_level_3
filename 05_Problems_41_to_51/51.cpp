@@ -184,7 +184,7 @@ sClientInfo ChanceClintRecord(string AccountNumber)
     Client.AccountNumber = AccountNumber;
 
     cout << "\nEnter Your PINCODE: ";
-    getline(cin, Client.PinCode);
+    getline(cin >> ws, Client.PinCode);
 
     cout << "\nEnter Your Full Name: ";
     getline(cin, Client.FullName);
