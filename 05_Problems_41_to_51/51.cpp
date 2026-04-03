@@ -175,7 +175,7 @@ vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo> &v
 
     return vClient;
 }
-vector<sClientInfo> ChanceClintRecord(string AccountNumber, vector<sClientInfo> &vClient)
+vector<sClientInfo> ChanceClintRecord(string AccountNumber)
 {
 }
 bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClient)
@@ -200,6 +200,8 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 
                 if (C.AccountNumber == AccountNumber)
                 {
+                    C = ChanceClintRecord(AccountNumber);
+                    break;
                 }
             }
 
