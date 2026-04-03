@@ -189,7 +189,7 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
         cout << "\nAre You Sure That You Want To Update This Client? (Y/N)";
         cin >> Answer;
 
-        if (Answer == 'y' || Answer == 'Y')
+        if (Answer == 'y' || Answer == 'Y') 
         {
             MarkClintForDeleteByAccountNumber(AccountNumber, vClient);
 
