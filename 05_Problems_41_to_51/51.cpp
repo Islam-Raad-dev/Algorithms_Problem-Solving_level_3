@@ -175,6 +175,9 @@ vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo>& v
 
     return vClient;
 }
+vector <sClientInfo> UpdateClintInfo(string AccountNumber, vector<sClientInfo> &vClient){
+
+}
 bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClient)
 {
 
@@ -191,9 +194,7 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 
         if (Answer == 'y' || Answer == 'Y') 
         {
-            MarkClintForDeleteByAccountNumber(AccountNumber, vClient);
-
-            SaveClientDataToFile(ClientsFileName, vClient);
+            UpdateClintInfo(AccountNumber, vClient);
 
             vClient = LoadDataFromFile(ClientsFileName);
 
