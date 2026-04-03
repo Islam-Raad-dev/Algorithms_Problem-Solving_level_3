@@ -225,7 +225,7 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
                 }
             }
 
-            SaveClientDataToFile(AccountNumber, vClient);
+            SaveClientDataToFile(ClientsFileName, vClient);
 
             vClient = LoadDataFromFile(ClientsFileName);
 
