@@ -44,7 +44,7 @@ vector<string> SplitString(string S1, string delim)
         sword = S1.substr(0, pos);
         if (sword != "")
 
-        vString.push_back(sword);
+            vString.push_back(sword);
 
         S1.erase(0, pos + delim.length());
     }
@@ -64,11 +64,11 @@ sClientInfo ConvertLineDataToRecord(string Line, string Seperator = "#//#")
 
     vector<string> vClientData = SplitString(Line, Seperator);
 
-        Client.AccountNumber = vClientData[0];
-        Client.PinCode = vClientData[1];
-        Client.FullName = vClientData[2];
-        Client.PhoneNumber = vClientData[3];
-        Client.AccountBalance = stod(vClientData[4]);
+    Client.AccountNumber = vClientData[0];
+    Client.PinCode = vClientData[1];
+    Client.FullName = vClientData[2];
+    Client.PhoneNumber = vClientData[3];
+    Client.AccountBalance = stod(vClientData[4]);
 
     return Client;
 }
@@ -151,7 +151,7 @@ bool MarkClintForDeleteByAccountNumber(string AccountNumber, vector<sClientInfo>
 
     return false;
 }
-vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo>& vClient)
+vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo> &vClient)
 {
     fstream MyFile;
 
@@ -175,8 +175,8 @@ vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo>& v
 
     return vClient;
 }
-vector <sClientInfo> UpdateClintInfo(string AccountNumber, vector<sClientInfo> &vClient){
-
+vector<sClientInfo> UpdateClintInfo(string AccountNumber, vector<sClientInfo> &vClient)
+{
 }
 bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClient)
 {
@@ -192,20 +192,25 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
         cout << "\nAre You Sure That You Want To Update This Client? (Y/N)";
         cin >> Answer;
 
-        if (Answer == 'y' || Answer == 'Y') 
+        if (Answer == 'y' || Answer == 'Y')
         {
-            UpdateClintInfo(AccountNumber, vClient);
 
-            vClient = LoadDataFromFile(ClientsFileName);
+            for (sClientInfo C : vClient)
+            {
+
+                if (C.AccountNumber == AccountNumber)
+                {
+                }
+            }
 
             cout << "\n\nCleint Updated Succesfuly.\n";
 
-            return true; 
+            return true;
         }
     }
     else
     {
-        cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n"; 
+        cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n";
     }
 
     return false;
@@ -216,7 +221,6 @@ int main()
 
     vector<sClientInfo> vClient = LoadDataFromFile(ClientsFileName);
     string AccountNumber = ReadClientAccountNumber();
-
 
     UpdateClintByAccountNumber(AccountNumber, vClient);
 
