@@ -175,7 +175,7 @@ vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo>& v
 
     return vClient;
 }
-bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClient)
+bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClient)
 {
 
     sClientInfo Client;
@@ -216,7 +216,7 @@ int main()
     vector<sClientInfo> vClient = LoadDataFromFile(ClientsFileName);
     string AccountNumber = ReadClientAccountNumber();
 
-    DeleteClintByAccountNumber(AccountNumber, vClient);
+    UpdateClintByAccountNumber(AccountNumber, vClient);
 
     return 0;
 }
