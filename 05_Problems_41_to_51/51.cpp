@@ -175,7 +175,7 @@ vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo> &v
 
     return vClient;
 }
-vector<sClientInfo> UpdateClintInfo(string AccountNumber, vector<sClientInfo> &vClient)
+vector<sClientInfo> ChanceClintRecord(string AccountNumber, vector<sClientInfo> &vClient)
 {
 }
 bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClient)
