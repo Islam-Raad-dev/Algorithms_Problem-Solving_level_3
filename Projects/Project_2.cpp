@@ -1,28 +1,15 @@
-/*
-================================================================================
-                            (Math Quiz Game)
-================================================================================
-وصف المشروع:
-هذا البرنامج عبارة عن لعبة تفاعلية ممتعة تعمل على موجه الأوامر
-صُممت لاختبار وتطوير المهارات في العمليات الحسابية الأساسية.
-
-مميزات اللعبة:
-- مرونة التخصيص: يمكن للاعب تحديد عدد الأسئلة المطلوبة (من 1 إلى 10).
-- مستويات متعددة: تتضمن مستويات صعوبة مختلفة (سهل، متوسط، صعب، ومختلط).
-- عمليات متنوعة: تدعم الجمع، الطرح، الضرب، القسمة، أو اختيار تشكيلة عشوائية.
-- تفاعل مباشر: تعطي تقييماً فورياً لكل إجابة مع تلوين الشاشة (أخضر للصواب، أحمر للخطأ).
-- تقرير شامل: تعرض نتيجة نهائية توضح عدد الإجابات الصحيحة والخاطئة وحالة النجاح.
-
-================================================================================
-*/
 #include <iostream>
 #include <string>
 #include <cmath>
 #include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
-// تعريف مستويات الصعوبة
+// ==========================================
+// Enums & Structs
+// ==========================================
+
 enum enQuizzLevel
 {
     Easy = 1,
@@ -30,8 +17,6 @@ enum enQuizzLevel
     Hard = 3,
     MixLevel = 4
 };
-
-// تعريف أنواع العمليات الحسابية
 enum enOperationType
 {
     Add = 1,
@@ -41,7 +26,6 @@ enum enOperationType
     MixOp = 5
 };
 
-// هيكل لتمثيل السؤال الواحد
 struct stQuestions
 {
     enOperationType OperationType;
@@ -53,7 +37,6 @@ struct stQuestions
     bool AnswerResult = false;
 };
 
-// هيكل لتمثيل الاختبار بالكامل
 struct stQuizz
 {
     stQuestions QuestionsList[100];
@@ -65,56 +48,96 @@ struct stQuizz
     bool isPass = true;
 };
 
-// دالة لتوليد رقم عشوائي
+// ==========================================
+// Function Prototypes
+// ==========================================
+
+int RandomNumber(int From, int To);
+short ReadQuestionNumber();
+enQuizzLevel ReadQuestionLevel();
+enOperationType ReadOperationType();
+enOperationType GetRandomOperationType();
+int SimpleCalculator(int Number1, int Number2, enOperationType OpType);
+stQuestions GenerateQuestion(enQuizzLevel QuizzLevel, enOperationType OpType);
+void GeneratQuizzQuestions(stQuizz &Quizz);
+string GetOperationTypeSymbol(enOperationType OpType);
+void PrintTheQestions(stQuizz &Quizz, short QustionsNumber);
+int ReadQuestionAnswer();
+void SetScreenColor(bool isRight);
+void CorrectTheQuestionAnswer(stQuizz &Quizz, short QustionsNumber);
+void AskAndCorrectQuestionsListAnswer(stQuizz &Quizz);
+string GetFinalResultText(bool Pass);
+string GetQustionsLevelText(enQuizzLevel QuestionLevel);
+void PrintQuizzReults(stQuizz Quizz);
+void ShowFinalQuizzScreen(stQuizz Quizz);
+void ClearScreen();
+void PlayMathGame();
+void StartGame();
+void DrawHeader(string Title);
+
+// ==========================================
+// Main Function
+// ==========================================
+
+int main()
+{
+    srand((unsigned)time(NULL));
+    StartGame();
+    return 0;
+}
+
+// ==========================================
+// Function Definitions
+// ==========================================
+
 int RandomNumber(int From, int To)
 {
     return rand() % (To - From + 1) + From;
 }
 
-// دالة لقراءة عدد الأسئلة من المستخدم
 short ReadQuestionNumber()
 {
     short NumberOfQustions;
+    DrawHeader("START NEW QUIZ");
     do
     {
-        cout << "How Many Questions Do You Want To Answer ? : ";
+        cout << "\033[33m[?]\033[0m How Many Questions Do You Want (1-100)? : ";
         cin >> NumberOfQustions;
     } while (NumberOfQustions < 1 || NumberOfQustions > 100);
     return NumberOfQustions;
 }
 
-// دالة لقراءة مستوى الصعوبة
 enQuizzLevel ReadQuestionLevel()
 {
     short QuestionLevel = 0;
+    cout << "\033[33m[?]\033[0m Choose Level:\n";
+    cout << "    [1] Easy\n    [2] Medium\n    [3] Hard\n    [4] Mix\n";
     do
     {
-        cout << "\nEnter Questions Level [1]= Easy, [2]= Med, [3]= Hard, [4]= Mix : ";
+        cout << "Enter Choice: ";
         cin >> QuestionLevel;
     } while (QuestionLevel < 1 || QuestionLevel > 4);
     return (enQuizzLevel)QuestionLevel;
 }
 
-// دالة لقراءة نوع العملية الحسابية
 enOperationType ReadOperationType()
 {
     short OperationType;
+    cout << "\n\033[33m[?]\033[0m Choose Operation:\n";
+    cout << "    [1] +\n    [2] -\n    [3] *\n    [4] /\n    [5] Mix\n";
     do
     {
-        cout << "\nEnter Operations Type [1]= Add, [2]= Sub, [3]= Mul, [4]= Div, [5]= Mix ? ";
+        cout << "Enter Choice: ";
         cin >> OperationType;
     } while (OperationType < 1 || OperationType > 5);
     return (enOperationType)OperationType;
 }
 
-// دالة للحصول على عملية حسابية عشوائية (في حالة اختيار Mix)
 enOperationType GetRandomOperationType()
 {
-    int Op = RandomNumber(1, 4);
-    return (enOperationType)Op;
+    return (enOperationType)RandomNumber(1, 4);
 }
 
-// دالة لتقوم بالحساب الفعلي لإيجاد الإجابة الصحيحة
 int SimpleCalculator(int Number1, int Number2, enOperationType OpType)
 {
     switch (OpType)
@@ -127,25 +150,20 @@ int SimpleCalculator(int Number1, int Number2, enOperationType OpType)
         return Number1 * Number2;
     case enOperationType::Div:
         if (Number2 == 0)
-            Number2 = 1; // تجنب القسمة على صفر
+            Number2 = 1;
         return Number1 / Number2;
     default:
         return Number1 + Number2;
     }
-}       
-// دالة لتوليد سؤال واحد بناءً على المستوى ونوع العملية
+}
+
 stQuestions GenerateQuestion(enQuizzLevel QuizzLevel, enOperationType OpType)
 {
     stQuestions Question;
-
     if (QuizzLevel == enQuizzLevel::MixLevel)
-    {
         QuizzLevel = (enQuizzLevel)RandomNumber(1, 3);
-    }
     if (OpType == enOperationType::MixOp)
-    {
         OpType = GetRandomOperationType();
-    }
 
     Question.OperationType = OpType;
     Question.QuizzLevel = QuizzLevel;
@@ -165,15 +183,12 @@ stQuestions GenerateQuestion(enQuizzLevel QuizzLevel, enOperationType OpType)
         Question.Number2 = RandomNumber(50, 100);
         break;
     default:
-        Question.Number1 = RandomNumber(1, 10);
-        Question.Number2 = RandomNumber(1, 10);
+        break;
     }
-
     Question.CorrectAnswer = SimpleCalculator(Question.Number1, Question.Number2, Question.OperationType);
     return Question;
 }
 
-// دالة لتوليد جميع أسئلة الاختبار
 void GeneratQuizzQuestions(stQuizz &Quizz)
 {
     for (short Question = 0; Question < Quizz.NumberOfQuestions; Question++)
@@ -182,140 +197,124 @@ void GeneratQuizzQuestions(stQuizz &Quizz)
     }
 }
 
-// دالة للحصول على رمز العملية الحسابية كـ نص
 string GetOperationTypeSymbol(enOperationType OpType)
 {
-    switch (OpType)
-    {
-    case enOperationType::Add:
-        return "(+) Addition";
-    case enOperationType::Sub:
-        return "(-) Subtraction";
-    case enOperationType::Mul:
-        return "(x) Multiplication";
-    case enOperationType::Div:
-        return "(/) Division";
-    default:
-        return "Mix";
-    }
+    string arr[] = {"", "+", "-", "x", "/", "Mix"};
+    return arr[OpType];
 }
 
-// دالة لطباعة السؤال على الشاشة
 void PrintTheQestions(stQuizz &Quizz, short QustionsNumber)
 {
-    cout << "\n";
-    cout << "Question [" << QustionsNumber + 1 << "/" << Quizz.NumberOfQuestions << "] \n\n";
-    cout << Quizz.QuestionsList[QustionsNumber].Number1 << endl;
-    cout << Quizz.QuestionsList[QustionsNumber].Number2 << " ";
-    cout << GetOperationTypeSymbol(Quizz.QuestionsList[QustionsNumber].OperationType);
-    cout << "\n________________\n";
+    cout << "\n\033[36m----------------------------\033[0m\n";
+    cout << "Question [" << QustionsNumber + 1 << "/" << Quizz.NumberOfQuestions << "]\n";
+    cout << "\033[36m----------------------------\033[0m\n";
+    cout << "  " << Quizz.QuestionsList[QustionsNumber].Number1 << "\n";
+    cout << "  " << Quizz.QuestionsList[QustionsNumber].Number2 << "  " << GetOperationTypeSymbol(Quizz.QuestionsList[QustionsNumber].OperationType) << "\n";
+    cout << "-----------\n";
 }
 
-// دالة لقراءة إجابة اللاعب
 int ReadQuestionAnswer()
 {
     int Answer = 0;
+    cout << "Result: ";
     cin >> Answer;
     return Answer;
 }
 
-// دالة لتغيير لون النص (مخصصة لبيئة لينكس)
 void SetScreenColor(bool isRight)
 {
     if (isRight)
-    {
-        cout << "\033[32m"; // لون أخضر للإجابة الصحيحة
-    }
+        cout << "\033[32m"; // Green
     else
     {
-        cout << "\033[31m"; // لون أحمر للإجابة الخاطئة
-        cout << "\a";       // صوت تنبيه للخطأ
-    }
+        cout << "\033[31m";
+        cout << "\a";
+    } // Red + Beep
 }
 
-// دالة لتصحيح إجابة اللاعب وتسجيل النتيجة
 void CorrectTheQuestionAnswer(stQuizz &Quizz, short QustionsNumber)
 {
     if (Quizz.QuestionsList[QustionsNumber].PlayerAnswer != Quizz.QuestionsList[QustionsNumber].CorrectAnswer)
     {
         Quizz.QuestionsList[QustionsNumber].AnswerResult = false;
         Quizz.NumberOfWorngAnswer++;
-
-        cout << "Wrong Answer :-( \n";
-        cout << "The Right Answer Is: " << Quizz.QuestionsList[QustionsNumber].CorrectAnswer << "\n";
+        SetScreenColor(false);
+        cout << "[-] Wrong Answer! :( \n";
+        cout << "[*] The Right Answer is: " << Quizz.QuestionsList[QustionsNumber].CorrectAnswer << "\n";
     }
     else
     {
         Quizz.QuestionsList[QustionsNumber].AnswerResult = true;
         Quizz.NumberOfRightAnswer++;
-
-        cout << "Right Answer :-)\n";
+        SetScreenColor(true);
+        cout << "[+] Correct Answer! :) \n";
     }
-    cout << endl;
-    SetScreenColor(Quizz.QuestionsList[QustionsNumber].AnswerResult);
+    cout << "\033[0m"; // Reset Color
 }
 
-// دالة لطرح الأسئلة وتصحيحها
 void AskAndCorrectQuestionsListAnswer(stQuizz &Quizz)
 {
-    for (short QustionsNumber = 0; QustionsNumber < Quizz.NumberOfQuestions; QustionsNumber++)
+    for (short Q = 0; Q < Quizz.NumberOfQuestions; Q++)
     {
-        PrintTheQestions(Quizz, QustionsNumber);
-        Quizz.QuestionsList[QustionsNumber].PlayerAnswer = ReadQuestionAnswer();
-        CorrectTheQuestionAnswer(Quizz, QustionsNumber);
+        PrintTheQestions(Quizz, Q);
+        Quizz.QuestionsList[Q].PlayerAnswer = ReadQuestionAnswer();
+        CorrectTheQuestionAnswer(Quizz, Q);
     }
-    Quizz.isPass = (Quizz.NumberOfRightAnswer >= Quizz.NumberOfWorngAnswer);
+    Quizz.isPass = (Quizz.NumberOfRightAnswer >= (Quizz.NumberOfQuestions / 2.0));
 }
 
-// دالة للحصول على نص النتيجة النهائية
 string GetFinalResultText(bool Pass)
 {
-    if (Pass)
-        return " P A S S ";
-    else
-        return " F A I L ";
+    return Pass ? "P A S S" : "F A I L";
 }
 
-// دالة للحصول على نص مستوى الصعوبة
 string GetQustionsLevelText(enQuizzLevel QuestionLevel)
 {
-    string arrQuestonLevelText[4] = {"Easy", "Med", "Hard", "Mix"};
-    return arrQuestonLevelText[QuestionLevel - 1];
+    string arr[] = {"Easy", "Med", "Hard", "Mix"};
+    return arr[QuestionLevel - 1];
 }
 
-// دالة لطباعة تفاصيل نتيجة الاختبار
 void PrintQuizzReults(stQuizz Quizz)
 {
-    cout << "\t\tNumber of Questions     : " << Quizz.NumberOfQuestions << endl;
-    cout << "\t\tQuestions Level         : " << GetQustionsLevelText(Quizz.QustionsLevel) << endl;
-    cout << "\t\tOperation Type          : " << GetOperationTypeSymbol(Quizz.OperationType) << endl;
-    cout << "\t\tNumber Of Right Answers : " << Quizz.NumberOfRightAnswer << endl;
-    cout << "\t\tNumber Of Wrong Answers : " << Quizz.NumberOfWorngAnswer << endl;
-    cout << "\t\t__________________________________________________________\n";
+    cout << "Questions Total    : " << Quizz.NumberOfQuestions << "\n";
+    cout << "Questions Level    : " << GetQustionsLevelText(Quizz.QustionsLevel) << "\n";
+    cout << "Operation Type     : " << GetOperationTypeSymbol(Quizz.OperationType) << "\n";
+    cout << "Right Answers      : \033[32m" << Quizz.NumberOfRightAnswer << "\033[0m\n";
+    cout << "Wrong Answers      : \033[31m" << Quizz.NumberOfWorngAnswer << "\033[0m\n";
+    cout << "--------------------------------------------------\n";
 }
 
-// دالة لعرض الشاشة النهائية للاختبار
+void DrawHeader(string Title)
+{
+    cout << "\n\033[36m==================================================\n";
+    cout << "\t\t" << Title << "\n";
+    cout << "==================================================\033[0m\n";
+}
+
 void ShowFinalQuizzScreen(stQuizz Quizz)
 {
-    cout << "\n\t\t__________________________________________________________\n\n";
-    cout << "\t\t\t\t+++ F I N A L  R E S U L T S +++\n";
-    cout << "\t\t\t\t++++++++++++" << GetFinalResultText(Quizz.isPass) << "+++++++++++\n";
-    cout << "\t\t__________________________________________________________\n\n";
+    ClearScreen();
+    string Result = GetFinalResultText(Quizz.isPass);
+
+    if (Quizz.isPass)
+        cout << "\033[32m";
+    else
+        cout << "\033[31m";
+    DrawHeader("FINAL RESULTS: " + Result);
+
     PrintQuizzReults(Quizz);
+    cout << "\033[0m";
 }
 
-// دالة لتنظيف الشاشة وإعادة اللون الافتراضي (مخصصة لبيئة لينكس)
 void ClearScreen()
 {
     system("clear");
-    cout << "\033[0m"; // إعادة لون النص إلى الافتراضي
+    cout << "\033[0m";
 }
 
-// الدالة الرئيسية لتشغيل اللعبة
 void PlayMathGame()
 {
     stQuizz Quizz;
-
     Quizz.NumberOfQuestions = ReadQuestionNumber();
     Quizz.QustionsLevel = ReadQuestionLevel();
     Quizz.OperationType = ReadOperationType();
@@ -325,7 +324,6 @@ void PlayMathGame()
     ShowFinalQuizzScreen(Quizz);
 }
 
-// دالة بدء اللعبة
 void StartGame()
 {
     char PlayAgain = 'Y';
@@ -333,19 +331,7 @@ void StartGame()
     {
         ClearScreen();
         PlayMathGame();
-
-        // إعادة لون النص إلى الافتراضي قبل سؤال اللاعب لتجنب بقاء اللون أحمر أو أخضر
-        cout << "\033[0m";
-        cout << "\nDo You Want To Play Again ? (Y/N): ";
+        cout << "\n\033[33m[?]\033[0m Do You Want To Play Again? (Y/N): ";
         cin >> PlayAgain;
-
     } while (PlayAgain == 'Y' || PlayAgain == 'y');
-}
-
-// نقطة البداية
-int main()
-{
-    srand((unsigned)time(NULL));
-    StartGame();
-    return 0;
 }
