@@ -249,7 +249,7 @@ void CorrectTheQuestionAnswer(stQuizz &Quizz, short QustionsNumber)
         SetScreenColor(true);
         cout << "[+] Correct Answer! :) \n";
     }
-    cout << "\033[0m"; // Reset Color
+    cout << "\033[0m";
 }
 
 void AskAndCorrectQuestionsListAnswer(stQuizz &Quizz)
