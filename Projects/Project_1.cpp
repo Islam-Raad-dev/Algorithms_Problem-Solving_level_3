@@ -111,45 +111,6 @@ vector<sClientInfo> LoadDataFromFile(string FileName)
     }
     return vClients;
 }
-
-void ShowAllClientScreen()
-{
-    vector<sClientInfo> vClients = LoadDataFromFile(ClientsFileName);
-
-    cout << "\n\t\t\t\tClient List [" << vClients.size() << "] Client(s).";
-    cout << "\n____________________________________________________________________________________________________\n"
-         << endl;
-
-    cout << "| " << left << setw(15) << "Account Number";
-    cout << "| " << left << setw(10) << "Pin Code";
-    cout << "| " << left << setw(40) << "Client Name";
-    cout << "| " << left << setw(12) << "Phone";
-    cout << "| " << left << setw(12) << "Balance";
-
-    cout << "\n____________________________________________________________________________________________________\n"
-         << endl;
-
-    if (vClients.size() == 0)
-        cout << "\t\t\t\tNo Client Available In The System!";
-
-    else
-
-    for (sClientInfo &Client : vClients)
-    {
-        PrintClientRecordLine(Client);
-        cout << endl;
-    }
-    cout << "____________________________________________________________________________________________________\n"
-         << endl;
-
-}
-//-------------------------------------
-// Start of Add New Client
-//-------------------------------------
-
-void ShowAddNewClientScreen()
-{
-}
 sClientInfo ReadNewClient()
 {
     sClientInfo Client;
@@ -187,18 +148,46 @@ string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
 
     return stClientRecord;
 }
-
-//-------------------------------------
-// End of Add New Client
-//-------------------------------------
-
-//-------------------------------------
-// Start of Delete Client
-//-------------------------------------
-
-void ShowDeleteClientScreen()
+void AddClientToFile(string FileName, string stDataLine)
 {
+    fstream MyFile;
+
+    MyFile.open(FileName, ios::out | ios::app);
+
+    if (MyFile.is_open())
+    {
+
+        MyFile << stDataLine << endl;
+
+        MyFile.close();
+    }
 }
+void AddNewClients()
+{
+    sClientInfo Client;
+
+    Client = ReadNewClient();
+
+    AddClientToFile(ClientsFileName, ConvertRecordToLine(Client));
+}
+void AddNewClient()
+{
+    char AddMore = 'Y';
+
+    do
+    {
+       cout<<"Adding New Client:\n\n";
+
+       AddNewClients();
+
+       cout<<"\nClirnt Added Successfuly, do you want To Add More Clients? (Y/N):";
+
+       cin >>AddMore;
+
+    } while (toupper(AddMore) == 'Y');
+    
+}
+
 string ReadClientAccountNumber()
 {
     string AccountNumber;
@@ -306,6 +295,62 @@ bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
     }
 
     return false;
+}
+
+/*
+
+
+
+ Main Fuction;
+
+
+
+*/
+void ShowAllClientScreen()
+{
+    vector<sClientInfo> vClients = LoadDataFromFile(ClientsFileName);
+
+    cout << "\n\t\t\t\tClient List [" << vClients.size() << "] Client(s).";
+    cout << "\n____________________________________________________________________________________________________\n"
+         << endl;
+
+    cout << "| " << left << setw(15) << "Account Number";
+    cout << "| " << left << setw(10) << "Pin Code";
+    cout << "| " << left << setw(40) << "Client Name";
+    cout << "| " << left << setw(12) << "Phone";
+    cout << "| " << left << setw(12) << "Balance";
+
+    cout << "\n____________________________________________________________________________________________________\n"
+         << endl;
+
+    if (vClients.size() == 0)
+        cout << "\t\t\t\tNo Client Available In The System!";
+
+    else
+
+        for (sClientInfo &Client : vClients)
+        {
+            PrintClientRecordLine(Client);
+            cout << endl;
+        }
+    cout << "____________________________________________________________________________________________________\n"
+         << endl;
+}
+
+void ShowAddNewClientScreen()
+{
+    cout << "\n-----------------------------------------------\n";
+    cout << "\tAdd New Client Screen";
+    cout << "\n-----------------------------------------------\n";
+
+    AddNewClient();
+}
+
+void ShowDeleteClientScreen()
+{
+    cout << "\n-----------------------------------------------\n";
+    cout << "\tDelete Client Screen";
+    cout << "\n-----------------------------------------------\n";
 }
 
 //-------------------------------------
