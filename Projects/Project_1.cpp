@@ -16,6 +16,8 @@ using namespace std;
 
 const static string ClientsFileName = "Clients.txt";
 
+void ShowMainMenu();
+
 enum enMainMenuOptions
 {
     eShow = 1,
@@ -39,9 +41,49 @@ struct sClientInfo
 //-------------------------------------
 // Start of Show All Client List
 //-------------------------------------
+vector<sClientInfo> LoadDataFromFile(string FileName)
+{
+    vector<sClientInfo> vClients;
+    fstream MyFile;
+    MyFile.open(FileName, ios::in);
+
+    if (MyFile.is_open())
+    {
+        string Line;
+        while (getline(MyFile, Line))
+        {
+            if (Line != "")
+            {
+                sClientInfo Client = ConvertLineDataToRecord(Line);
+                vClients.push_back(Client);
+            }
+        }
+        MyFile.close();
+    }
+    return vClients;
+}
 
 void ShowAllClientScreen()
 {
+    vector<sClientInfo> vClients = LoadDataFromFile(ClientsFileName);
+
+        cout << "\n\t\t\t\tClient List [" << vClients.size() << "] Client(s).";
+    cout << "\n____________________________________________________________________________________________________\n"
+         << endl;
+
+    cout << "| " << left << setw(15) << "Account Number";
+    cout << "| " << left << setw(10) << "Pin Code";
+    cout << "| " << left << setw(40) << "Client Name";
+    cout << "| " << left << setw(12) << "Phone";
+    cout << "| " << left << setw(12) << "Balance";
+
+    cout << "\n____________________________________________________________________________________________________\n"
+         << endl;
+
+    if(vClients.size() == 0)
+    cout<<"\t\t\t\tNo Client Available In The System!";
+
+
 }
 vector<string> SplitString(string S1, string delim)
 {
@@ -87,27 +129,7 @@ sClientInfo ConvertLineDataToRecord(string Line, string Seperator = "#//#")
     return Client;
 }
 
-vector<sClientInfo> LoadDataFromFile(string FileName)
-{
-    vector<sClientInfo> vClients;
-    fstream MyFile;
-    MyFile.open(FileName, ios::in);
 
-    if (MyFile.is_open())
-    {
-        string Line;
-        while (getline(MyFile, Line))
-        {
-            if (Line != "")
-            {
-                sClientInfo Client = ConvertLineDataToRecord(Line);
-                vClients.push_back(Client);
-            }
-        }
-        MyFile.close();
-    }
-    return vClients;
-}
 
 void PrintClientRecordLine(sClientInfo Client)
 {
@@ -409,7 +431,6 @@ void ShowFindClientScreen()
 void ShowEndScreen()
 {
 }
-void ShowMainMenu();
 
 void GoBackToMainMenu()
 {
