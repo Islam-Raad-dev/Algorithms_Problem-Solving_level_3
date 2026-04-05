@@ -71,6 +71,10 @@ string ReadClientAccountNumber()
     return AccountNumber;
 }
 
+//-------------------------------------
+// Start of Show All Client List 
+//-------------------------------------
+
 vector<string> SplitString(string S1, string delim)
 {
     vector<string> vString;
@@ -169,6 +173,7 @@ void PrintAllClientData(vector<sClientInfo> vClients)
     cout << "____________________________________________________________________________________________________\n"
          << endl;
 }
+
 //-------------------------------------
 // End of Show All Client List 
 //-------------------------------------
