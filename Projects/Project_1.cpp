@@ -38,6 +38,7 @@ struct sClientInfo
     bool MarkForDelete = false;
 };
 
+
 vector<string> SplitString(string S1, string delim)
 {
     vector<string> vString;
@@ -111,15 +112,27 @@ vector<sClientInfo> LoadDataFromFile(string FileName)
     }
     return vClients;
 }
+
+void ClientExistByAccountNumber(string AccountNumber, string FileName)
+{
+    
+
+}
+
 sClientInfo ReadNewClient()
 {
     sClientInfo Client;
 
-    cout << "Please Enter Client Data:\n";
-    cout << "-----------------------\n";
-
     cout << "Enter Account Number: ";
-    getline(cin, Client.AccountNumber);
+    getline(cin >> ws, Client.AccountNumber);
+
+    while (ClientExistByAccountNumber(Client.AccountNumber, ClientsFileName))
+    {
+        cout<<"\nClient With["<<Client.AccountNumber<<"] Already Exists, Enter Andoter Account Number: ";
+        getline(cin >> ws, Client.AccountNumber);
+
+    }
+    
 
     cout << "\nEnter Your PINCODE: ";
     getline(cin, Client.PinCode);
@@ -164,11 +177,11 @@ void AddClientToFile(string FileName, string stDataLine)
 }
 void AddNewClients()
 {
+
     sClientInfo Client;
-
     Client = ReadNewClient();
-
     AddClientToFile(ClientsFileName, ConvertRecordToLine(Client));
+
 }
 void AddNewClient()
 {
