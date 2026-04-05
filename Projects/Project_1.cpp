@@ -72,7 +72,6 @@ sClientInfo ConvertLineDataToRecord(string Line, string Seperator = "#//#")
     vector<string> vClientData;
 
     vClientData = SplitString(Line, Seperator);
-
     Client.AccountNumber = vClientData[0];
     Client.PinCode = vClientData[1];
     Client.FullName = vClientData[2];
@@ -132,22 +131,8 @@ void ShowAllClientScreen()
 
     if (vClients.size() == 0)
         cout << "\t\t\t\tNo Client Available In The System!";
-}
 
-void PrintAllClientData(vector<sClientInfo> vClients)
-{
-    cout << "\n\t\t\t\tClient List [" << vClients.size() << "] Client(s).";
-    cout << "\n____________________________________________________________________________________________________\n"
-         << endl;
-
-    cout << "| " << left << setw(15) << "Account Number";
-    cout << "| " << left << setw(10) << "Pin Code";
-    cout << "| " << left << setw(40) << "Client Name";
-    cout << "| " << left << setw(12) << "Phone";
-    cout << "| " << left << setw(12) << "Balance";
-
-    cout << "\n____________________________________________________________________________________________________\n"
-         << endl;
+    else
 
     for (sClientInfo &Client : vClients)
     {
@@ -156,12 +141,8 @@ void PrintAllClientData(vector<sClientInfo> vClients)
     }
     cout << "____________________________________________________________________________________________________\n"
          << endl;
+
 }
-
-//-------------------------------------
-// End of Show All Client List
-//-------------------------------------
-
 //-------------------------------------
 // Start of Add New Client
 //-------------------------------------
