@@ -384,26 +384,31 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 // Start of Find Client
 //-------------------------------------
 
-bool FindClientByAccountNumber(string AccountNumber, vector<sClientInfo> &vClients, sClientInfo &Client)
-{
-
-    for (sClientInfo &C : vClients)
-    {
-
-        if (C.AccountNumber == AccountNumber)
-        {
-            Client = C;
-            return true;
-        }
-    }
-    return false;
-}
-
 //-------------------------------------
 // End of Find Client
 //-------------------------------------
 
-void MainMenueScreen()
+//-------------------------------------
+// Start of Main Program
+//-------------------------------------
+
+void ShowEndScreen(){
+
+}
+
+void GoBackToMainMenu(){
+
+}
+
+short ReadMainMenuOption(){
+
+}
+
+void PerformMainMenuOption(enMainMenuOptions MenuOptions){
+
+}
+
+void ShowMainMenu()
 {
 
     system("clear");
@@ -411,15 +416,20 @@ void MainMenueScreen()
     cout << "\t\t\tMain Menue Screen";
     cout << "\n=================================================================\n";
 
-    cout << "[1] Show Client List.\n";
-    cout << "[2] Add New Client.\n";
-    cout << "[3] Delete Client.\n";
-    cout << "[4] Update Client Info.\n";
-    cout << "[5] Find Client.\n";
-    cout << "[6] Exit.\n";
+    cout << "\t[1] Show Client List.\n";
+    cout << "\t[2] Add New Client.\n";
+    cout << "\t[3] Delete Client.\n";
+    cout << "\t[4] Update Client Info.\n";
+    cout << "\t[5] Find Client.\n";
+    cout << "\t[6] Exit.";
+
+    cout << "\n=================================================================\n";
+
+    cout<<"Enter Your Choose [1 - 6]: ";
+
 }
 int main()
 {
-    MainMenueScreen();
+    ShowMainMenu();
     return 0;
 }
