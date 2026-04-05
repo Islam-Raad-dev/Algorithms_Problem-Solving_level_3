@@ -380,6 +380,10 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 // End of Update Client
 //-------------------------------------
 
+//-------------------------------------
+// Start of Find Client
+//-------------------------------------
+
 
 
 void MainMenueScreen()
