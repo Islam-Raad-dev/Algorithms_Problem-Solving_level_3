@@ -302,6 +302,16 @@ bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
     return false;
 }
 
+//-------------------------------------
+// End of Delete Client
+//-------------------------------------
+
+//-------------------------------------
+// Start of Update Client
+//-------------------------------------
+
+
+
 void MainMenueScreen()
 {
 
