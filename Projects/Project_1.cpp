@@ -191,7 +191,7 @@ string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
 //-------------------------------------
 
 //-------------------------------------
-// End of Show All Client List 
+// Start of Delete Client
 //-------------------------------------
 
 
