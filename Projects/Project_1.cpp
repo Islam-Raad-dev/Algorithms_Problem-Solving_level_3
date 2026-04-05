@@ -71,19 +71,6 @@ string ReadClientAccountNumber()
     return AccountNumber;
 }
 
-string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
-{
-    string stClientRecord = "";
-
-    stClientRecord += Clint.AccountNumber + Sepreator;
-    stClientRecord += Clint.PinCode + Sepreator;
-    stClientRecord += Clint.FullName + Sepreator;
-    stClientRecord += Clint.PhoneNumber + Sepreator;
-    stClientRecord += to_string(Clint.AccountBalance);
-
-    return stClientRecord;
-}
-
 vector<string> SplitString(string S1, string delim)
 {
     vector<string> vString;
@@ -128,16 +115,59 @@ sClientInfo ConvertLineDataToRecord(string Line, string Seperator = "#//#")
     return Client;
 }
 
-void PrintClientRecord(sClientInfo Client)
+vector<sClientInfo> LoadDataFromFile(string FileName)
 {
+    vector<sClientInfo> vClients;
+    fstream MyFile;
+    MyFile.open(FileName, ios::in);
 
-    cout << "\n\nThe Following is The Clint Recoed:\n";
-    cout << "\nAccount Number   : " << Client.AccountNumber;
-    cout << "\nPINCODE          : " << Client.PinCode;
-    cout << "\nFull Name        : " << Client.FullName;
-    cout << "\nPhone Number     : " << Client.PhoneNumber;
-    cout << "\nAccount Blalance : " << Client.AccountBalance;
-    cout << "\n";
+    if (MyFile.is_open())
+    {
+        string Line;
+        while (getline(MyFile, Line))
+        {
+            if (Line != "")
+            {
+                sClientInfo Client = ConvertLineDataToRecord(Line);
+                vClients.push_back(Client);
+            }
+        }
+        MyFile.close();
+    }
+    return vClients;
+}
+
+void PrintClientRecordLine(sClientInfo Client)
+{
+    cout << "| " << setw(15) << left << Client.AccountNumber;
+    cout << "| " << setw(10) << left << Client.PinCode;
+    cout << "| " << setw(40) << left << Client.FullName;
+    cout << "| " << setw(12) << left << Client.PhoneNumber;
+    cout << "| " << setw(12) << left << Client.AccountBalance;
+}
+
+void PrintAllClientData(vector<sClientInfo> vClients)
+{
+    cout << "\n\t\t\t\tClient List [" << vClients.size() << "] Client(s).";
+    cout << "\n____________________________________________________________________________________________________\n"
+         << endl;
+
+    cout << "| " << left << setw(15) << "Account Number";
+    cout << "| " << left << setw(10) << "Pin Code";
+    cout << "| " << left << setw(40) << "Client Name";
+    cout << "| " << left << setw(12) << "Phone";
+    cout << "| " << left << setw(12) << "Balance";
+
+    cout << "\n____________________________________________________________________________________________________\n"
+         << endl;
+
+    for (sClientInfo &Client : vClients)
+    {
+        PrintClientRecordLine(Client);
+        cout << endl;
+    }
+    cout << "____________________________________________________________________________________________________\n"
+         << endl;
 }
 
 void MainMenueScreen()
