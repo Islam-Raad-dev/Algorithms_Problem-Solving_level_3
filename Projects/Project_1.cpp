@@ -384,7 +384,24 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 // Start of Find Client
 //-------------------------------------
 
+bool FindClientByAccountNumber(string AccountNumber, vector<sClientInfo> &vClients, sClientInfo &Client)
+{
 
+    for (sClientInfo &C : vClients)
+    {
+
+        if (C.AccountNumber == AccountNumber)
+        {
+            Client = C;
+            return true;
+        }
+    }
+    return false;
+}
+
+//-------------------------------------
+// End of Find Client
+//-------------------------------------
 
 void MainMenueScreen()
 {
