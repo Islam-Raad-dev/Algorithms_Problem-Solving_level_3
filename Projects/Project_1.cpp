@@ -38,53 +38,6 @@ struct sClientInfo
     bool MarkForDelete = false;
 };
 
-//-------------------------------------
-// Start of Show All Client List
-//-------------------------------------
-vector<sClientInfo> LoadDataFromFile(string FileName)
-{
-    vector<sClientInfo> vClients;
-    fstream MyFile;
-    MyFile.open(FileName, ios::in);
-
-    if (MyFile.is_open())
-    {
-        string Line;
-        while (getline(MyFile, Line))
-        {
-            if (Line != "")
-            {
-                sClientInfo Client = ConvertLineDataToRecord(Line);
-                vClients.push_back(Client);
-            }
-        }
-        MyFile.close();
-    }
-    return vClients;
-}
-
-void ShowAllClientScreen()
-{
-    vector<sClientInfo> vClients = LoadDataFromFile(ClientsFileName);
-
-        cout << "\n\t\t\t\tClient List [" << vClients.size() << "] Client(s).";
-    cout << "\n____________________________________________________________________________________________________\n"
-         << endl;
-
-    cout << "| " << left << setw(15) << "Account Number";
-    cout << "| " << left << setw(10) << "Pin Code";
-    cout << "| " << left << setw(40) << "Client Name";
-    cout << "| " << left << setw(12) << "Phone";
-    cout << "| " << left << setw(12) << "Balance";
-
-    cout << "\n____________________________________________________________________________________________________\n"
-         << endl;
-
-    if(vClients.size() == 0)
-    cout<<"\t\t\t\tNo Client Available In The System!";
-
-
-}
 vector<string> SplitString(string S1, string delim)
 {
     vector<string> vString;
@@ -129,8 +82,6 @@ sClientInfo ConvertLineDataToRecord(string Line, string Seperator = "#//#")
     return Client;
 }
 
-
-
 void PrintClientRecordLine(sClientInfo Client)
 {
     cout << "| " << setw(15) << left << Client.AccountNumber;
@@ -138,6 +89,49 @@ void PrintClientRecordLine(sClientInfo Client)
     cout << "| " << setw(40) << left << Client.FullName;
     cout << "| " << setw(12) << left << Client.PhoneNumber;
     cout << "| " << setw(12) << left << Client.AccountBalance;
+}
+
+vector<sClientInfo> LoadDataFromFile(string FileName)
+{
+    vector<sClientInfo> vClients;
+    fstream MyFile;
+    MyFile.open(FileName, ios::in);
+
+    if (MyFile.is_open())
+    {
+        string Line;
+        while (getline(MyFile, Line))
+        {
+            if (Line != "")
+            {
+                sClientInfo Client = ConvertLineDataToRecord(Line);
+                vClients.push_back(Client);
+            }
+        }
+        MyFile.close();
+    }
+    return vClients;
+}
+
+void ShowAllClientScreen()
+{
+    vector<sClientInfo> vClients = LoadDataFromFile(ClientsFileName);
+
+    cout << "\n\t\t\t\tClient List [" << vClients.size() << "] Client(s).";
+    cout << "\n____________________________________________________________________________________________________\n"
+         << endl;
+
+    cout << "| " << left << setw(15) << "Account Number";
+    cout << "| " << left << setw(10) << "Pin Code";
+    cout << "| " << left << setw(40) << "Client Name";
+    cout << "| " << left << setw(12) << "Phone";
+    cout << "| " << left << setw(12) << "Balance";
+
+    cout << "\n____________________________________________________________________________________________________\n"
+         << endl;
+
+    if (vClients.size() == 0)
+        cout << "\t\t\t\tNo Client Available In The System!";
 }
 
 void PrintAllClientData(vector<sClientInfo> vClients)
