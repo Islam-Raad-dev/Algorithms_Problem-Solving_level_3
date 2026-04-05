@@ -27,12 +27,18 @@ struct sClientInfo
 };
 
 void MainMenueScreen(){
+
+    system("clear");
     cout<<"=================================================================\n";
     cout<<"\t\t\tMain Menue Screen";
     cout<<"\n=================================================================\n";
-}
 
-void 
+    cout<<"\t[1] Show Client List.\n";
+    cout<<"\t[2] Add New Client.\n";
+    cout<<"\t[3] Delete Client.\n";
+    cout<<"\t[4] Update Client Info.\n";
+    cout<<"\t[5] Find Client.\n";
+}
 int main()
 {
     MainMenueScreen();
