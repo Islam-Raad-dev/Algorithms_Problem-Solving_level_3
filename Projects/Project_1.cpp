@@ -37,7 +37,7 @@ struct sClientInfo
 };
 
 //-------------------------------------
-// Start of Show All Client List 
+// Start of Show All Client List
 //-------------------------------------
 
 vector<string> SplitString(string S1, string delim)
@@ -140,9 +140,8 @@ void PrintAllClientData(vector<sClientInfo> vClients)
 }
 
 //-------------------------------------
-// End of Show All Client List 
+// End of Show All Client List
 //-------------------------------------
-
 
 //-------------------------------------
 // Start of Add New Client
@@ -194,6 +193,114 @@ string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
 // Start of Delete Client
 //-------------------------------------
 
+string ReadClientAccountNumber()
+{
+    string AccountNumber;
+
+    cout << "Please Enter Account Number: ";
+    cin >> AccountNumber;
+
+    return AccountNumber;
+}
+
+void PrintClientCard(sClientInfo Client)
+{
+
+    cout << "\n\nThe Following is The Clint Recoed:\n";
+    cout << "\nAccount Number   : " << Client.AccountNumber;
+    cout << "\nPINCODE          : " << Client.PinCode;
+    cout << "\nFull Name        : " << Client.FullName;
+    cout << "\nPhone Number     : " << Client.PhoneNumber;
+    cout << "\nAccount Blalance : " << Client.AccountBalance;
+    cout << "\n";
+}
+bool FindClientByAccountNumber(string AccountNumber, vector<sClientInfo> &vClients, sClientInfo &Client)
+{
+
+    for (sClientInfo &C : vClients)
+    {
+
+        if (C.AccountNumber == AccountNumber)
+        {
+            Client = C;
+            return true;
+        }
+    }
+    return false;
+}
+bool MarkClintForDeleteByAccountNumber(string AccountNumber, vector<sClientInfo> &vClient)
+{
+
+    for (sClientInfo &C : vClient)
+    {
+        if (C.AccountNumber == AccountNumber)
+        {
+            C.MarkForDelete = true;
+
+            return true;
+        }
+    }
+
+    return false;
+}
+vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo> &vClient)
+{
+    fstream MyFile;
+
+    MyFile.open(FileName, ios::out);
+
+    string DataLine;
+
+    if (MyFile.is_open())
+    {
+        for (sClientInfo &C : vClient)
+        {
+            if (C.MarkForDelete == false)
+            {
+                DataLine = ConvertRecordToLine(C);
+                MyFile << DataLine << endl;
+            }
+        }
+
+        MyFile.close();
+    }
+
+    return vClient;
+}
+bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClient)
+{
+
+    sClientInfo Client;
+    char Answer = 'n';
+
+    if (FindClientByAccountNumber(AccountNumber, vClient, Client))
+    {
+
+        PrintClientCard(Client);
+
+        cout << "\nAre You Sure That You Want To Delete This Client? (Y/N)";
+        cin >> Answer;
+
+        if (Answer == 'y' || Answer == 'Y')
+        {
+            MarkClintForDeleteByAccountNumber(AccountNumber, vClient);
+
+            SaveClientDataToFile(ClientsFileName, vClient);
+
+            vClient = LoadDataFromFile(ClientsFileName);
+
+            cout << "\n\nCleint Delete Succesfuly.\n";
+
+            return true;
+        }
+    }
+    else
+    {
+        cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n";
+    }
+
+    return false;
+}
 
 void MainMenueScreen()
 {
