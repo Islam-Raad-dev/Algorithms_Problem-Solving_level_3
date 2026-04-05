@@ -40,6 +40,9 @@ struct sClientInfo
 // Start of Show All Client List
 //-------------------------------------
 
+void ShowAllClientScreen()
+{
+}
 vector<string> SplitString(string S1, string delim)
 {
     vector<string> vString;
@@ -147,6 +150,9 @@ void PrintAllClientData(vector<sClientInfo> vClients)
 // Start of Add New Client
 //-------------------------------------
 
+void ShowAddNewClientScreen(){
+
+}
 sClientInfo ReadNewClient()
 {
     sClientInfo Client;
@@ -193,6 +199,9 @@ string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
 // Start of Delete Client
 //-------------------------------------
 
+void ShowDeleteClientScreen(){
+    
+}
 string ReadClientAccountNumber()
 {
     string AccountNumber;
@@ -392,20 +401,70 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 // Start of Main Program
 //-------------------------------------
 
-void ShowEndScreen(){
-
+void ShowEndScreen()
+{
 }
 
-void GoBackToMainMenu(){
-
+void GoBackToMainMenu()
+{
 }
 
-short ReadMainMenuOption(){
+short ReadMainMenuOption()
+{
+    short Choose;
 
+    cout << "Enter Your Choose [1 - 6]: ";
+    cin >> Choose;
+
+    return Choose;
 }
 
-void PerformMainMenuOption(enMainMenuOptions MenuOptions){
+void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
+{
 
+    switch (ReadMainMenuOption())
+    {
+    case enMainMenuOptions::eShow:
+        system("clear");
+        ShowAllClientScreen();
+        GoBackToMainMenu();
+        break;
+
+    case enMainMenuOptions::eAdd:
+        system("clear");
+        ShowAddNewClientScreen();
+        GoBackToMainMenu();
+        break;
+
+    case enMainMenuOptions::eDelete:
+        system("clear");
+        ShowDeleteClientScreen();
+        GoBackToMainMenu();
+        break;
+
+    case enMainMenuOptions::eUpdate:
+        system("clear");
+        ShowUpdateClientScreen();
+        GoBackToMainMenu();
+        break;
+
+    case enMainMenuOptions::eFind:
+        system("clear");
+        ShowFindClientScreen();
+        GoBackToMainMenu();
+        break;
+
+    case enMainMenuOptions::eExit:
+        system("clear");
+        ShowEndScreen();
+        break;
+
+    default:
+
+    cout<<"Invalid Choose, Try Again.";
+
+        break;
+    }
 }
 
 void ShowMainMenu()
@@ -425,8 +484,7 @@ void ShowMainMenu()
 
     cout << "\n=================================================================\n";
 
-    cout<<"Enter Your Choose [1 - 6]: ";
-
+    PerformMainMenuOption((enMainMenuOptions)ReadMainMenuOption());
 }
 int main()
 {
