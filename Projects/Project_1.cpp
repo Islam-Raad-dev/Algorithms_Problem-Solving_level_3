@@ -115,7 +115,12 @@ vector<sClientInfo> LoadDataFromFile(string FileName)
 
 void ClientExistByAccountNumber(string AccountNumber, string FileName)
 {
-    
+   vector<sClientInfo> vClients;
+   
+   fstream MyFile;
+
+   
+
 
 }
 
