@@ -178,6 +178,11 @@ void PrintAllClientData(vector<sClientInfo> vClients)
 // End of Show All Client List 
 //-------------------------------------
 
+
+//-------------------------------------
+// Start of Add New Client
+//-------------------------------------
+
 void MainMenueScreen()
 {
 
