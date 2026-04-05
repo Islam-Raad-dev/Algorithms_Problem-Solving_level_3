@@ -36,41 +36,6 @@ struct sClientInfo
     bool MarkForDelete = false;
 };
 
-sClientInfo ReadNewClient()
-{
-    sClientInfo Client;
-
-    cout << "Please Enter Client Data:\n";
-    cout << "-----------------------\n";
-
-    cout << "Enter Account Number: ";
-    getline(cin >> ws, Client.AccountNumber);
-
-    cout << "\nEnter Your PINCODE: ";
-    getline(cin, Client.PinCode);
-
-    cout << "\nEnter Your Full Name: ";
-    getline(cin, Client.FullName);
-
-    cout << "\nEnter Your Phone Number: ";
-    getline(cin, Client.PhoneNumber);
-
-    cout << "\nEnter Your Account Balance: ";
-    cin >> Client.AccountBalance;
-
-    return Client;
-}
-
-string ReadClientAccountNumber()
-{
-    string AccountNumber;
-
-    cout << "Please Enter Account Number: ";
-    cin >> AccountNumber;
-
-    return AccountNumber;
-}
-
 //-------------------------------------
 // Start of Show All Client List 
 //-------------------------------------
