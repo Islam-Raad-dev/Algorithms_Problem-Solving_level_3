@@ -200,7 +200,7 @@ string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
 //-------------------------------------
 
 void ShowDeleteClientScreen(){
-    
+
 }
 string ReadClientAccountNumber()
 {
@@ -319,6 +319,9 @@ bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 // Start of Update Client
 //-------------------------------------
 
+void ShowUpdateClientScreen(){
+    
+}
 sClientInfo ChanceClintRecord(string AccountNumber)
 {
 
