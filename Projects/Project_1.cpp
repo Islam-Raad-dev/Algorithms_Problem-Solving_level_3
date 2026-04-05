@@ -150,8 +150,8 @@ void PrintAllClientData(vector<sClientInfo> vClients)
 // Start of Add New Client
 //-------------------------------------
 
-void ShowAddNewClientScreen(){
-
+void ShowAddNewClientScreen()
+{
 }
 sClientInfo ReadNewClient()
 {
@@ -199,8 +199,8 @@ string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
 // Start of Delete Client
 //-------------------------------------
 
-void ShowDeleteClientScreen(){
-
+void ShowDeleteClientScreen()
+{
 }
 string ReadClientAccountNumber()
 {
@@ -319,8 +319,8 @@ bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 // Start of Update Client
 //-------------------------------------
 
-void ShowUpdateClientScreen(){
-
+void ShowUpdateClientScreen()
+{
 }
 sClientInfo ChanceClintRecord(string AccountNumber)
 {
@@ -395,8 +395,8 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 //-------------------------------------
 // Start of Find Client
 //-------------------------------------
-void ShowFindClientScreen(){
-    
+void ShowFindClientScreen()
+{
 }
 //-------------------------------------
 // End of Find Client
@@ -409,9 +409,13 @@ void ShowFindClientScreen(){
 void ShowEndScreen()
 {
 }
+void ShowMainMenu();
 
 void GoBackToMainMenu()
 {
+    cout << "\n\nPress Any Key To Go Back To Main Menu...";
+    system("pause>0");
+    ShowMainMenu();
 }
 
 short ReadMainMenuOption()
@@ -466,7 +470,7 @@ void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
 
     default:
 
-    cout<<"Invalid Choose, Try Again.";
+        cout << "Invalid Choose, Try Again.";
 
         break;
     }
