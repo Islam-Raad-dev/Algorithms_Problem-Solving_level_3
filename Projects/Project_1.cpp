@@ -71,6 +71,19 @@ string ReadClientAccountNumber()
     return AccountNumber;
 }
 
+string ConvertRecordToLine(sClientInfo Clint, string Sepreator = "#//#")
+{
+    string stClientRecord = "";
+
+    stClientRecord += Clint.AccountNumber + Sepreator;
+    stClientRecord += Clint.PinCode + Sepreator;
+    stClientRecord += Clint.FullName + Sepreator;
+    stClientRecord += Clint.PhoneNumber + Sepreator;
+    stClientRecord += to_string(Clint.AccountBalance);
+
+    return stClientRecord;
+}
+
 void MainMenueScreen()
 {
 
