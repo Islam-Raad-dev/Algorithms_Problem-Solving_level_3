@@ -320,7 +320,7 @@ bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 //-------------------------------------
 
 void ShowUpdateClientScreen(){
-    
+
 }
 sClientInfo ChanceClintRecord(string AccountNumber)
 {
@@ -395,7 +395,9 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 //-------------------------------------
 // Start of Find Client
 //-------------------------------------
-
+void ShowFindClientScreen(){
+    
+}
 //-------------------------------------
 // End of Find Client
 //-------------------------------------
