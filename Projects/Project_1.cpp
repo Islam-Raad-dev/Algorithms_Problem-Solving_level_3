@@ -387,6 +387,9 @@ void ShowDeleteClientScreen()
     cout << "\n-----------------------------------------------\n";
 
     vector<sClientInfo> vCleint = LoadDataFromFile(ClientsFileName);
+    string AccountName = ReadClientAccountNumber();
+    DeleteClintByAccountNumber(AccountName, vCleint);
+    
 }
 
 //-------------------------------------
