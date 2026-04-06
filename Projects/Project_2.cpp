@@ -14,7 +14,7 @@ Bank 2:
 
 using namespace std;
 
-const static string ClientsFileName = "Clients.txt";
+const string ClientsFileName = "Clients.txt";
 
 void ShowMainMenu();
 
