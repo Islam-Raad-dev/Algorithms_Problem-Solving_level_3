@@ -385,6 +385,8 @@ void ShowDeleteClientScreen()
     cout << "\n-----------------------------------------------\n";
     cout << "\tDelete Client Screen";
     cout << "\n-----------------------------------------------\n";
+
+    vector<sClientInfo> vCleint = LoadDataFromFile(ClientsFileName);
 }
 
 //-------------------------------------
