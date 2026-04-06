@@ -574,6 +574,9 @@ void ShowMainMenu()
 }
 int main()
 {
-    ShowMainMenu();
+    while (true)
+    {
+        ShowMainMenu();
+    }
     return 0;
 }
