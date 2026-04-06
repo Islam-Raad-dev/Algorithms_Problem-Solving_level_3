@@ -29,6 +29,14 @@ enum enMainMenuOptions
     eTransaction = 7
 };
 
+enum enTransactionOptions
+{
+    eDeposit = 1,
+    eWithdraw = 2,
+    eTotalBalance = 3,
+    eBackToMainMenu = 4
+};
+
 struct sClientInfo
 {
     string AccountNumber;
