@@ -25,7 +25,8 @@ enum enMainMenuOptions
     eDelete = 3,
     eUpdate = 4,
     eFind = 5,
-    eExit = 6
+    eExit = 6,
+    eTransaction = 7
 };
 
 struct sClientInfo
