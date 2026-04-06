@@ -391,7 +391,10 @@ void ShowUpdateClientScreen()
     cout << "\n-----------------------------------------------\n";
     cout << "\tUpdate Client Screen";
     cout << "\n-----------------------------------------------\n";
-    
+
+    vector<sClientInfo> vCleint = LoadDataFromFile(ClientsFileName);
+    string AccountName = ReadClientAccountNumber();
+    UpdateClintByAccountNumber(AccountName, vCleint);
 
 }
 sClientInfo ChanceClintRecord(string AccountNumber)
@@ -460,23 +463,10 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
     return false;
 }
 
-//-------------------------------------
-// End of Update Client
-//-------------------------------------
-
-//-------------------------------------
-// Start of Find Client
-//-------------------------------------
 void ShowFindClientScreen()
 {
 }
-//-------------------------------------
-// End of Find Client
-//-------------------------------------
 
-//-------------------------------------
-// Start of Main Program
-//-------------------------------------
 
 void ShowEndScreen()
 {
