@@ -467,7 +467,7 @@ void ShowUpdateClientScreen()
 void ShowFindClientScreen()
 {
     cout << "\n-----------------------------------------------\n";
-    cout << "\tUpdate Client Screen";
+    cout << "\tFind Client Screen";
     cout << "\n-----------------------------------------------\n";
 
 }
