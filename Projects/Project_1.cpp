@@ -313,7 +313,6 @@ bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
         if (Answer == 'y' || Answer == 'Y')
         {
             MarkClintForDeleteByAccountNumber(AccountNumber, vClient);
-
             SaveClientDataToFile(ClientsFileName, vClient);
 
             vClient = LoadDataFromFile(ClientsFileName);
@@ -389,7 +388,7 @@ void ShowDeleteClientScreen()
     vector<sClientInfo> vCleint = LoadDataFromFile(ClientsFileName);
     string AccountName = ReadClientAccountNumber();
     DeleteClintByAccountNumber(AccountName, vCleint);
-    
+
 }
 
 //-------------------------------------
