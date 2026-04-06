@@ -396,7 +396,7 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 
 
 
- Main Fuction;
+ Statrt Of Main Fuction
 
 
 
@@ -469,6 +469,10 @@ void ShowFindClientScreen()
     cout << "\n-----------------------------------------------\n";
     cout << "\tFind Client Screen";
     cout << "\n-----------------------------------------------\n";
+
+    vector<sClientInfo> vCleint = LoadDataFromFile(ClientsFileName);
+    string AccountName = ReadClientAccountNumber();
+    FindClientByAccountNumber(AccountName, vCleint, sClientInfo());
 
 }
 
