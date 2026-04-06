@@ -481,8 +481,8 @@ void ShowFindClientScreen()
     }
 }
 
-void ShowTransactionScreen(){
-    
+void ShowTransactionScreen()
+{
 }
 
 void ShowEndScreen()
