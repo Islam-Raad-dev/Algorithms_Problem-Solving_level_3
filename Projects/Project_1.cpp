@@ -291,35 +291,33 @@ vector<sClientInfo> SaveClientDataToFile(string FileName, vector<sClientInfo> &v
 
     return vClient;
 }
-bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClient)
+bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClients)
 {
-
     sClientInfo Client;
     char Answer = 'n';
 
-    if (FindClientByAccountNumber(AccountNumber, vClient, Client))
+    if (FindClientByAccountNumber(AccountNumber, vClients, Client))
     {
-
         PrintClientCard(Client);
 
-        cout << "\nAre You Sure That You Want To Delete This Client? (Y/N)";
+        cout << "\nAre you sure you want to delete this client? (Y/N): ";
         cin >> Answer;
 
-        if (Answer == 'y' || Answer == 'Y')
+        if (toupper(Answer) == 'Y')
         {
-            MarkClintForDeleteByAccountNumber(AccountNumber, vClient);
-            SaveClientDataToFile(ClientsFileName, vClient);
+            MarkClintForDeleteByAccountNumber(AccountNumber, vClients);
 
-            vClient = LoadDataFromFile(ClientsFileName);
+            SaveClientDataToFile(ClientsFileName, vClients);
 
-            cout << "\n\nCleint Delete Succesfuly.\n";
+            vClients = LoadDataFromFile(ClientsFileName);
 
+            cout << "\n\nClient Deleted Successfully.\n";
             return true;
         }
     }
     else
     {
-        cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n";
+        cout << "\nClient with Account Number [" << AccountNumber << "] was NOT found.\n";
     }
 
     return false;
@@ -445,9 +443,11 @@ void ShowDeleteClientScreen()
     cout << "\tDelete Client Screen";
     cout << "\n-----------------------------------------------\n";
 
-    vector<sClientInfo> vCleint = LoadDataFromFile(ClientsFileName);
-    string AccountName = ReadClientAccountNumber();
-    DeleteClintByAccountNumber(AccountName, vCleint);
+    vector<sClientInfo> vClients = LoadDataFromFile(ClientsFileName);
+    
+    string AccountNumber = ReadClientAccountNumber();
+    
+    DeleteClintByAccountNumber(AccountNumber, vClients);
 }
 
 void ShowUpdateClientScreen()
@@ -493,7 +493,7 @@ void GoBackToMainMenu()
 
     cin.ignore(100, '\n');
     cin.get();
-    
+
     ShowMainMenu();
 }
 
@@ -510,7 +510,7 @@ short ReadMainMenuOption()
 void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
 {
 
-    switch (ReadMainMenuOption())
+    switch (MainMenuOptions)
     {
     case enMainMenuOptions::eShow:
         system("clear");
