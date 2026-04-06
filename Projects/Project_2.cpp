@@ -515,7 +515,6 @@ short ReadMainMenuOption()
     cout << "Enter Your Choose [1 - 7]: ";
     cin >> Choose;
 
-
     return Choose;
 }
 short ReadTransactionMenuOption()
@@ -532,25 +531,29 @@ void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
 {
     switch (TransactionOptions)
     {
+        
     case enTransactionOptions::eDeposit:
 
-        break;
+    break;
 
     case enTransactionOptions::eWithdraw:
 
-        break;
+    break;
 
     case enTransactionOptions::eTotalBalance:
 
-        break;
+    break;
 
     case enTransactionOptions::eBackToMainMenu:
 
-        break;
+    break;
 
     default:
 
-        break;
+    cout << "Invalid Choose, Try Again.";
+
+    break;
+
     }
 }
 void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
