@@ -390,8 +390,6 @@ bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
     return false;
 }
 
-
-
 /*
 
 
@@ -461,7 +459,6 @@ void ShowUpdateClientScreen()
     vector<sClientInfo> vCleint = LoadDataFromFile(ClientsFileName);
     string AccountName = ReadClientAccountNumber();
     UpdateClintByAccountNumber(AccountName, vCleint);
-
 }
 
 void ShowFindClientScreen()
@@ -471,18 +468,23 @@ void ShowFindClientScreen()
     cout << "\n-----------------------------------------------\n";
 
     vector<sClientInfo> vCleint = LoadDataFromFile(ClientsFileName);
-    string AccountName = ReadClientAccountNumber();
-    FindClientByAccountNumber(AccountName, vCleint, sClientInfo());
-
+    sClientInfo Client;
+    string AccountNumber = ReadClientAccountNumber();
+    if (FindClientByAccountNumber(AccountNumber, vCleint, Client))
+    {
+        PrintClientCard(Client);
+    }
+    else
+    {
+        cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n";
+    }
 }
 
 void ShowEndScreen()
 {
 }
 
-
 // End Of Main Menu Options Functions
-
 
 void GoBackToMainMenu()
 {
