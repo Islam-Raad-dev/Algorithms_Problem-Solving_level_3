@@ -493,8 +493,6 @@ void GoBackToMainMenu()
 
     cin.ignore(100, '\n');
     cin.get();
-
-    ShowMainMenu();
 }
 
 short ReadMainMenuOption()
