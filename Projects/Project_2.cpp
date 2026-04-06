@@ -481,6 +481,10 @@ void ShowFindClientScreen()
     }
 }
 
+void ShowTransactionScreen(){
+    
+}
+
 void ShowEndScreen()
 {
     cout << "\n\nThank You For Using Our System.\n\n";
@@ -501,9 +505,9 @@ short ReadMainMenuOption()
     short Choose;
     do
     {
-        cout << "Enter Your Choose [1 - 6]: ";
+        cout << "Enter Your Choose [1 - 7]: ";
         cin >> Choose;
-    } while (Choose < 1 || Choose > 6);
+    } while (Choose < 1 || Choose > 7);
 
     return Choose;
 }
@@ -540,6 +544,12 @@ void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
     case enMainMenuOptions::eFind:
         system("clear");
         ShowFindClientScreen();
+        GoBackToMainMenu();
+        break;
+
+    case enMainMenuOptions::eTransaction:
+        system("clear");
+        ShowTransactionScreen();
         GoBackToMainMenu();
         break;
 
