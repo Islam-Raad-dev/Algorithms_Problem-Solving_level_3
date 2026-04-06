@@ -68,16 +68,16 @@ vector<string> SplitString(string S1, string delim)
 sClientInfo ConvertLineDataToRecord(string Line, string Seperator = "#//#")
 {
     sClientInfo Client;
+    vector<string> vClientData = SplitString(Line, Seperator);
 
-    vector<string> vClientData;
-
-    vClientData = SplitString(Line, Seperator);
-    Client.AccountNumber = vClientData[0];
-    Client.PinCode = vClientData[1];
-    Client.FullName = vClientData[2];
-    Client.PhoneNumber = vClientData[3];
-    Client.AccountBalance = stod(vClientData[4]);
-
+    if (vClientData.size() >= 5) 
+    {
+        Client.AccountNumber = vClientData[0];
+        Client.PinCode = vClientData[1];
+        Client.FullName = vClientData[2];
+        Client.PhoneNumber = vClientData[3];
+        Client.AccountBalance = stod(vClientData[4]);
+    }
     return Client;
 }
 
