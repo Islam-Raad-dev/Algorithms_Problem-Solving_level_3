@@ -490,8 +490,10 @@ void ShowEndScreen()
 void GoBackToMainMenu()
 {
     cout << "\n\nPress Enter to return to Main Menu...";
+
     cin.ignore(100, '\n');
     cin.get();
+    
     ShowMainMenu();
 }
 
