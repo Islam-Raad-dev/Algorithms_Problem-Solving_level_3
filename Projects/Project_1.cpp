@@ -38,7 +38,6 @@ struct sClientInfo
     bool MarkForDelete = false;
 };
 
-
 vector<string> SplitString(string S1, string delim)
 {
     vector<string> vString;
@@ -115,9 +114,9 @@ vector<sClientInfo> LoadDataFromFile(string FileName)
 
 bool ClientExistByAccountNumber(string AccountNumber, string FileName)
 {
-   vector<sClientInfo> vClients;
-   
-   fstream MyFile;
+    vector<sClientInfo> vClients;
+
+    fstream MyFile;
     MyFile.open(FileName, ios::in);
 
     if (MyFile.is_open())
@@ -149,11 +148,9 @@ sClientInfo ReadNewClient()
 
     while (ClientExistByAccountNumber(Client.AccountNumber, ClientsFileName))
     {
-        cout<<"\nClient With["<<Client.AccountNumber<<"] Already Exists, Enter Andoter Account Number: ";
+        cout << "\nClient With[" << Client.AccountNumber << "] Already Exists, Enter Andoter Account Number: ";
         getline(cin >> ws, Client.AccountNumber);
-
     }
-    
 
     cout << "\nEnter Your PINCODE: ";
     getline(cin, Client.PinCode);
@@ -202,7 +199,6 @@ void AddNewClients()
     sClientInfo Client;
     Client = ReadNewClient();
     AddClientToFile(ClientsFileName, ConvertRecordToLine(Client));
-
 }
 void AddNewClient()
 {
@@ -210,16 +206,15 @@ void AddNewClient()
 
     do
     {
-       cout<<"Adding New Client:\n\n";
+        cout << "Adding New Client:\n\n";
 
-       AddNewClients();
+        AddNewClients();
 
-       cout<<"\nClirnt Added Successfuly, do you want To Add More Clients? (Y/N):";
+        cout << "\nClirnt Added Successfuly, do you want To Add More Clients? (Y/N):";
 
-       cin >>AddMore;
+        cin >> AddMore;
 
     } while (toupper(AddMore) == 'Y');
-    
 }
 
 string ReadClientAccountNumber()
@@ -388,7 +383,6 @@ void ShowDeleteClientScreen()
     vector<sClientInfo> vCleint = LoadDataFromFile(ClientsFileName);
     string AccountName = ReadClientAccountNumber();
     DeleteClintByAccountNumber(AccountName, vCleint);
-
 }
 
 //-------------------------------------
@@ -500,9 +494,11 @@ void GoBackToMainMenu()
 short ReadMainMenuOption()
 {
     short Choose;
-
-    cout << "Enter Your Choose [1 - 6]: ";
-    cin >> Choose;
+    do
+    {
+        cout << "Enter Your Choose [1 - 6]: ";
+        cin >> Choose;
+    } while (Choose > 0 || Choose < 7);
 
     return Choose;
 }
