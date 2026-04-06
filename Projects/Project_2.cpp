@@ -519,7 +519,17 @@ short ReadMainMenuOption()
 
     return Choose;
 }
+short ReadTransactionMenuOption()
+{
+    short Choose;
+    do
+    {
+        cout << "Enter Your Choose [1 - 4]: ";
+        cin >> Choose;
+    } while (Choose < 1 || Choose > 4);
 
+    return Choose;
+}
 void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
 {
 
