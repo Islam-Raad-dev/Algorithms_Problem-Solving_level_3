@@ -385,16 +385,13 @@ void ShowDeleteClientScreen()
     DeleteClintByAccountNumber(AccountName, vCleint);
 }
 
-//-------------------------------------
-// End of Delete Client
-//-------------------------------------
-
-//-------------------------------------
-// Start of Update Client
-//-------------------------------------
 
 void ShowUpdateClientScreen()
 {
+    cout << "\n-----------------------------------------------\n";
+    cout << "\tUpdate Client Screen";
+    cout << "\n-----------------------------------------------\n";
+
 }
 sClientInfo ChanceClintRecord(string AccountNumber)
 {
