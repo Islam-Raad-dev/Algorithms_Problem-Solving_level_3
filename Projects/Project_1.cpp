@@ -324,6 +324,73 @@ bool DeleteClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClie
 
     return false;
 }
+sClientInfo ChanceClintRecord(string AccountNumber)
+{
+
+    sClientInfo Client;
+
+    Client.AccountNumber = AccountNumber;
+
+    cout << "\nEnter Your PINCODE: ";
+    getline(cin >> ws, Client.PinCode);
+
+    cout << "\nEnter Your Full Name: ";
+    getline(cin, Client.FullName);
+
+    cout << "\nEnter Your Phone Number: ";
+    getline(cin, Client.PhoneNumber);
+
+    cout << "\nEnter Your Account Balance: ";
+    cin >> Client.AccountBalance;
+
+    return Client;
+}
+
+bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClient)
+{
+
+    sClientInfo Client;
+    char Answer = 'n';
+
+    if (FindClientByAccountNumber(AccountNumber, vClient, Client))
+    {
+
+        PrintClientCard(Client);
+
+        cout << "\nAre You Sure That You Want To Update This Client? (Y/N)";
+        cin >> Answer;
+
+        if (Answer == 'y' || Answer == 'Y')
+        {
+
+            for (sClientInfo &C : vClient)
+            {
+
+                if (C.AccountNumber == AccountNumber)
+                {
+                    C = ChanceClintRecord(AccountNumber);
+                    break;
+                }
+            }
+
+            SaveClientDataToFile(ClientsFileName, vClient);
+
+            vClient = LoadDataFromFile(ClientsFileName);
+
+            cout << "\n\nCleint Updated Succesfuly.\n";
+
+            return true;
+        }
+    }
+    else
+    {
+        cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n";
+    }
+
+    return false;
+}
+
+
 
 /*
 
@@ -396,71 +463,6 @@ void ShowUpdateClientScreen()
     string AccountName = ReadClientAccountNumber();
     UpdateClintByAccountNumber(AccountName, vCleint);
 
-}
-sClientInfo ChanceClintRecord(string AccountNumber)
-{
-
-    sClientInfo Client;
-
-    Client.AccountNumber = AccountNumber;
-
-    cout << "\nEnter Your PINCODE: ";
-    getline(cin >> ws, Client.PinCode);
-
-    cout << "\nEnter Your Full Name: ";
-    getline(cin, Client.FullName);
-
-    cout << "\nEnter Your Phone Number: ";
-    getline(cin, Client.PhoneNumber);
-
-    cout << "\nEnter Your Account Balance: ";
-    cin >> Client.AccountBalance;
-
-    return Client;
-}
-
-bool UpdateClintByAccountNumber(string AccountNumber, vector<sClientInfo> &vClient)
-{
-
-    sClientInfo Client;
-    char Answer = 'n';
-
-    if (FindClientByAccountNumber(AccountNumber, vClient, Client))
-    {
-
-        PrintClientCard(Client);
-
-        cout << "\nAre You Sure That You Want To Update This Client? (Y/N)";
-        cin >> Answer;
-
-        if (Answer == 'y' || Answer == 'Y')
-        {
-
-            for (sClientInfo &C : vClient)
-            {
-
-                if (C.AccountNumber == AccountNumber)
-                {
-                    C = ChanceClintRecord(AccountNumber);
-                    break;
-                }
-            }
-
-            SaveClientDataToFile(ClientsFileName, vClient);
-
-            vClient = LoadDataFromFile(ClientsFileName);
-
-            cout << "\n\nCleint Updated Succesfuly.\n";
-
-            return true;
-        }
-    }
-    else
-    {
-        cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n";
-    }
-
-    return false;
 }
 
 void ShowFindClientScreen()
