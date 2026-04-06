@@ -511,24 +511,47 @@ void GoBackToMainMenu()
 short ReadMainMenuOption()
 {
     short Choose;
-    do
-    {
-        cout << "Enter Your Choose [1 - 7]: ";
-        cin >> Choose;
-    } while (Choose < 1 || Choose > 7);
+
+    cout << "Enter Your Choose [1 - 7]: ";
+    cin >> Choose;
+
 
     return Choose;
 }
 short ReadTransactionMenuOption()
 {
     short Choose;
-    do
-    {
-        cout << "Enter Your Choose [1 - 4]: ";
-        cin >> Choose;
-    } while (Choose < 1 || Choose > 4);
+
+    cout << "Enter Your Choose [1 - 4]: ";
+    cin >> Choose;
 
     return Choose;
+}
+
+void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
+{
+    switch (TransactionOptions)
+    {
+    case enTransactionOptions::eDeposit:
+
+        break;
+
+    case enTransactionOptions::eWithdraw:
+
+        break;
+
+    case enTransactionOptions::eTotalBalance:
+
+        break;
+
+    case enTransactionOptions::eBackToMainMenu:
+
+        break;
+
+    default:
+
+        break;
+    }
 }
 void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
 {
