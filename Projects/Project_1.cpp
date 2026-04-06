@@ -113,15 +113,31 @@ vector<sClientInfo> LoadDataFromFile(string FileName)
     return vClients;
 }
 
-void ClientExistByAccountNumber(string AccountNumber, string FileName)
+bool ClientExistByAccountNumber(string AccountNumber, string FileName)
 {
    vector<sClientInfo> vClients;
    
    fstream MyFile;
+    MyFile.open(FileName, ios::in);
 
-   
+    if (MyFile.is_open())
+    {
+        string Line;
+        sClientInfo Cleint;
 
-
+        while (getline(MyFile, Line))
+        {
+            Cleint = ConvertLineDataToRecord(Line);
+            if (Cleint.AccountNumber == AccountNumber)
+            {
+                MyFile.close();
+                return true;
+            }
+            vClients.push_back(Cleint);
+        }
+        MyFile.close();
+    }
+    return false;
 }
 
 sClientInfo ReadNewClient()
