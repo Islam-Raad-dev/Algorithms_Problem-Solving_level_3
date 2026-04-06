@@ -498,9 +498,10 @@ void GoBackToMainMenu()
 short ReadMainMenuOption()
 {
     short Choose;
-
+    do{
     cout << "Enter Your Choose [1 - 6]: ";
     cin >> Choose;
+    }while (Choose < 1 || Choose > 6);
 
     return Choose;
 }
@@ -540,10 +541,11 @@ void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
         GoBackToMainMenu();
         break;
 
-    case enMainMenuOptions::eExit:
-        system("clear");
-        ShowEndScreen();
-        break;
+case enMainMenuOptions::eExit:
+    system("clear");
+    ShowEndScreen();
+    exit(0);
+    break;
 
     default:
 
