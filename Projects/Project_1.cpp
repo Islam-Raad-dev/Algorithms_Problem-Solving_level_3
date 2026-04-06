@@ -498,11 +498,9 @@ void GoBackToMainMenu()
 short ReadMainMenuOption()
 {
     short Choose;
-    do
-    {
-        cout << "Enter Your Choose [1 - 6]: ";
-        cin >> Choose;
-    } while (Choose > 0 || Choose < 7);
+
+    cout << "Enter Your Choose [1 - 6]: ";
+    cin >> Choose;
 
     return Choose;
 }
