@@ -482,6 +482,7 @@ void ShowFindClientScreen()
 
 void ShowEndScreen()
 {
+    cout << "\n\nThank You For Using Our System.\n\n";
 }
 
 // End Of Main Menu Options Functions
