@@ -520,6 +520,7 @@ void ShowFindClientScreen()
 }
 void ShowDepositScreen()
 {
+        system("clear");
     cout << "\n-----------------------------------------------\n";
     cout << "\tDeposit Screen";
     cout << "\n-----------------------------------------------\n";
@@ -580,9 +581,22 @@ void ShowWithdrawScreen()
 
 void ShowTotalBalanceScreen()
 {
+    system("clear");
     cout << "\n-----------------------------------------------\n";
     cout << "\tTotal Balance Screen";
     cout << "\n-----------------------------------------------\n";
+
+        sClientInfo Cleint;
+
+    vector<sClientInfo> vCleint = LoadDataFromFile(ClientsFileName);
+    string AccountNumber = ReadClientAccountNumber();
+
+    while (!FindClientByAccountNumber(AccountNumber, vCleint, Cleint))
+    {
+        cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n";
+        AccountNumber = ReadClientAccountNumber();
+    }
+
 }
 
 short ReadTransactionMenuOption()
