@@ -489,6 +489,36 @@ void ShowFindClientScreen()
     }
 }
 
+void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
+{
+    switch (TransactionOptions)
+    {
+        
+    case enTransactionOptions::eDeposit:
+
+    break;
+
+    case enTransactionOptions::eWithdraw:
+
+    break;
+
+    case enTransactionOptions::eTotalBalance:
+
+    break;
+
+    case enTransactionOptions::eShowToMainMenu:
+
+    break;
+
+    default:
+
+    cout << "Invalid Choose, Try Again.";
+
+    break;
+
+    }
+}
+
 short ReadTransactionMenuOption()
 {
     short Choose;
@@ -539,35 +569,7 @@ short ReadMainMenuOption()
 }
 
 
-void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
-{
-    switch (TransactionOptions)
-    {
-        
-    case enTransactionOptions::eDeposit:
 
-    break;
-
-    case enTransactionOptions::eWithdraw:
-
-    break;
-
-    case enTransactionOptions::eTotalBalance:
-
-    break;
-
-    case enTransactionOptions::eShowToMainMenu:
-
-    break;
-
-    default:
-
-    cout << "Invalid Choose, Try Again.";
-
-    break;
-
-    }
-}
 void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
 {
 
