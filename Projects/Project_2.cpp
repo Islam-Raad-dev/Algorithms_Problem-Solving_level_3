@@ -575,7 +575,6 @@ void ShowWithdrawScreen()
 
     }
 
-
     DipositBalanceToClientByAccountNumber(AccountNumber, Amount * -1, vCleint);
 }
 
