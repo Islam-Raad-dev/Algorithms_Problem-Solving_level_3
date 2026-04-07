@@ -555,7 +555,7 @@ void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
 
     break;
 
-    case enTransactionOptions::eBackToMainMenu:
+    case enTransactionOptions::eShowToMainMenu:
 
     break;
 
