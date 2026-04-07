@@ -586,7 +586,7 @@ void ShowTotalBalanceScreen()
     cout << "\tTotal Balance Screen";
     cout << "\n-----------------------------------------------\n";
 
-        sClientInfo Cleint;
+    sClientInfo Cleint;
 
     vector<sClientInfo> vCleint = LoadDataFromFile(ClientsFileName);
     string AccountNumber = ReadClientAccountNumber();
