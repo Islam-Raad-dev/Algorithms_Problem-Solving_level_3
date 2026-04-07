@@ -488,50 +488,56 @@ void ShowFindClientScreen()
         cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n";
     }
 }
-void ShowDepositScreen(){
-
+void ShowDepositScreen()
+{
+    cout << "\n-----------------------------------------------\n";
+    cout << "\tDeposit Screen";
+    cout << "\n-----------------------------------------------\n";
 }
 
-void ShowWithdrawScreen(){
-
+void ShowWithdrawScreen()
+{
+    cout << "\n-----------------------------------------------\n";
+    cout << "\tWithdraw Screen";
+    cout << "\n-----------------------------------------------\n";
 }
 
-void ShowTotalBalanceScreen(){
-
+void ShowTotalBalanceScreen()
+{
+    cout << "\n-----------------------------------------------\n";
+    cout << "\tTotal Balance Screen";
+    cout << "\n-----------------------------------------------\n";
 }
-
-void 
 void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
 {
     switch (TransactionOptions)
     {
-        
+
     case enTransactionOptions::eDeposit:
-    ShowDepositScreen();
-    GoBackToMainMenu();
-    break;
+        ShowDepositScreen();
+        GoBackToMainMenu();
+        break;
 
     case enTransactionOptions::eWithdraw:
-    ShowWithdrawScreen();
-    GoBackToMainMenu();
-    break;
+        ShowWithdrawScreen();
+        GoBackToMainMenu();
+        break;
 
     case enTransactionOptions::eTotalBalance:
-    ShowTotalBalanceScreen();
-    GoBackToMainMenu();
-    break;
+        ShowTotalBalanceScreen();
+        GoBackToMainMenu();
+        break;
 
     case enTransactionOptions::eShowToMainMenu:
-    ShowTransactionScreen();
-    GoBackToMainMenu();
-    break;
+        ShowTransactionScreen();
+        GoBackToMainMenu();
+        break;
 
     default:
 
-    cout << "Invalid Choose, Try Again.";
+        cout << "Invalid Choose, Try Again.";
 
-    break;
-
+        break;
     }
 }
 
@@ -583,8 +589,6 @@ short ReadMainMenuOption()
 
     return Choose;
 }
-
-
 
 void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
 {
