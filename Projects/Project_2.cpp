@@ -538,8 +538,6 @@ short ReadTransactionMenuOption()
     return Choose;
 }
 
-void 
-
 void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
 {
     switch (TransactionOptions)
