@@ -488,26 +488,38 @@ void ShowFindClientScreen()
         cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n";
     }
 }
+void ShowDepositScreen(){
 
+}
+
+void ShowWithdrawScreen(){
+
+}
+
+void 
 void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
 {
     switch (TransactionOptions)
     {
         
     case enTransactionOptions::eDeposit:
-
+    ShowDepositScreen();
+    GoBackToMainMenu();
     break;
 
     case enTransactionOptions::eWithdraw:
-
+    ShowWithdrawScreen();
+    GoBackToMainMenu();
     break;
 
     case enTransactionOptions::eTotalBalance:
-
+    ShowTotalBalanceScreen();
+    GoBackToMainMenu();
     break;
 
     case enTransactionOptions::eShowToMainMenu:
-
+    ShowTransactionScreen();
+    GoBackToMainMenu();
     break;
 
     default:
