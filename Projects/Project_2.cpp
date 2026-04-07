@@ -239,6 +239,7 @@ string ReadClientAccountNumber()
 void PrintClientCard(sClientInfo Client)
 {
 
+    cout<< "\n-----------------------------------------------\n";
     cout << "\n\nThe Following is The Clint Recoed:\n";
     cout << "\nAccount Number   : " << Client.AccountNumber;
     cout << "\nPINCODE          : " << Client.PinCode;
@@ -246,6 +247,7 @@ void PrintClientCard(sClientInfo Client)
     cout << "\nPhone Number     : " << Client.PhoneNumber;
     cout << "\nAccount Blalance : " << Client.AccountBalance;
     cout << "\n";
+    cout<< "\n-----------------------------------------------\n";
 }
 bool FindClientByAccountNumber(string AccountNumber, vector<sClientInfo> &vClients, sClientInfo &Client)
 {
@@ -497,6 +499,7 @@ bool DipositBalanceToClientByAccountNumber(string AccountNumber, double Amount, 
         return false;
     }
 }
+
 void ShowFindClientScreen()
 {
     cout << "\n-----------------------------------------------\n";
@@ -541,9 +544,39 @@ void ShowDepositScreen()
 
 void ShowWithdrawScreen()
 {
+    system("clear");
+
     cout << "\n-----------------------------------------------\n";
     cout << "\tWithdraw Screen";
     cout << "\n-----------------------------------------------\n";
+
+    sClientInfo Cleint;
+
+    vector<sClientInfo> vCleint = LoadDataFromFile(ClientsFileName);
+    string AccountNumber = ReadClientAccountNumber();
+
+    while (!FindClientByAccountNumber(AccountNumber, vCleint, Cleint))
+    {
+        cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n";
+        AccountNumber = ReadClientAccountNumber();
+    }
+
+    PrintClientCard(Cleint);
+    double Amount = 0;
+    cout << "\nPlease Enter Amount To Withdraw: ";
+    cin >> Amount;
+
+    while (Amount > Cleint.AccountBalance)
+    {
+        cout << "Amount Exceeds The Balance , You Can Withdraw Up To: " << Cleint.AccountBalance;
+
+        cout << "Please Enter Anothe Amount";
+        cin >> Amount;
+
+    }
+
+
+    DipositBalanceToClientByAccountNumber(AccountNumber, Amount * -1, vCleint);
 }
 
 void ShowTotalBalanceScreen()
@@ -553,6 +586,15 @@ void ShowTotalBalanceScreen()
     cout << "\n-----------------------------------------------\n";
 }
 
+short ReadTransactionMenuOption()
+{
+    short Choose;
+
+    cout << "Enter Your Choose [1 - 4]: ";
+    cin >> Choose;
+
+    return Choose;
+}
 void GoBackToTransactionMenu()
 {
     cout << "\n\nPress Enter to return to Transaction Menu...";
@@ -560,22 +602,6 @@ void GoBackToTransactionMenu()
     cin.ignore(100, '\n');
     cin.get();
 }
-
-void ShowTransactionScreen()
-{
-    system("clear");
-
-    cout << "\n-----------------------------------------------\n";
-    cout << "\tTransaction Screen";
-    cout << "\n-----------------------------------------------\n";
-    cout << "\t[1] Deposit.\n";
-    cout << "\t[2] Withdraw.\n";
-    cout << "\t[3] Total Balance.\n";
-    cout << "\t[4] Back To Main Menu.\n";
-    cout << "\n-----------------------------------------------\n";
-    PerformTransactionMenuOption((enTransactionOptions)ReadTransactionMenuOption());
-}
-
 
 void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
 {
@@ -598,7 +624,6 @@ void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
         break;
 
     case enTransactionOptions::eShowToMainMenu:
-        ShowTransactionScreen();
         GoBackToTransactionMenu();
         break;
 
@@ -609,15 +634,19 @@ void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
         break;
     }
 }
-
-short ReadTransactionMenuOption()
+void ShowTransactionScreen()
 {
-    short Choose;
+    system("clear");
 
-    cout << "Enter Your Choose [1 - 4]: ";
-    cin >> Choose;
-
-    return Choose;
+    cout << "\n-----------------------------------------------\n";
+    cout << "\tTransaction Screen";
+    cout << "\n-----------------------------------------------\n";
+    cout << "\t[1] Deposit.\n";
+    cout << "\t[2] Withdraw.\n";
+    cout << "\t[3] Total Balance.\n";
+    cout << "\t[4] Back To Main Menu.\n";
+    cout << "\n-----------------------------------------------\n";
+    PerformTransactionMenuOption((enTransactionOptions)ReadTransactionMenuOption());
 }
 
 void ShowEndScreen()
