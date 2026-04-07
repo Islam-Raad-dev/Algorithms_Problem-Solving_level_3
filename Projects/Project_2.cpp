@@ -476,7 +476,7 @@ bool DipositBalanceToClientByAccountNumber(string AccountNumber, double Amount, 
 {
     char Answer = 'n';
 
-    cout << "\nAre You Sure That You Want To Deposit [" << Amount << "] To This Client? (Y/N)";
+    cout << "\nAre You Sure That You Want To Do That [" << Amount << "] To This Client? (Y/N)";
     cin >> Answer;
 
     if (Answer == 'y' || Answer == 'Y')
@@ -721,6 +721,13 @@ void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
         ShowFindClientScreen();
         GoBackToMainMenu();
         break;
+
+    case enMainMenuOptions::eTransaction:
+        system("clear");
+
+        ShowTransactionScreen();
+        break;
+
 
     case enMainMenuOptions::eExit:
         system("clear");
