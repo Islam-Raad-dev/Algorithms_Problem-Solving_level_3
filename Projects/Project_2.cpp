@@ -470,6 +470,11 @@ void ShowUpdateClientScreen()
     UpdateClintByAccountNumber(AccountName, vCleint);
 }
 
+void DipositBalanceToClientByAccountNumber(string AccountNumber, double Amount, vector<sClientInfo> &vCleint){
+
+    
+
+}
 void ShowFindClientScreen()
 {
     cout << "\n-----------------------------------------------\n";
@@ -493,6 +498,23 @@ void ShowDepositScreen()
     cout << "\n-----------------------------------------------\n";
     cout << "\tDeposit Screen";
     cout << "\n-----------------------------------------------\n";
+
+    sClientInfo Cleint;
+
+    vector<sClientInfo> vCleint = LoadDataFromFile(ClientsFileName);
+    string AccountNumber = ReadClientAccountNumber();
+    while (!FindClientByAccountNumber(AccountNumber, vCleint, Cleint))
+    {
+        cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n";
+        AccountNumber = ReadClientAccountNumber();
+    }
+    
+    PrintClientCard(Cleint);
+        double Amount = 0;
+        cout << "Please Enter Amount To Deposit: ";
+        cin>>Amount;
+
+        DipositBalanceToClientByAccountNumber(AccountNumber, Amount, vCleint);
 }
 
 void ShowWithdrawScreen()
