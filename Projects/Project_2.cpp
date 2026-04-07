@@ -1,3 +1,9 @@
+/*
+
+Bank System Project 2
+
+*/
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -520,6 +526,8 @@ void ShowWithdrawScreen()
 
 void ShowTotalBalance()
 {
+
+    system("clear");
     vector<sClientInfo> vCleint = LoadDataFromFile(ClientsFileName);
     cout << "\t\t\t\t Balance List [" << vCleint.size() << "] Client(s).";
     cout << "\n____________________________________________________________________________________________________\n"
@@ -628,39 +636,54 @@ void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
 {
     switch (MainMenuOptions)
     {
+
     case enMainMenuOptions::eShow:
         system("clear");
         ShowAllClientScreen();
         GoBackToMainMenu();
         break;
+
+
     case enMainMenuOptions::eAdd:
         system("clear");
         ShowAddNewClientScreen();
         GoBackToMainMenu();
         break;
+
+
     case enMainMenuOptions::eDelete:
         system("clear");
         ShowDeleteClientScreen();
         GoBackToMainMenu();
         break;
+
+
     case enMainMenuOptions::eUpdate:
         system("clear");
         ShowUpdateClientScreen();
         GoBackToMainMenu();
         break;
+
+
     case enMainMenuOptions::eFind:
         system("clear");
         ShowFindClientScreen();
         GoBackToMainMenu();
         break;
+
+
     case enMainMenuOptions::eTransaction:
         ShowTransactionScreen();
         break;
+
+
     case enMainMenuOptions::eExit:
         system("clear");
         ShowEndScreen();
         exit(0);
         break;
+
+
     default:
         cout << "\nInvalid Choose, Try Again.\n\n";
         break;
@@ -689,6 +712,7 @@ int main()
 {
     while (true)
     {
+
         ShowMainMenu();
     }
     return 0;
