@@ -678,8 +678,9 @@ void ShowMainMenu()
     cout << "\t[3] Delete Client.\n";
     cout << "\t[4] Update Client Info.\n";
     cout << "\t[5] Find Client.\n";
-    cout << "\t[6] Exit.\n";
-    cout << "\t[7] Transaction.";
+    cout << "\t[6] Transaction.\n";
+    cout << "\t[7] Exit.";
+
     cout << "\n=================================================================\n";
     PerformMainMenuOption((enMainMenuOptions)ReadMainMenuOption());
 }
