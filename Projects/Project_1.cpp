@@ -575,6 +575,7 @@ void ShowMainMenu()
 
     PerformMainMenuOption((enMainMenuOptions)ReadMainMenuOption());
 }
+
 int main()
 {
     while (true)
