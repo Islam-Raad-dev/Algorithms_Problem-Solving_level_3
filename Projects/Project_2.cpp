@@ -722,11 +722,6 @@ void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
         GoBackToMainMenu();
         break;
 
-    case enMainMenuOptions::eTransaction:
-        system("clear");
-        ShowTransactionScreen();
-        break;
-
     case enMainMenuOptions::eExit:
         system("clear");
         ShowEndScreen();
@@ -735,7 +730,7 @@ void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
 
     default:
 
-        cout << "Invalid Choose, Try Again.";
+        cout << "\nInvalid Choose, Try Again.\n\n";
 
         break;
     }
