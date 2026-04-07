@@ -240,7 +240,7 @@ void PrintClientCard(sClientInfo Client)
 {
 
     cout<< "\n-----------------------------------------------\n";
-    cout << "\n\nThe Following is The Clint Recoed:\n";
+    cout << "\nThe Following is The Clint Recoed:\n";
     cout << "\nAccount Number   : " << Client.AccountNumber;
     cout << "\nPINCODE          : " << Client.PinCode;
     cout << "\nFull Name        : " << Client.FullName;
