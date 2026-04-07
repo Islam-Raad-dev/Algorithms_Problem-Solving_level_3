@@ -34,7 +34,7 @@ enum enTransactionOptions
     eDeposit = 1,
     eWithdraw = 2,
     eTotalBalance = 3,
-    eBackToMainMenu = 4
+    eShowToMainMenu = 4
 };
 
 struct sClientInfo
