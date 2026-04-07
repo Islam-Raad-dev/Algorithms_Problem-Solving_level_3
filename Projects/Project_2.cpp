@@ -501,6 +501,7 @@ void ShowTransactionScreen()
     cout << "\t[3] Total Balance.\n";
     cout << "\t[4] Back To Main Menu.\n";
     cout << "\n-----------------------------------------------\n";
+    PerformTransactionMenuOption((enTransactionOptions)ReadTransactionMenuOption());
 }
 
 void ShowEndScreen()
@@ -536,6 +537,8 @@ short ReadTransactionMenuOption()
 
     return Choose;
 }
+
+void 
 
 void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
 {
