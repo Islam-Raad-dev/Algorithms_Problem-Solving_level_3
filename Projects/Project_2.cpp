@@ -470,9 +470,10 @@ void ShowUpdateClientScreen()
     UpdateClintByAccountNumber(AccountName, vCleint);
 }
 
-void DipositBalanceToClientByAccountNumber(string AccountNumber, double Amount, vector<sClientInfo> &vCleint){
+void DipositBalanceToClientByAccountNumber(string AccountNumber, double Amount, vector<sClientInfo> &vCleint)
+{
 
-    
+
 
 }
 void ShowFindClientScreen()
