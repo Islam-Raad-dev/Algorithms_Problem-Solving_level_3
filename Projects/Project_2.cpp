@@ -496,6 +496,10 @@ void ShowWithdrawScreen(){
 
 }
 
+void ShowTotalBalanceScreen(){
+
+}
+
 void 
 void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
 {
