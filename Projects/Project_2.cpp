@@ -470,11 +470,32 @@ void ShowUpdateClientScreen()
     UpdateClintByAccountNumber(AccountName, vCleint);
 }
 
-void DipositBalanceToClientByAccountNumber(string AccountNumber, double Amount, vector<sClientInfo> &vCleint)
+bool DipositBalanceToClientByAccountNumber(string AccountNumber, double Amount, vector<sClientInfo> &vCleint)
 {
+    char Answer = 'n';
 
+    cout << "\nAre You Sure That You Want To Deposit [" << Amount << "] To This Client? (Y/N)";
+    cin >> Answer;
 
+    if (Answer == 'y' || Answer == 'Y')
+    {
 
+        for (sClientInfo &C : vCleint)
+        {
+
+            if (C.AccountNumber == AccountNumber)
+            {
+                C.AccountBalance += Amount;
+                SaveClientDataToFile(ClientsFileName, vCleint);
+
+                cout << "Done Successfuly, New Balance is: " << Amount << endl;
+
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
 void ShowFindClientScreen()
 {
@@ -509,13 +530,13 @@ void ShowDepositScreen()
         cout << "\nCleint With Account Number[ " << AccountNumber << " ] is Not Found.\n";
         AccountNumber = ReadClientAccountNumber();
     }
-    
-    PrintClientCard(Cleint);
-        double Amount = 0;
-        cout << "Please Enter Amount To Deposit: ";
-        cin>>Amount;
 
-        DipositBalanceToClientByAccountNumber(AccountNumber, Amount, vCleint);
+    PrintClientCard(Cleint);
+    double Amount = 0;
+    cout << "Please Enter Amount To Deposit: ";
+    cin >> Amount;
+
+    DipositBalanceToClientByAccountNumber(AccountNumber, Amount, vCleint);
 }
 
 void ShowWithdrawScreen()
@@ -531,6 +552,15 @@ void ShowTotalBalanceScreen()
     cout << "\tTotal Balance Screen";
     cout << "\n-----------------------------------------------\n";
 }
+
+void GoBackToTransactionMenu()
+{
+    cout << "\n\nPress Enter to return to Transaction Menu...";
+
+    cin.ignore(100, '\n');
+    cin.get();
+}
+
 void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
 {
     switch (TransactionOptions)
@@ -538,22 +568,22 @@ void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
 
     case enTransactionOptions::eDeposit:
         ShowDepositScreen();
-        GoBackToMainMenu();
+        GoBackToTransactionMenu();
         break;
 
     case enTransactionOptions::eWithdraw:
         ShowWithdrawScreen();
-        GoBackToMainMenu();
+        GoBackToTransactionMenu();
         break;
 
     case enTransactionOptions::eTotalBalance:
         ShowTotalBalanceScreen();
-        GoBackToMainMenu();
+        GoBackToTransactionMenu();
         break;
 
     case enTransactionOptions::eShowToMainMenu:
         ShowTransactionScreen();
-        GoBackToMainMenu();
+        GoBackToTransactionMenu();
         break;
 
     default:
