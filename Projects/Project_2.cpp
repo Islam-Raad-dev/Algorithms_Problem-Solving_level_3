@@ -489,6 +489,15 @@ void ShowFindClientScreen()
     }
 }
 
+short ReadTransactionMenuOption()
+{
+    short Choose;
+
+    cout << "Enter Your Choose [1 - 4]: ";
+    cin >> Choose;
+
+    return Choose;
+}
 void ShowTransactionScreen()
 {
     system("clear");
@@ -528,15 +537,7 @@ short ReadMainMenuOption()
 
     return Choose;
 }
-short ReadTransactionMenuOption()
-{
-    short Choose;
 
-    cout << "Enter Your Choose [1 - 4]: ";
-    cin >> Choose;
-
-    return Choose;
-}
 
 void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
 {
