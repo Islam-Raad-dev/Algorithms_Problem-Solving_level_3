@@ -561,6 +561,22 @@ void GoBackToTransactionMenu()
     cin.get();
 }
 
+void ShowTransactionScreen()
+{
+    system("clear");
+
+    cout << "\n-----------------------------------------------\n";
+    cout << "\tTransaction Screen";
+    cout << "\n-----------------------------------------------\n";
+    cout << "\t[1] Deposit.\n";
+    cout << "\t[2] Withdraw.\n";
+    cout << "\t[3] Total Balance.\n";
+    cout << "\t[4] Back To Main Menu.\n";
+    cout << "\n-----------------------------------------------\n";
+    PerformTransactionMenuOption((enTransactionOptions)ReadTransactionMenuOption());
+}
+
+
 void PerformTransactionMenuOption(enTransactionOptions TransactionOptions)
 {
     switch (TransactionOptions)
@@ -602,20 +618,6 @@ short ReadTransactionMenuOption()
     cin >> Choose;
 
     return Choose;
-}
-void ShowTransactionScreen()
-{
-    system("clear");
-
-    cout << "\n-----------------------------------------------\n";
-    cout << "\tTransaction Screen";
-    cout << "\n-----------------------------------------------\n";
-    cout << "\t[1] Deposit.\n";
-    cout << "\t[2] Withdraw.\n";
-    cout << "\t[3] Total Balance.\n";
-    cout << "\t[4] Back To Main Menu.\n";
-    cout << "\n-----------------------------------------------\n";
-    PerformTransactionMenuOption((enTransactionOptions)ReadTransactionMenuOption());
 }
 
 void ShowEndScreen()
