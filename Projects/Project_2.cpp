@@ -491,6 +491,16 @@ void ShowFindClientScreen()
 
 void ShowTransactionScreen()
 {
+    system("clear");
+
+    cout << "\n-----------------------------------------------\n";
+    cout << "\tTransaction Screen";
+    cout << "\n-----------------------------------------------\n";
+    cout << "\t[1] Deposit.\n";
+    cout << "\t[2] Withdraw.\n";
+    cout << "\t[3] Total Balance.\n";
+    cout << "\t[4] Back To Main Menu.\n";
+    cout << "\n-----------------------------------------------\n";
 }
 
 void ShowEndScreen()
@@ -594,7 +604,6 @@ void PerformMainMenuOption(enMainMenuOptions MainMenuOptions)
     case enMainMenuOptions::eTransaction:
         system("clear");
         ShowTransactionScreen();
-        GoBackToMainMenu();
         break;
 
     case enMainMenuOptions::eExit:
