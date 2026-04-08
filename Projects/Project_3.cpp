@@ -405,5 +405,6 @@ void StartGame()
         PlayMathGame();
         cout << "\n\033[33m[?]\033[0m Do You Want To Play Again? (Y/N): ";
         cin >> PlayAgain;
+        system("clear");
     } while (PlayAgain == 'Y' || PlayAgain == 'y');
 }
